@@ -1,3 +1,12 @@
+/*
+Further Study TODO:
+- Add a button that when clicked will restart the game once it has ended
+- For every guess made, increment a score variable and display the score while the game is played
+- Store the lowest-scoring game in local storage, so that players can see a record of the best game played.
+- Allow for any number of cards to appear
+- Instead of hard-coding colors, try something different like random colors or even images!
+*/
+
 const gameContainer = document.getElementById("game");
 let nextCardColor = null;
 let userCanClick = true;
@@ -85,6 +94,35 @@ function resetCards(event, color) {
   }, 1000)
 }
 
-createDivsForColors(shuffledColors);
+function displayHomeScreen() {
+  gameContainer.style.display = "none";
+  document.querySelector('h1').style.display = "none";
+  // Create new section, text, button
+  let startSection = document.createElement('section');
+  let startText = document.createElement('h2');
+  let highScoreSpan = document.createElement('span');
+  let startBtn = document.createElement('button');
 
-// Notes / TODO:
+  startSection.classList.add('start-screen');
+  startText.textContent = 'Memoize Cardz';
+  highScoreSpan.textContent = "High Score: TBD";
+  startBtn.textContent = "Play";
+
+  startSection.append(startText, highScoreSpan, startBtn);
+  document.body.prepend(startSection);
+
+  // Event Listeners
+  startBtn.addEventListener("click", function(e) {
+    // Hide start-screen section
+    startSection.style.display = "none";
+    gameContainer.removeAttribute('style');
+    document.querySelector('h1').removeAttribute('style');
+  })
+}
+
+function startProgram() {
+  createDivsForColors(shuffledColors);
+  displayHomeScreen();
+}
+
+startProgram();
