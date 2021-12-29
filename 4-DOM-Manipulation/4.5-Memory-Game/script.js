@@ -1,6 +1,5 @@
 /*
 Further Study TODO:
-- Add a button that when clicked will restart the game once it has ended
 - For every guess made, increment a score variable and display the score while the game is played
 - Store the lowest-scoring game in local storage, so that players can see a record of the best game played.
 - Allow for any number of cards to appear
@@ -59,7 +58,38 @@ function handleCardClick(event) {
   if (hasBeenClicked === "false" && userCanClick) {
     flipCard(event, color);
     checkBoard(event, color);
+    checkGameStatus();
   }
+}
+
+function checkGameStatus() {
+  let cards = gameContainer.children;
+  let lengthOfDeck = cards.length;
+  let clickedCardCount = 0;
+  for (card of cards) {
+    if (card.dataset.clicked === "true") {
+      clickedCardCount++;
+    }
+  }
+  if (clickedCardCount === lengthOfDeck) {
+    gameOver();
+  }
+}
+
+function gameOver() {
+  let playAgainBtn = document.createElement('button');
+  playAgainBtn.textContent = 'Play Again?';
+  playAgainBtn.classList.add('btn');
+  document.body.append(playAgainBtn);
+
+  playAgainBtn.addEventListener('click', function() {
+    console.log('Reset Board!')
+    // Delete all divs within gameContainer
+    gameContainer.innerHTML = '';
+    shuffledColors = shuffle(COLORS);
+    createDivsForColors(shuffledColors);
+    playAgainBtn.remove();
+  })
 }
 
 function flipCard(event, color) {
@@ -73,11 +103,11 @@ function checkBoard(event, color) {
   } else if (nextCardColor === null) {
     nextCardColor = color;
   } else {
-    resetCards(event, color);
+    resetFlippedCards(event, color);
   }
 }
 
-function resetCards(event, color) {
+function resetFlippedCards(event, color) {
   userCanClick = !userCanClick;
   event.target.style.backgroundColor = color;
 
@@ -96,16 +126,15 @@ function resetCards(event, color) {
 
 function displayHomeScreen() {
   gameContainer.style.display = "none";
+
   let startSection = document.createElement('section');
   let startBtn = document.createElement('button');
-
   startSection.classList.add('start-screen');
   startBtn.textContent = "Play";
-
+  startBtn.classList.add('btn');
   startSection.append(startBtn);
   document.body.append(startSection);
 
-  // Event Listeners
   startBtn.addEventListener("click", function () {
     startSection.style.display = "none";
     gameContainer.removeAttribute('style');

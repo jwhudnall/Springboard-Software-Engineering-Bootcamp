@@ -21,7 +21,18 @@ p {
   max-width: 100%;
 }
 
-.start-screen button {
+.start-screen button:hover{
+  background: #2395eb;
+  box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.4);
+}
+
+.start-screen h2 {
+  font-size: 4em;
+  text-align: center;
+}
+
+/* Buttons */
+.btn {
   background: #1990ea;
   border: none;
   border-radius: 10em;
@@ -33,16 +44,6 @@ p {
   font-weight: bold;
   margin: 1em auto;
   padding: 0.5em 1em;
-}
-
-.start-screen button:hover{
-  background: #2395eb;
-  box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.4);
-}
-
-.start-screen h2 {
-  font-size: 4em;
-  text-align: center;
 }
 
 /* Main Game Screen */
