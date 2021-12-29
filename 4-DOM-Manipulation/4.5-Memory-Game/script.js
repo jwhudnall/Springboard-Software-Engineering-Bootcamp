@@ -1,3 +1,9 @@
+/*
+Notes/Observations:
+  - Current codebase will not work if card divs have more than 1 class. Could refactor to include cards in HTML natively, vs. dynamically using JS.
+  - Should refactor to size cards according to screensize
+*/
+
 const gameContainer = document.getElementById("game");
 const highScoreSpan = document.querySelector('#high-score');
 const currentScoreSpan = document.querySelector('#current-score');
@@ -39,7 +45,6 @@ function createCards(arr) {
   for (let card of arr) {
     const newDiv = document.createElement("div");
     newDiv.classList.add(card);
-    // newDiv.style.backgroundImage = 'url(images/card-back.jpeg)'
     newDiv.setAttribute("data-clicked", false);
     newDiv.addEventListener("click", handleCardClick);
     gameContainer.append(newDiv);
@@ -48,6 +53,7 @@ function createCards(arr) {
 
 function handleCardClick(event) {
   let cardClass = event.target.className;
+  console.dir(event.target.className);
   let hasBeenClicked = event.target.dataset.clicked;
 
   if (hasBeenClicked === "false" && userCanClick) {
@@ -86,7 +92,16 @@ function gameOver() {
 
   playAgainBtn.addEventListener('click', function () {
     resetGame(playAgainBtn);
+    scrollToTop();
   })
+}
+
+function scrollToTop() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
 }
 
 function updateLocalStorage() {
@@ -163,7 +178,7 @@ function getHighScore() {
 function startProgram() {
   getHighScore();
   createCards(shuffledCards);
-  displayHomeScreen();
 }
 
 startProgram();
+displayHomeScreen();

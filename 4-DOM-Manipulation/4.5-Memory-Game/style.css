@@ -59,10 +59,11 @@ p:nth-of-type(1) {
 
 #game div {
   border: 2px solid black;
-  height: 150px;
+  height: 130px;
   margin: 10px;
-  width: 150px;
+  width: 130px;
   background-size: cover;
+  background-position: center;
 }
 
 #game div:hover {
