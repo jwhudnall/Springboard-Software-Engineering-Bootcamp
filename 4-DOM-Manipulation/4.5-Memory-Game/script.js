@@ -1,5 +1,6 @@
 const gameContainer = document.getElementById("game");
 let nextCardColor = null;
+let userCanClick = true;
 
 const COLORS = [
   "red",
@@ -43,40 +44,47 @@ function createDivsForColors(colorArray) {
 
 // TODO: Implement this function!
 function handleCardClick(event) {
-  // you can use event.target to see which element was clicked
   let color = event.target.className;
-  if (event.target.dataset.clicked === "false") {
-    event.target.style.backgroundColor = color;
-    event.target.dataset.clicked = true;
+  let hasBeenClicked = event.target.dataset.clicked;
 
-    if (nextCardColor === color) {
-      nextCardColor = null;
-    } else if (nextCardColor === null) {
-      nextCardColor = color;
-    } else {
-      resetCards(event, color);
-    }
+  if (hasBeenClicked === "false" && userCanClick) {
+    flipCard(event, color);
+    checkBoard(event, color);
+  }
+}
+
+function flipCard(event, color) {
+  event.target.style.backgroundColor = color;
+  event.target.dataset.clicked = true;
+}
+
+function checkBoard(event, color) {
+  if (nextCardColor === color) {
+    nextCardColor = null;
+  } else if (nextCardColor === null) {
+    nextCardColor = color;
+  } else {
+    resetCards(event, color);
   }
 }
 
 function resetCards(event, color) {
-  // Change background color to the class of the card clicked (event.target)
+  userCanClick = !userCanClick;
   event.target.style.backgroundColor = color;
-  // Use setTimeout to "reset" current and last card
+
   setTimeout(function () {
-    event.target.style.backgroundColor = "";
+    const cardsOfNextType = document.getElementsByClassName(nextCardColor);
     event.target.dataset.clicked = false;
-    const cardsOfGivenStyle = document.getElementsByClassName(nextCardColor);
-    for (let card of cardsOfGivenStyle) {
+    event.target.style.backgroundColor = "";
+    for (let card of cardsOfNextType) {
       card.style.backgroundColor = "";
       card.dataset.clicked = false;
     }
     nextCardColor = null;
+    userCanClick = !userCanClick;
   }, 1000)
 }
 
 createDivsForColors(shuffledColors);
 
 // Notes / TODO:
-// Remove user ability to "spam click"
-//Need to fix: If user correctly clicks a third card during setTimeout, it registers as a match.
