@@ -1,6 +1,5 @@
 /*
 Further Study TODO:
-- Allow for any number of cards to appear
 - Instead of hard-coding colors, try something different like random colors or even images!
 */
 
@@ -22,7 +21,9 @@ const COLORS = [
   "blue",
   "green",
   "orange",
-  "purple"
+  "purple",
+  "yellow",
+  "yellow"
 ];
 
 let shuffledColors = shuffle(COLORS);
