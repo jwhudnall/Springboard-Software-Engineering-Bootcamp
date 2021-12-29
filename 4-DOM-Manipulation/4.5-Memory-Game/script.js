@@ -96,27 +96,19 @@ function resetCards(event, color) {
 
 function displayHomeScreen() {
   gameContainer.style.display = "none";
-  document.querySelector('h1').style.display = "none";
-  // Create new section, text, button
   let startSection = document.createElement('section');
-  let startText = document.createElement('h2');
-  let highScoreSpan = document.createElement('span');
   let startBtn = document.createElement('button');
 
   startSection.classList.add('start-screen');
-  startText.textContent = 'Memoize Cardz';
-  highScoreSpan.textContent = "High Score: TBD";
   startBtn.textContent = "Play";
 
-  startSection.append(startText, highScoreSpan, startBtn);
-  document.body.prepend(startSection);
+  startSection.append(startBtn);
+  document.body.append(startSection);
 
   // Event Listeners
-  startBtn.addEventListener("click", function(e) {
-    // Hide start-screen section
+  startBtn.addEventListener("click", function () {
     startSection.style.display = "none";
     gameContainer.removeAttribute('style');
-    document.querySelector('h1').removeAttribute('style');
   })
 }
 

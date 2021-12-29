@@ -1,7 +1,15 @@
-h1 {
+body {
   color: #1990ea;
   font-family: 'Press Start 2P', cursive;
+}
+
+h1 {
   font-size: 4em;
+  text-align: center;
+}
+
+p {
+  display: block;
   text-align: center;
 }
 
@@ -34,11 +42,6 @@ h1 {
 
 .start-screen h2 {
   font-size: 4em;
-  text-align: center;
-}
-
-.start-screen span {
-  display: block;
   text-align: center;
 }
 
