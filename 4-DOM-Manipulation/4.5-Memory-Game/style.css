@@ -58,8 +58,13 @@ p:nth-of-type(1) {
 }
 
 #game div {
-  border: 1px solid black;
-  height: 100px;
+  border: 2px solid black;
+  height: 150px;
   margin: 10px;
-  width: 100px;
+  width: 150px;
+  background-size: cover;
+}
+
+#game div:hover {
+  transform: scale(1.05);
 }

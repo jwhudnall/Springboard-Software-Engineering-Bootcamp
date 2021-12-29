@@ -1,32 +1,27 @@
-/*
-Further Study TODO:
-- Instead of hard-coding colors, try something different like random colors or even images!
-*/
-
 const gameContainer = document.getElementById("game");
 const highScoreSpan = document.querySelector('#high-score');
 const currentScoreSpan = document.querySelector('#current-score');
 const scoreboard = document.querySelector('#scoreboard');
-let nextCardColor = null;
+let nextCardClass = null;
 let userCanClick = true;
 let score = 0;
 
-const COLORS = [
-  "red",
-  "blue",
-  "green",
-  "orange",
-  "purple",
-  "red",
-  "blue",
-  "green",
-  "orange",
-  "purple",
-  "yellow",
-  "yellow"
-];
+const images = {
+  'algo': 'images/algo.gif',
+  'bob': 'images/bob.gif',
+  'btc-tunnel': 'images/btc-tunnel.gif',
+  'btc': 'images/btc.gif',
+  'gibson': 'images/gibson.gif',
+  'marley': 'images/marley.gif',
+  'matrix': 'images/matrix.gif',
+  'monkey': 'images/monkey.gif',
+  'skull': 'images/skull.gif',
+  'wario': 'images/wario.gif',
+};
 
-let shuffledColors = shuffle(COLORS);
+// Array of image names, each listed twice
+const cardNames = Object.keys(images).concat(Object.keys(images));
+let shuffledCards = shuffle(cardNames);
 
 function shuffle(array) {
   let counter = array.length;
@@ -40,25 +35,25 @@ function shuffle(array) {
   return array;
 }
 
-function createDivsForColors(colorArray) {
-  for (let color of colorArray) {
+function createCards(arr) {
+  for (let card of arr) {
     const newDiv = document.createElement("div");
-    newDiv.classList.add(color);
+    newDiv.classList.add(card);
+    // newDiv.style.backgroundImage = 'url(images/card-back.jpeg)'
     newDiv.setAttribute("data-clicked", false);
     newDiv.addEventListener("click", handleCardClick);
     gameContainer.append(newDiv);
   }
 }
 
-// TODO: Implement this function!
 function handleCardClick(event) {
-  let color = event.target.className;
+  let cardClass = event.target.className;
   let hasBeenClicked = event.target.dataset.clicked;
 
   if (hasBeenClicked === "false" && userCanClick) {
     updateScore();
-    flipCard(event, color);
-    checkBoard(event, color);
+    flipCard(event, cardClass);
+    checkBoard(event, cardClass);
     checkGameStatus();
   }
 }
@@ -102,45 +97,44 @@ function updateLocalStorage() {
 }
 
 function resetGame(btn) {
-  console.log('Reset Board!')
   gameContainer.innerHTML = '';
-  shuffledColors = shuffle(COLORS);
-  createDivsForColors(shuffledColors);
+  shuffledCards = shuffle(cardNames);
+  createCards(shuffledCards);
   btn.remove();
   score = 0;
   currentScoreSpan.textContent = 0;
 }
 
-function flipCard(event, color) {
-  event.target.style.backgroundColor = color;
+function flipCard(event, cardClass) {
+  event.target.style.backgroundImage = `url(${images[cardClass]})`
   event.target.dataset.clicked = true;
 }
 
-function checkBoard(event, color) {
-  if (nextCardColor === color) {
-    nextCardColor = null;
-  } else if (nextCardColor === null) {
-    nextCardColor = color;
+function checkBoard(event, cardClass) {
+  if (nextCardClass === cardClass) {
+    nextCardClass = null;
+  } else if (nextCardClass === null) {
+    nextCardClass = cardClass;
   } else {
-    resetFlippedCards(event, color);
+    resetFlippedCards(event, cardClass);
   }
 }
 
-function resetFlippedCards(event, color) {
+function resetFlippedCards(event, cardClass) {
   userCanClick = !userCanClick;
-  event.target.style.backgroundColor = color;
+  event.target.style.backgroundImage = `url(${images[cardClass]})`
 
   setTimeout(function () {
-    const cardsOfNextType = document.getElementsByClassName(nextCardColor);
+    const cardsOfNextType = document.getElementsByClassName(nextCardClass);
     event.target.dataset.clicked = false;
-    event.target.style.backgroundColor = "";
+    event.target.style.backgroundImage = "";
     for (let card of cardsOfNextType) {
-      card.style.backgroundColor = "";
+      card.style.backgroundImage = "";
       card.dataset.clicked = false;
     }
-    nextCardColor = null;
+    nextCardClass = null;
     userCanClick = !userCanClick;
-  }, 1000)
+  }, 2000)
 }
 
 function displayHomeScreen() {
@@ -168,7 +162,7 @@ function getHighScore() {
 
 function startProgram() {
   getHighScore();
-  createDivsForColors(shuffledColors);
+  createCards(shuffledCards);
   displayHomeScreen();
 }
 
