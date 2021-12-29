@@ -1,12 +1,13 @@
 /*
 Further Study TODO:
-- Store the lowest-scoring game in local storage, so that players can see a record of the best game played.
 - Allow for any number of cards to appear
 - Instead of hard-coding colors, try something different like random colors or even images!
 */
 
 const gameContainer = document.getElementById("game");
-const scoreSpan = document.querySelector('#high-score');
+const highScoreSpan = document.querySelector('#high-score');
+const currentScoreSpan = document.querySelector('#current-score');
+const scoreboard = document.querySelector('#scoreboard');
 let nextCardColor = null;
 let userCanClick = true;
 let score = 0;
@@ -38,7 +39,6 @@ function shuffle(array) {
   return array;
 }
 
-
 function createDivsForColors(colorArray) {
   for (let color of colorArray) {
     const newDiv = document.createElement("div");
@@ -64,7 +64,7 @@ function handleCardClick(event) {
 
 function updateScore() {
   score++;
-  scoreSpan.textContent = score;
+  currentScoreSpan.textContent = score;
 }
 
 function checkGameStatus() {
@@ -82,21 +82,32 @@ function checkGameStatus() {
 }
 
 function gameOver() {
+  updateLocalStorage();
   let playAgainBtn = document.createElement('button');
   playAgainBtn.textContent = 'Play Again?';
   playAgainBtn.classList.add('btn');
   document.body.append(playAgainBtn);
 
-  playAgainBtn.addEventListener('click', function() {
-    console.log('Reset Board!')
-    // Delete all divs within gameContainer
-    gameContainer.innerHTML = '';
-    shuffledColors = shuffle(COLORS);
-    createDivsForColors(shuffledColors);
-    playAgainBtn.remove();
-    score = 0;
-    scoreSpan.textContent = 0;
+  playAgainBtn.addEventListener('click', function () {
+    resetGame(playAgainBtn);
   })
+}
+
+function updateLocalStorage() {
+  if (!localStorage.score || score < parseInt(localStorage.score)) {
+    localStorage.setItem('score', score);
+    highScoreSpan.textContent = score;
+  }
+}
+
+function resetGame(btn) {
+  console.log('Reset Board!')
+  gameContainer.innerHTML = '';
+  shuffledColors = shuffle(COLORS);
+  createDivsForColors(shuffledColors);
+  btn.remove();
+  score = 0;
+  currentScoreSpan.textContent = 0;
 }
 
 function flipCard(event, color) {
@@ -133,6 +144,7 @@ function resetFlippedCards(event, color) {
 
 function displayHomeScreen() {
   gameContainer.style.display = "none";
+  scoreboard.style.display = "none";
 
   let startSection = document.createElement('section');
   let startBtn = document.createElement('button');
@@ -145,10 +157,16 @@ function displayHomeScreen() {
   startBtn.addEventListener("click", function () {
     startSection.style.display = "none";
     gameContainer.removeAttribute('style');
+    scoreboard.removeAttribute('style');
   })
 }
 
+function getHighScore() {
+  highScoreSpan.textContent = localStorage.score || "N/A";
+}
+
 function startProgram() {
+  getHighScore();
   createDivsForColors(shuffledColors);
   displayHomeScreen();
 }
