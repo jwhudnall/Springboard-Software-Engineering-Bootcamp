@@ -1,14 +1,15 @@
 /*
 Further Study TODO:
-- For every guess made, increment a score variable and display the score while the game is played
 - Store the lowest-scoring game in local storage, so that players can see a record of the best game played.
 - Allow for any number of cards to appear
 - Instead of hard-coding colors, try something different like random colors or even images!
 */
 
 const gameContainer = document.getElementById("game");
+const scoreSpan = document.querySelector('#high-score');
 let nextCardColor = null;
 let userCanClick = true;
+let score = 0;
 
 const COLORS = [
   "red",
@@ -27,11 +28,9 @@ let shuffledColors = shuffle(COLORS);
 
 function shuffle(array) {
   let counter = array.length;
-
   while (counter > 0) {
     let index = Math.floor(Math.random() * counter);
     counter--;
-
     let temp = array[counter];
     array[counter] = array[index];
     array[index] = temp;
@@ -56,10 +55,16 @@ function handleCardClick(event) {
   let hasBeenClicked = event.target.dataset.clicked;
 
   if (hasBeenClicked === "false" && userCanClick) {
+    updateScore();
     flipCard(event, color);
     checkBoard(event, color);
     checkGameStatus();
   }
+}
+
+function updateScore() {
+  score++;
+  scoreSpan.textContent = score;
 }
 
 function checkGameStatus() {
@@ -89,6 +94,8 @@ function gameOver() {
     shuffledColors = shuffle(COLORS);
     createDivsForColors(shuffledColors);
     playAgainBtn.remove();
+    score = 0;
+    scoreSpan.textContent = 0;
   })
 }
 
