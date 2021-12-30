@@ -55,6 +55,9 @@ p:nth-of-type(1) {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 auto;
+  max-width: 900px;
+  min-width: 500px
 }
 
 #game div {
