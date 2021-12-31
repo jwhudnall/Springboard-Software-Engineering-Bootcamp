@@ -1,6 +1,7 @@
 body {
   color: #1990ea;
   font-family: 'Press Start 2P', cursive;
+  min-width: 500px;
 }
 
 h1 {
