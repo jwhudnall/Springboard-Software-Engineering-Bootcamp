@@ -88,6 +88,7 @@ function gameOver() {
   playAgainBtn.textContent = 'Play Again?';
   playAgainBtn.classList.add('btn');
   document.body.append(playAgainBtn);
+  window.scrollTo(0,document.body.scrollHeight); // Scroll to bottom
 
   playAgainBtn.addEventListener('click', function () {
     resetGame(playAgainBtn);
@@ -124,7 +125,9 @@ function resetGame(btn) {
   shuffledCards = shuffle(cardNames);
   createCards(shuffledCards);
   btn.remove();
-  banner.remove();
+  if (banner) {
+    banner.remove();
+  }
   score = 0;
   currentScoreSpan.textContent = 0;
 }
