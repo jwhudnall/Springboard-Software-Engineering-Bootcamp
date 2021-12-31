@@ -45,6 +45,7 @@ p:nth-of-type(1) {
   color: #fff;
   cursor: pointer;
   display: block;
+  font-family: 'Press Start 2P', cursive;
   font-size: 2em;
   font-weight: bold;
   margin: 1em auto;
