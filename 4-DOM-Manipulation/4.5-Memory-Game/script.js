@@ -53,7 +53,6 @@ function createCards(arr) {
 
 function handleCardClick(event) {
   let cardClass = event.target.className;
-  console.dir(event.target.className);
   let hasBeenClicked = event.target.dataset.clicked;
 
   if (hasBeenClicked === "false" && userCanClick) {
@@ -108,14 +107,24 @@ function updateLocalStorage() {
   if (!localStorage.score || score < parseInt(localStorage.score)) {
     localStorage.setItem('score', score);
     highScoreSpan.textContent = score;
+    displayHighScoreBanner();
   }
 }
 
+function displayHighScoreBanner(){
+  const banner = document.createElement('span');
+  banner.classList.add('high-score-banner');
+  banner.textContent = 'New High Score!';
+  document.body.append(banner);
+}
+
 function resetGame(btn) {
+  const banner = document.querySelector('.high-score-banner');
   gameContainer.innerHTML = '';
   shuffledCards = shuffle(cardNames);
   createCards(shuffledCards);
   btn.remove();
+  banner.remove();
   score = 0;
   currentScoreSpan.textContent = 0;
 }

@@ -18,6 +18,12 @@ p:nth-of-type(1) {
   font-size: .7em;
 }
 
+.high-score-banner {
+  text-align: center;
+  font-size: 2em;
+  margin: 1em auto;
+  display: block;
+}
 
 /* Start Screen */
 .start-screen {
