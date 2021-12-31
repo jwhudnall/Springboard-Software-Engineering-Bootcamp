@@ -61,7 +61,8 @@ p:nth-of-type(1) {
 }
 
 #game div {
-  border: 2px solid black;
+  border: 5px solid #2395eb;
+  border-style: dash doubled;
   height: 130px;
   margin: 10px;
   width: 130px;
