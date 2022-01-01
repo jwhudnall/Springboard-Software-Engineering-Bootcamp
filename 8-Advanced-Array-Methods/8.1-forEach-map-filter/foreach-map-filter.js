@@ -26,7 +26,15 @@ Examples:
 
 */
 function onlyEvenValues(arr){
+  const evens = [];
 
+  arr.forEach(function(val) {
+    if (val % 2 === 0) {
+      evens.push(val);
+    }
+  })
+
+  return evens;
 }
 
 /*
@@ -38,7 +46,14 @@ Examples:
 
 */
 function showFirstAndLast(arr){
+  const trimmed = [];
 
+  arr.forEach(function(val) {
+    let firstChar = val[0];
+    let lastChar = val[val.length - 1];
+    trimmed.push(`${firstChar}${lastChar}`);
+  })
+    return trimmed;
 }
 
 /*
@@ -51,7 +66,13 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
+  const people = [];
 
+  arr.forEach(function(obj) {
+    obj[key] = value;
+    people.push(obj);
+  })
+  return people;
 }
 
 /*
@@ -66,6 +87,21 @@ Examples:
 */
 function vowelCount(str){
 
+  const isVowel = function(char) {
+    char = char.toLowerCase();
+    return 'aeiou'.indexOf(char) !== -1;
+  }
+
+  const vowels = {};
+  const strArr = str.split('');
+
+  strArr.forEach(function(char) {
+    if (isVowel(char)) {
+      vowels[char] = vowels[char] + 1 || 1;
+    }
+  })
+
+  return vowels;
 }
 
 /*
@@ -76,7 +112,11 @@ Examples:
     doubleValuesWithMap([1,-2,-3]) // [2,-4,-6]
 */
 
-function doubleValuesWithMap(arr) {}
+function doubleValuesWithMap(arr) {
+  return arr.map(function(n) {
+    return n * 2;
+  })
+}
 
 /*
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
@@ -87,7 +127,9 @@ Examples:
 */
 
 function valTimesIndex(arr){
-
+  return arr.map(function(n, idx) {
+    return n * idx;
+  })
 }
 
 /*
@@ -98,7 +140,9 @@ Examples:
 */
 
 function extractKey(arr, key){
-
+  return arr.map(function(obj) {
+    return obj[key];
+  })
 }
 
 /*
@@ -109,7 +153,9 @@ Examples:
 */
 
 function extractFullName(arr){
-
+  return arr.map(function(obj) {
+    return `${obj.first} ${obj.last}`;
+  });
 }
 
 /*
@@ -119,7 +165,9 @@ Examples:
     filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner') // [{first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Colt', last:"Steele", isCatOwner: true}]
 */
 
-function filterByValue(arr, key) {}
+function filterByValue(arr, key) {
+
+}
 
 /*
 Write a function called find which accepts an array and a value and returns the first element in the array that has the same value as the second parameter or undefined if the value is not found in the array.
