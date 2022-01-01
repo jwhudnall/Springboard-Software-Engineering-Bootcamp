@@ -24,6 +24,13 @@ describe("Helpers test (with setup and tear-down)", function () {
     expect(calculateTipPercent(billAmt, tipAmt)).not.toEqual(6);
   })
 
+  it('appendDeleteBtn should extend length of given tr', function() {
+    let newTr = document.createElement('tr');
+    expect(newTr.children.length).toEqual(0);
+    appendDeleteBtn(newTr);
+    expect(newTr.children.length).toEqual(1);
+  })
+
   afterEach(function () {
     // teardown tests
     allPayments = {};

@@ -18,10 +18,11 @@ describe('Payments test (with setup and tear-down', function() {
     // test submitPaymentInfo()
     submitPaymentInfo();
     const paymentRow = document.querySelectorAll('#payment1 td');
-    expect(paymentRow.length).toEqual(3);
+    expect(paymentRow.length).toEqual(4);
     expect(paymentRow[0].innerText).toEqual('$100');
     expect(paymentRow[1].innerText).toEqual('$10');
     expect(paymentRow[2].innerText).toEqual('10%');
+    expect(paymentRow[3].innerText).toEqual('X');
   })
 
   it('Should update shift summary', function() {
@@ -41,7 +42,11 @@ describe('Payments test (with setup and tear-down', function() {
     paymentId = 0;
     billAmtInput.value = '';
     tipAmtInput.value = '';
-    document.querySelector('#paymentTable tbody').innerHTML = '';
-    document.querySelector('#summaryTable tbody').innerHTML = '';
+    paymentTbody.innerHTML = '';
+    summaryTds[0].innerHTML = '';
+    summaryTds[1].innerHTML = '';
+    summaryTds[2].innerHTML = '';
+    serverTbody.innerHTML = '';
+    paymentId = 0;
   });
 });
