@@ -25,7 +25,18 @@ Examples:
 */
 
 function vowelCount(str) {
-  /
+
+  const isVowel = function(char) {
+    return 'aeiou'.indexOf(char) !== -1;
+  };
+  const strArray = str.toLowerCase().split('');
+
+  return strArray.reduce(function(collection, char) {
+    if (isVowel(char)) {
+      collection[char] = collection[char] + 1 || 1;
+    }
+    return collection;
+  }, {});
 }
 
 /*
@@ -43,7 +54,13 @@ Examples:
        ]
 */
 
-function addKeyAndValue(arr, key, value) {}
+function addKeyAndValue(arr, key, value) {
+  return arr.reduce(function(collection, obj) {
+    obj[key] = value;
+    collection.push(obj);
+    return collection;
+  }, [])
+}
 
 /*
 Write a function called partition which accepts an array and a callback and returns an array with two arrays inside of it. The partition function should run the callback function on each value in the array and if the result of the callback function at that specific value is true, the value should be placed in the first subarray. If the result of the callback function at that specific value is false, the value should be placed in the second subarray.
@@ -67,4 +84,13 @@ Examples:
     partition(names, isLongerThanThreeCharacters) // [['Elie', 'Colt', 'Matt'], ['Tim']]
 */
 
-function partition(arr, callback) {}
+function partition(arr, callback) {
+  return arr.reduce(function(collection, val) {
+    if (callback(val)) {
+      collection[0].push(val);
+    } else {
+      collection[1].push(val);
+    }
+    return collection;
+  }, [[],[]])
+}
