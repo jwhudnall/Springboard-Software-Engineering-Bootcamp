@@ -1,11 +1,17 @@
 body {
-  color: #1990ea;
+  /* color: #1990ea; */
+  color: pink;
   font-family: 'Press Start 2P', cursive;
   min-width: 500px;
 }
 
 h1 {
   font-size: 4em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1em;
   text-align: center;
 }
 
