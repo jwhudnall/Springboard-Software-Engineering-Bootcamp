@@ -145,18 +145,19 @@ function checkForWin() {
 
   // TODO: read and understand this code. Add comments to help you.
 
-  for (var y = 0; y < HEIGHT; y++) {
-    for (var x = 0; x < WIDTH; x++) {
-      var horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
-      var vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
-      var diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
-      var diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
+  for (var y = 0; y < HEIGHT; y++) {  // row representation, from 0 to height - 1
+    for (var x = 0; x < WIDTH; x++) { // col rep, from 0 to width - 1
+      var horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]]; // Looks for 4 consecutive (horiz)
+      var vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]]; // Looks for 4 consecutive (vert)
+      var diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]]; // 4 consec Diag / Down-Right
+      var diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];// 4 consec Diag / Down-Left
 
+      // If any of the 4 checks above returns true, a match is found, true is returned
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
         return true;
       }
-    }
-  }
+    } // Otherwise, x increments by 1 and the same 4 checks are performed, offset in X by +1
+  }// after all X's are exhausted for a given y, y is offset by + 1, x resets to 0 and the process repeats
 }
 
 makeBoard();
