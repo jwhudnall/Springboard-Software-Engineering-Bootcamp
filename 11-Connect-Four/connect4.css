@@ -4,25 +4,50 @@
   width: 50px;
   height: 50px;
   border: solid 1px #666;
+  background-color: white;
+  border-radius: 50%;
 }
+
+#board {
+  border: solid 5px rgb(69, 124, 224);
+  background-color: rgb(69, 124, 224);
+}
+
 
 /* pieces are div within game table cells: draw as colored circles */
 
 .piece {
   /* TODO: make into circles */
-  margin: 5px;
-  width: 80%;
-  height: 80%;
+  /* margin: 5px; */
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+}
+
+/* Fall Animation
+Source: https://stackoverflow.com/questions/48352599/dropping-token-animations-on-a-connect-four-board
+*/
+.fall {
+  animation-name: piece-drop;
+  animation-duration: 1s;
+}
+
+@keyframes piece-drop {
+  from {
+      transform: translateY(-300px); /* Reduce this val as cols fill? */
+  }
+  to {
+      transform: translateY(0);
+  }
 }
 
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
 .p1 {
-  background-color: red;
+  background-color: rgb(199, 51, 51);
 }
 
 .p2 {
-  background-color: blue;
+  background-color: rgb(219, 219, 62);
 }
 
 /* column-top is table row of clickable areas for each column */
@@ -33,4 +58,5 @@
 
 #column-top td:hover {
   background-color: gold;
+  cursor: pointer;
 }
