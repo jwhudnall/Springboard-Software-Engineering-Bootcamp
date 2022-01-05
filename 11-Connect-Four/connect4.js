@@ -5,6 +5,7 @@
  * board fills (tie)
  */
 const dimsBtn = document.querySelector('#change-dims');
+const currentTurn = document.querySelector('#player-turn');
 const gameContainer = document.querySelector('#game');
 let htmlBoard = document.querySelector('#board');
 let WIDTH = 7;
@@ -126,6 +127,9 @@ function handleClick(evt) {
     }
     // switch players
     currPlayer = currPlayer === 1 ? 2 : 1;
+    currentTurn.innerText = currPlayer;
+    currentTurn.classList.toggle('p1-text-color');
+    currentTurn.classList.toggle('p2-text-color');
   }
 }
 
