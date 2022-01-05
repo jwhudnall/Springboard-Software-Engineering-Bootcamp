@@ -98,12 +98,11 @@ function placeInTable(y, x) {
 /** endGame: announce game end */
 
 function endGame(msg) {
-  msg ? alert(msg) : alert('Tie Game!');
+  alert(msg);
   gameIsActive = false;
 }
 
 /** handleClick: handle click of column top to play piece */
-
 function handleClick(evt) {
   if (gameIsActive) {
     const x = +evt.target.id;
@@ -120,21 +119,22 @@ function handleClick(evt) {
       return endGame(`Player ${currPlayer} won!`);
     }
 
-    // check for tie
     const boardIsFull = board.flat().every(val => val !== null);
     if (boardIsFull) {
-      endGame();
+      endGame('Tie Game!');
     }
-    // switch players
-    currPlayer = currPlayer === 1 ? 2 : 1;
-    currentTurn.innerText = currPlayer;
-    currentTurn.classList.toggle('p1-text-color');
-    currentTurn.classList.toggle('p2-text-color');
+    switchPlayers(currPlayer);
   }
 }
 
-/** checkForWin: check board cell-by-cell for "does a win start here?" */
+const switchPlayers = () => {
+  currPlayer = currPlayer === 1 ? 2 : 1;
+  currentTurn.innerText = currPlayer;
+  currentTurn.classList.toggle('p1-text-color');
+  currentTurn.classList.toggle('p2-text-color');
+};
 
+/** checkForWin: check board cell-by-cell for "does a win start here?" */
 function checkForWin() {
   function _win(cells) {
     // Check four cells to see if they're all color of current player
