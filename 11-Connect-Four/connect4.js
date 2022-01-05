@@ -4,7 +4,7 @@
  * column until a player gets four-in-a-row (horiz, vert, or diag) or until
  * board fills (tie)
  */
-
+ const htmlBoard = document.querySelector('#board');
 const WIDTH = 7;
 const HEIGHT = 6;
 let currPlayer = 1;
@@ -15,7 +15,7 @@ let gameIsActive = true;
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
 
-function makeBoard(container, height, width) {
+function makeBoard(height, width, container) {
   for (let y = 0; y < height; y++) {
     let row = [];
     for (let x = 0; x < width; x++) {
@@ -25,8 +25,8 @@ function makeBoard(container, height, width) {
   }
 }
 
-function makeHtmlBoard() {
-  const htmlBoard = document.querySelector('#board');
+function makeHtmlBoard(height, width, boardElement) {
+  const htmlBoard = boardElement;
 
   // Creates and populates top row of gameboard, including a click listener
   const top = document.createElement("tr");
@@ -34,7 +34,7 @@ function makeHtmlBoard() {
   top.addEventListener("click", handleClick);
 
   // Populate the remaining rows by WIDTH, HEIGHT, each with unique ID
-  for (let x = 0; x < WIDTH; x++) {
+  for (let x = 0; x < width; x++) {
     const headCell = document.createElement("td");
     headCell.setAttribute("id", x);
     top.append(headCell);
@@ -42,9 +42,9 @@ function makeHtmlBoard() {
   htmlBoard.append(top);
 
   // Populate the HTML game board
-  for (let y = 0; y < HEIGHT; y++) {
+  for (let y = 0; y < height; y++) {
     const row = document.createElement("tr");
-    for (let x = 0; x < WIDTH; x++) {
+    for (let x = 0; x < width; x++) {
       const cell = document.createElement("td");
       cell.setAttribute("id", `${x}-${y}`);
       row.append(cell);
@@ -143,5 +143,5 @@ function checkForWin() {
   }// after all X's are exhausted for a given y, y is offset by + 1, x resets to 0 and the process repeats
 }
 
-makeBoard(board, HEIGHT, WIDTH);
-makeHtmlBoard();
+makeBoard(HEIGHT, WIDTH, board);
+makeHtmlBoard(HEIGHT, WIDTH, htmlBoard);
