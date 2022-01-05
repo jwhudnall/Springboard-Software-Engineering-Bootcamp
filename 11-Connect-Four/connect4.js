@@ -4,12 +4,37 @@
  * column until a player gets four-in-a-row (horiz, vert, or diag) or until
  * board fills (tie)
  */
- const htmlBoard = document.querySelector('#board');
-const WIDTH = 7;
-const HEIGHT = 6;
+const dimsBtn = document.querySelector('#change-dims');
+const gameContainer = document.querySelector('#game');
+let htmlBoard = document.querySelector('#board');
+let WIDTH = 7;
+let HEIGHT = 6;
 let currPlayer = 1;
-const board = []; // array of rows, each row is array of cells  (board[y][x])
+let board = []; // array of rows, each row is array of cells  (board[y][x])
 let gameIsActive = true;
+
+dimsBtn.addEventListener('submit', function (e) {
+  console.log('Fired!');
+  e.preventDefault();
+  HEIGHT = e.target.height.value;
+  WIDTH = e.target.width.value;
+
+  htmlBoard.innerHtml = '';
+  destroyBoard(htmlBoard);
+  makeBoard(HEIGHT, WIDTH, board);
+  makeHtmlBoard(HEIGHT, WIDTH, htmlBoard);
+
+});
+
+const destroyBoard = (boardElement) => {
+  boardElement.remove();
+  board = []
+  // <table id="board"></table>
+  const boardTable = document.createElement('table');
+  boardTable.setAttribute('id', 'board');
+  gameContainer.append(boardTable);
+  htmlBoard = document.querySelector('#board');
+}
 
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])

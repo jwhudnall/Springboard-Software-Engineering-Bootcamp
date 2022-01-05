@@ -1,8 +1,14 @@
 /* game board table */
+#game {
+  display: block;
+  margin: 0 auto;
+  width: 800px;
+}
 
 #board {
   border: solid 5px rgb(69, 124, 224);
   background-color: rgb(69, 124, 224);
+  margin: 0 auto;
 }
 
 #board td {
@@ -52,4 +58,26 @@
 #column-top td:hover {
   background-color: gold;
   cursor: pointer;
+}
+
+/* Form */
+form {
+  display: flex;
+  width: 500px;
+  margin: 5px auto;
+}
+
+form input {
+  display: flex;
+}
+
+/* Buttons */
+#dims-btn {
+  display: flex;
+  margin: 5px auto;
+}
+
+#sliders {
+  display: flex;
+  flex-direction: column;
 }
