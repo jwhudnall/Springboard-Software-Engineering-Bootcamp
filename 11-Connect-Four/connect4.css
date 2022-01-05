@@ -1,3 +1,28 @@
+/* General Typography */
+html {
+  height: 100%;
+}
+
+body {
+  font-family: roboto;
+  font-size: 15px;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: .05em;
+  margin: .5rem 2rem 1rem 1.5rem;
+  color: rgb(69, 124, 224);
+  -webkit-text-stroke: .5px white;
+}
+
 /* game board table */
 #game {
   display: block;
@@ -19,6 +44,7 @@
   border-radius: 50%;
 }
 
+/* Game Piece */
 .piece {
   width: 100%;
   height: 100%;
@@ -33,7 +59,7 @@
   background-color: rgb(219, 219, 62);
 }
 
-/* Fall Animation Source: https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes */
+/* Fall Animation */
 .fall {
   animation-name: piece-drop;
   animation-duration: 1s;
@@ -50,9 +76,8 @@
 
 
 /* column-top is table row of clickable areas for each column */
-
 #column-top td {
-  border: dashed 1px lightgray;
+  background-color: rgb(168, 161, 161);
 }
 
 #column-top td:hover {
@@ -72,6 +97,17 @@ form input {
   display: flex;
 }
 
+#sliders {
+  display: flex;
+  flex-direction: column;
+}
+
+#submit-div {
+  display: flex;
+  align-self: center;
+  margin-left: 15px;
+}
+
 /* Buttons */
 #dims-btn {
   display: flex;
@@ -84,7 +120,7 @@ form input {
   border-radius:2em;
   box-sizing: border-box;
   text-decoration:none;
-  font-family:'Roboto',sans-serif;
+  letter-spacing: .1em;
   font-weight:bold;
   color:#FFFFFF;
   background-color:rgb(69, 124, 224);
@@ -94,15 +130,4 @@ form input {
 
 #dims-btn:hover {
   background-color:rgb(113, 156, 236);
-}
-
-#sliders {
-  display: flex;
-  flex-direction: column;
-}
-
-#submit-div {
-  display: flex;
-  align-self: center;
-  margin-left: 15px;
 }

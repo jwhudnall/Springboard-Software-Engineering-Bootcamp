@@ -25,7 +25,7 @@ dimsBtn.addEventListener('submit', function (e) {
 
 const destroyBoard = (boardElement) => {
   boardElement.remove();
-  board.splice(0,board.length);
+  board.splice(0, board.length);
   const boardTable = document.createElement('table');
   boardTable.setAttribute('id', 'board');
   gameContainer.append(boardTable);
@@ -146,8 +146,6 @@ function checkForWin() {
         board[y][x] === currPlayer
     );
   }
-
-  // TODO: read and understand this code. Add comments to help you.
 
   for (let y = 0; y < HEIGHT; y++) {  // row representation, from 0 to height - 1
     for (let x = 0; x < WIDTH; x++) { // col rep, from 0 to width - 1
