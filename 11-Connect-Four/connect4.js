@@ -15,13 +15,13 @@ let gameIsActive = true;
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
 
-function makeBoard() {
-  for (let y = 0; y < HEIGHT; y++) {
+function makeBoard(container, height, width) {
+  for (let y = 0; y < height; y++) {
     let row = [];
-    for (let x = 0; x < WIDTH; x++) {
+    for (let x = 0; x < width; x++) {
       row[x] = null;
     }
-    board.push(row);
+    container.push(row);
   }
 }
 
@@ -143,5 +143,5 @@ function checkForWin() {
   }// after all X's are exhausted for a given y, y is offset by + 1, x resets to 0 and the process repeats
 }
 
-makeBoard();
+makeBoard(board, HEIGHT, WIDTH);
 makeHtmlBoard();
