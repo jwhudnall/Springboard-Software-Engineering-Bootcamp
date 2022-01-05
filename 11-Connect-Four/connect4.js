@@ -10,26 +10,22 @@ let htmlBoard = document.querySelector('#board');
 let WIDTH = 7;
 let HEIGHT = 6;
 let currPlayer = 1;
-let board = []; // array of rows, each row is array of cells  (board[y][x])
+const board = []; // array of rows, each row is array of cells  (board[y][x])
 let gameIsActive = true;
 
 dimsBtn.addEventListener('submit', function (e) {
-  console.log('Fired!');
   e.preventDefault();
   HEIGHT = e.target.height.value;
   WIDTH = e.target.width.value;
-
-  htmlBoard.innerHtml = '';
   destroyBoard(htmlBoard);
   makeBoard(HEIGHT, WIDTH, board);
   makeHtmlBoard(HEIGHT, WIDTH, htmlBoard);
-
+  gameIsActive = true;
 });
 
 const destroyBoard = (boardElement) => {
   boardElement.remove();
-  board = []
-  // <table id="board"></table>
+  board.splice(0,board.length);
   const boardTable = document.createElement('table');
   boardTable.setAttribute('id', 'board');
   gameContainer.append(boardTable);
