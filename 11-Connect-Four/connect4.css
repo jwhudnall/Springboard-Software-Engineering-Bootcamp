@@ -63,8 +63,9 @@
 /* Form */
 form {
   display: flex;
-  width: 500px;
-  margin: 5px auto;
+  width: 230px;
+  margin: 15px auto;
+  justify-content: center;
 }
 
 form input {
@@ -74,10 +75,23 @@ form input {
 /* Buttons */
 #dims-btn {
   display: flex;
-  margin: 5px auto;
+  margin: auto;
+  width: 60px;
+  height: 30px;
+  border: none;
+  border-radius: 5em;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  cursor: pointer;
+  font-weight: bold;
 }
 
 #sliders {
   display: flex;
   flex-direction: column;
+}
+
+#submit-div {
+  display: flex;
+  align-self: center;
+  margin-left: 15px;
 }
