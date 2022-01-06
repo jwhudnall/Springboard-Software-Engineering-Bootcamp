@@ -149,7 +149,6 @@ class Player{
 
 document.querySelector('#start-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  console.dir()
   const p1 = new Player(e.target["p1-color"].value);
   const p2 = new Player(e.target["p2-color"].value);
   new Game(5,5, p1, p2);
