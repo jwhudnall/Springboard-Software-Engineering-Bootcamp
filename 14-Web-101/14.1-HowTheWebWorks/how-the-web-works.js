@@ -6,7 +6,7 @@ What is HTTP?
   - The protocol used to receive and serve resources on the world wide web.
 
 What is a URL?
-  - A uniform resource locator - the method used by browsers to understand requests. Broken into different components such as
+  - A uniform resource locator - an address for an internet resource. Broken into different components such as
     protocol, hostname, resource and any queries.
 
 What is DNS?
