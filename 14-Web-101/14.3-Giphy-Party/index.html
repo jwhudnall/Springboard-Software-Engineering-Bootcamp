@@ -4,14 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Giphy Party!</title>
+  <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
   <h1>Giphy Party</h1>
-  <form action="" id="gif-form">
-    <input type="text" name = "search" placeholder="Enter a search term" minlength="1">
-    <input type="submit" value="Find GIF">
-  </form>
+  <section id="search-form">
+    <div>
+      <form action="" id="gif-form">
+        <input type="text" name = "search" placeholder="Enter a search term" minlength="2">
+        <input type="submit" value="Find GIF">
+      </form>
+      <button id="remove-btn">Delete GIFs</button>
+    </div>
+  </section>
+  <section id="gif-container"></section>
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.js"></script>
