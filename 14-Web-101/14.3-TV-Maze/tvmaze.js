@@ -23,9 +23,9 @@ async function searchShows(query) {
   const shows = [];
 
   for (let show of showResults) {
-    const { id, name, summary} = show.show;
+    const { id, name, summary } = show.show;
     const image = show.show.image ? show.show.image.original : 'https://tinyurl.com/tv-missing';
-    shows.push({id, name, summary, image});
+    shows.push({ id, name, summary, image });
   }
   return shows;
 }
@@ -40,7 +40,7 @@ function populateShows(shows) {
   $showsList.empty();
 
   for (let show of shows) {
-    console.log(shows.image);
+    // console.log(shows.image);
     let $item = $(
       `<div class="col-md-6 col-lg-3 Show" data-show-id="${show.id}">
          <div class="card" data-show-id="${show.id}">
@@ -48,6 +48,7 @@ function populateShows(shows) {
            <div class="card-body">
              <h5 class="card-title">${show.name}</h5>
              <p class="card-text">${show.summary}</p>
+             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Episodes</button>
            </div>
          </div>
        </div>
@@ -76,6 +77,13 @@ $("#search-form").on("submit", async function handleSearch(evt) {
   populateShows(shows);
 });
 
+// Episode Button
+$('#shows-list').on('click', '.btn.btn-primary', async function (e) {
+  const id = $(this).closest('.card').data('show-id');
+  const episodeList = await getEpisodes(id);
+  populateEpisodes(episodeList);
+})
+
 
 /** Given a show ID, return list of episodes:
  *      { id, name, season, number }
@@ -87,4 +95,27 @@ async function getEpisodes(id) {
   //       http://api.tvmaze.com/shows/SHOW-ID-HERE/episodes
 
   // TODO: return array-of-episode-info, as described in docstring above
+  const res = await axios.get(`http://api.tvmaze.com/shows/${id}/episodes`);
+  const episodeList = res.data;
+  const episodes = [];
+
+  for (let episode of episodeList) {
+    const { airdate, id, name, season, summary } = episode;
+    episodes.push({ airdate, id, name, season, summary });
+  }
+
+  return episodes;
+}
+
+function populateEpisodes(episodes) {
+  const $episodeList = $('#episodes-list');
+  $episodeList.empty();
+
+
+  for (let episode of episodes) {
+    const { airdate, id, name, season, summary } = episode;
+    const snippet = `<li><h5>${name}</h5><p>${summary}</p></li>`;
+    $episodeList.append(snippet)
+  }
+  $('#episodes-area').show();
 }
