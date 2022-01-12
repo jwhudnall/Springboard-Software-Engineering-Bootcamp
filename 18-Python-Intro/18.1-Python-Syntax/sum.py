@@ -6,12 +6,19 @@ def sum_nums(nums):
 
     Should return (not print):
       10
-    """  
+    """
 
     # Python has a built-in function `sum()` for this, but we don't
     # want you to use it. Please write this by hand.
 
     # YOUR CODE HERE
+    sum = 0
+
+    for num in nums:
+        sum += num
+
+    return sum
 
 
-print("sum_nums returned", sum_nums([1, 2, 3, 4]))
+print("sum_nums returned should be 10:", sum_nums([1, 2, 3, 4]))
+print("sum_nums returned should be 20:", sum_nums([1, 2, 3, 4, 10, -1, 1]))
