@@ -40,3 +40,16 @@ def list_manipulation(lst, command, location, value=None):
         >>> list_manipulation(lst, 'add', 'dunno') is None
         True
     """
+
+    commands = {'add', 'remove'}
+    locations = {'beginning', 'end'}
+    valid_keywords = command in commands and location in locations
+    position = 0 if location == 'beginning' else len(lst) + 1
+
+    if valid_keywords and command == 'add':
+        lst.insert(position, value)
+        return lst
+    elif valid_keywords and command == 'remove':
+        return lst.pop() if position != 0 else lst.pop(0) # return item removed
+    else:
+        return None
