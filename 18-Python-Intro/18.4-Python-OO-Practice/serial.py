@@ -8,6 +8,12 @@ class SerialGenerator:
     >>> serial.generate()
     100
 
+    >>> serial.val
+    101
+
+    >>> serial.next
+    102
+
     >>> serial.generate()
     101
 
@@ -23,13 +29,19 @@ class SerialGenerator:
     def __init__(self, start=1):
         """Initializes the serial generator, starting at the specified start value"""
         self.start = start
-        self.next = start
+        self.val = start
+        self.next = start + 1
+
+    def __repr__(self):
+        return f'<SerialGenerator start={self.start} val={self.val} next={self.next}>'
 
     def generate(self):
         """Returns and increments the current self.val"""
         self.next += 1
-        return self.next - 1
+        self.val += 1
+        return self.val - 1
 
     def reset(self):
         """Resets the self.val to the original value"""
-        self.next = self.start
+        self.val = self.start
+        self.next = self.start + 1
