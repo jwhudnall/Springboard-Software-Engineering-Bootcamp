@@ -21,9 +21,6 @@ def find_greater_numbers(nums):
     """
     total = 0
 
-    if len(nums) == 0:
-        return 0
-
     for i in range(len(nums)):
         base = nums[i]
         for val in nums[i+1:]:
