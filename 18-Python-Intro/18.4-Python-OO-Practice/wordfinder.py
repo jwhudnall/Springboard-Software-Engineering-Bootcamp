@@ -13,6 +13,9 @@ class WordFinder:
     >>> wf.word_list[:5]
     ['A', 'a', 'aa', 'aal', 'aalii']
 
+    >>> wf.random() in wf.word_list
+    True
+
     """
 
     def __init__(self, dir):
@@ -30,7 +33,7 @@ class WordFinder:
         """Returns the list of lines extracted from the file specified in the dir argument"""
         try:
             with open(self.dir) as file:
-                words = [line.split('\n')[0] for line in file]
+                words = [line.rstrip() for line in file]
             return words
 
         except FileNotFoundError as exc:
@@ -44,5 +47,43 @@ class WordFinder:
     def get_list_len(self):
         try:
             return len(self.word_list)
+
         except TypeError:
             print('Looks like the word list doesn\'t exist')
+
+
+class SpecialWordFinder(WordFinder):
+    """Version of WordFinder that ignores blank lines, and lines starting with #.
+
+    >>> swf = SpecialWordFinder('specialwords.txt')
+    4 words read
+
+    >>> swf.word_list_len
+    4
+
+    >>> swf.word_list[:2]
+    ['kale', 'parsnips']
+
+    >>> swf.random() in swf.word_list
+    True
+
+    >>> isinstance(swf, WordFinder)
+    True
+
+    """
+
+    def __init__(self, dir):
+        """Initializes SpecialWordFinder Class via WordFinder"""
+        super().__init__(dir)
+
+    def get_words(self):
+        """Returns a list of words. Blank lines, and lines starting with # are ignored"""
+        try:
+            with open(self.dir) as file:
+                words = [line.rstrip() for line in file]
+                valid_words = [
+                    word for word in words if word and not word.startswith('#')]
+            return valid_words
+
+        except FileNotFoundError as exc:
+            print(f'Looks like you didn\'t specify a valid file. \nExc: {exc}')
