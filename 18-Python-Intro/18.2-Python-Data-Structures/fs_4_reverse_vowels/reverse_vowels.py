@@ -32,4 +32,3 @@ def reverse_vowels(s):
             result += char
 
     return result
-

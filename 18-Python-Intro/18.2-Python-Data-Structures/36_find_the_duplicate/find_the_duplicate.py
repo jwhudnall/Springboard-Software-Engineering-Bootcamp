@@ -13,3 +13,8 @@ def find_the_duplicate(nums):
         >>> find_the_duplicate([2, 1, 3, 4]) is None
         True
     """
+    lst_sum = sum(nums)
+    set_sum = sum(set(nums))
+    delta = lst_sum - set_sum
+
+    return delta if delta else None

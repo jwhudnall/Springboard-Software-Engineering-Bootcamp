@@ -30,3 +30,18 @@ def includes(collection, sought, start=None):
         >>> includes({"apple": "red", "berry": "blue"}, "blue")
         True
     """
+    # Initial screen: "in" keyword for list, str, tuple, dict
+    # Special index case to check start: string, list, tuple
+    # lists - .index
+    # strings
+    # tuple
+
+    if isinstance(collection, set):
+        return sought in collection
+    elif isinstance(collection, dict):
+        return sought in collection.values()
+    elif sought in collection and start: # lists, strings, tuples
+        return sought in collection[start:]
+    elif sought in collection:
+        return sought in collection
+    return False

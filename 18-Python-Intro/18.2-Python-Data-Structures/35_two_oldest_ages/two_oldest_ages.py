@@ -21,3 +21,10 @@ def two_oldest_ages(ages):
     # you may find it helpful to research the `sorted(iter)` function, which
     # can take *any* type of list-like-thing, and returns a new, sorted list
     # from it.
+
+    ages.sort(reverse=True)
+    oldest = ages[0]
+
+    for age in ages[1:]:
+        if age != oldest:
+            return (age, oldest)
