@@ -23,13 +23,13 @@ class SerialGenerator:
     def __init__(self, start=1):
         """Initializes the serial generator, starting at the specified start value"""
         self.start = start
-        self.val = start
+        self.next = start
 
     def generate(self):
         """Returns and increments the current self.val"""
-        self.val += 1
-        return self.val - 1
+        self.next += 1
+        return self.next - 1
 
     def reset(self):
         """Resets the self.val to the original value"""
-        self.val = self.start
+        self.next = self.start
