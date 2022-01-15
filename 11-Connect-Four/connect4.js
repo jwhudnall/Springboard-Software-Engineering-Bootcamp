@@ -103,6 +103,7 @@ function endGame(msg) {
 }
 
 /** handleClick: handle click of column top to play piece */
+// invert gameIsActive
 function handleClick(evt) {
   if (gameIsActive) {
     const x = +evt.target.id;
