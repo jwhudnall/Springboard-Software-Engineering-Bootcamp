@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block title %}Madlibs{% endblock %}
+{% block header %}<h1>Questions for {{ title }}</h1>{% endblock %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/app.css">
-  <title>Madlibs</title>
-</head>
+{% block content %}
 
-<body>
-  <h1>Madlibs</h1>
-  <form action="/story">
+<form action="/story">
   {% for word in words %}
-    <div class="form-input">
-      <label for="{{word}}">{{word}}</label>
-      <input type="text" id="{{word}}" name="{{word}}">
-    </div>
+  <div class="form-input">
+    <label for="{{word}}">{{word}}</label>
+    <input type="text" id="{{word}}" name="{{word}}">
+  </div>
   {% endfor %}
+  <input type="hidden" name="story_id" value="{{story_id}}">
   <input type="submit">
-  </form>
+</form>
 
-</body>
-
-</html>
+{% endblock %}
