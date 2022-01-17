@@ -11,7 +11,6 @@ def display_homepage():
 @app.route('/questions')
 def madlib_form():
     story_id = request.args['story_id']
-    print(f'story_id: {story_id}')
     story = stories[story_id]
     prompts = story.prompts
 
