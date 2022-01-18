@@ -11,15 +11,12 @@ debug = DebugToolbarExtension(app)
 
 @app.route('/')
 def show_homepage():
-    # list available surveys
     return render_template('/survey-form.html', surveys=surveys)
 
 @app.route('/start-survey', methods=['POST'])
 def handle_form():
-    # redirect to specific survey
-    survey_name = request.form['survey-name']
+    survey_name = request.form.get('survey-name', None)
     session['survey_name'] = survey_name
-    # session['survey_obj'] = surveys[survey_name]
     return redirect(f'/surveys/{survey_name}')
     # check if name exists as a survey? if not, redirect? Shouldn't need
     # due to list selection?
