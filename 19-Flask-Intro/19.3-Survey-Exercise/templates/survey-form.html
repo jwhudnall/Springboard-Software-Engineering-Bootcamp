@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Survey List{% endblock %}
+
+{% block content %}
+<h1>Customer Satisfaction Survey List</h1>
+<form action="/start-survey" method="POST">
+  <label for="survey-select">Select a Survey:</label>
+  <select name="survey-name" id="survey-select">
+    {% for name, value in surveys.items() %}
+    <option value="{{name}}">{{name}}</option>
+    {% endfor %}
+  </select>
+  <input type="submit">
+</form>
+
+{% endblock %}
