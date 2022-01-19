@@ -67,8 +67,13 @@ class Game {
 
 	async updateUserStats() {
 		const currentScore = this.score;
-		const response = await axios.post('http://localhost:5002/update-user-stats', { score: currentScore });
-		return response.data;
+		try {
+			const response = await axios.post('http://localhost:5002/update-user-stats', { score: currentScore });
+			return response.data;
+		} catch (e) {
+			alert("Couldn't Update User Stats. Check console for more info.");
+			console.log(e);
+		}
 	}
 
 	async initialize() {
@@ -113,5 +118,5 @@ class Game {
 }
 
 window.onload = function() {
-	const newGame = new Game(20);
+	const newGame = new Game(60);
 };
