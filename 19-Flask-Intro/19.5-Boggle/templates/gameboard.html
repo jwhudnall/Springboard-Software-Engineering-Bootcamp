@@ -12,8 +12,17 @@
     {% for char in row %}
     <td>{{char}}</td>
     {% endfor %}
-  </tr>
+</tr>
   {% endfor %}
-
 </table>
+<div id="guess-msg"></div>
+
+<form id="submit-guess" action="">
+  <label for="guess">Guess a Word:</label>
+  <input type="text" id="guess" name="guess">
+  <input type="submit">
+</form>
+
+
+
 {% endblock %}
