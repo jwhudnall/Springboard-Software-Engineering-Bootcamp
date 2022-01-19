@@ -21,7 +21,7 @@ def handle_guess():
     '''Handle a guessed word'''
     # import pdb
     # pdb.set_trace()
-    guess = request.json.get('guess')
+    guess = request.json.get('guess', '')
     board = session['board']
     on_board_res = boggle_game.check_valid_word(board, guess) # this method already checks if word in dict
     result = {"result": on_board_res}
@@ -31,6 +31,7 @@ def handle_guess():
 @app.route('/update-user-stats', methods=['POST'])
 def update_user_stats():
     '''Update user game stats'''
+
     session['games-played'] = session.get('games-played', 0) + 1
     high_score = session.get('high-score', 0)
     current_score = int(request.json.get('score'))
