@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Boggle{% endblock %}
+
+{% block content %}
+<h1>Welcome to Boggle!</h1>
+
+<!-- 5 x 5 board -->
+<table>
+  {% for row in board %}
+  <tr>
+    {% for char in row %}
+    <td>{{char}}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+
+</table>
+{% endblock %}
