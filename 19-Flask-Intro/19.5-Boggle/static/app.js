@@ -117,6 +117,4 @@ class Game {
 	}
 }
 
-window.onload = function() {
-	const newGame = new Game(60);
-};
+const newGame = new Game(60);

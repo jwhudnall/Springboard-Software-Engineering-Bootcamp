@@ -14,13 +14,14 @@ def show_board():
     '''Show game screen'''
     board = Boggle.make_board(boggle_game)
     session['board'] = board
-    return render_template('gameboard.html', board=board)
+    high_score = session.get('high-score', 0)
+    games_played = session.get('games-played', 0)
+    return render_template('gameboard.html', board=board,
+    high_score=high_score, games_played=games_played)
 
 @app.route('/handle-guess', methods=['POST'])
 def handle_guess():
     '''Handle a guessed word'''
-    # import pdb
-    # pdb.set_trace()
     guess = request.json.get('guess', '')
     board = session['board']
     on_board_res = boggle_game.check_valid_word(board, guess) # this method already checks if word in dict
@@ -38,4 +39,4 @@ def update_user_stats():
     if current_score > high_score:
         session['high-score'] = current_score
 
-    return jsonify(session['high-score'])
+    return jsonify(session.get('high-score'))
