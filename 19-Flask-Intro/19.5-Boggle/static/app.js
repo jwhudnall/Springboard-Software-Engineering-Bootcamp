@@ -4,6 +4,7 @@ const scoreboard = document.querySelector('#score');
 const guessInput = document.querySelector('#guess');
 const submitBtn = document.querySelector('#submit-guess-btn');
 const timeLeft = document.querySelector('#time');
+const highScore = document.querySelector('#high-score');
 
 let currentScore = 0;
 let guessedWords = new Set();
@@ -15,9 +16,8 @@ guessForm.addEventListener('submit', async function(e) {
 		updateGuessMsgSection('You already guessed that!');
 	} else {
 		const res = await submitForm(guess);
-		const msg = translateGuess(res);
+		const msg = translateGuess(res, guess);
 		updateGuessMsgSection(msg);
-		incrementScore(guess);
 		addWordToSet(guess);
 	}
 	this.guess.value = '';
@@ -28,7 +28,7 @@ async function submitForm(word) {
 	return response;
 }
 
-function translateGuess(response) {
+function translateGuess(response, guess) {
 	const msg = response.data.result;
 	let text;
 	if (msg === 'not-word') {
@@ -37,6 +37,7 @@ function translateGuess(response) {
 		text = 'This word is not on the board';
 	} else if (msg === 'ok') {
 		text = 'Successful Guess!';
+		incrementScore(guess);
 	}
 	return text;
 }
@@ -58,17 +59,19 @@ function updateGuessMsgSection(text) {
 	guessMsgSection.append(userMsg);
 }
 
-function gameOver() {
+async function gameOver() {
 	submitBtn.disabled = true;
 	guessInput.value = '';
 	guessInput.disabled = true;
-	updateUserStats(currentScore);
+	const highScoreRes = await updateUserStats();
+	updateGuessMsgSection('Game Over!');
+	highScore.textContent = highScoreRes;
 }
 
-async function updateUserStats(score) {
+async function updateUserStats() {
 	const response = await axios.post('http://localhost:5002/update-user-stats', { score: currentScore });
 	console.log(response);
-	return response;
+	return response.data;
 }
 
 // Timer Source: https://stackoverflow.com/questions/20618355/how-to-write-a-countdown-timer-in-javascript
