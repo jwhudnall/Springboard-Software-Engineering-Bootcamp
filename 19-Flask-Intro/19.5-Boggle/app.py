@@ -19,6 +19,8 @@ def show_board():
 @app.route('/handle-guess', methods=['POST'])
 def handle_guess():
     '''Handle a guessed word'''
+    # import pdb
+    # pdb.set_trace()
     guess = request.json.get('guess')
     board = session['board']
     on_board_res = boggle_game.check_valid_word(board, guess) # this method already checks if word in dict

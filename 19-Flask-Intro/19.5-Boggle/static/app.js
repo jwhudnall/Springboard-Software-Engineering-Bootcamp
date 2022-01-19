@@ -6,13 +6,20 @@ const submitBtn = document.querySelector('#submit-guess-btn');
 const timeLeft = document.querySelector('#time');
 
 let currentScore = 0;
+let guessedWords = new Set();
 
 guessForm.addEventListener('submit', async function(e) {
 	e.preventDefault();
 	const guess = this.guess.value;
-	const res = await submitForm(guess);
-	const msg = translateGuess(res, guess);
-	updateGuessMsgSection(msg);
+	if (guessedWords.has(guess)) {
+		updateGuessMsgSection('You already guessed that!');
+	} else {
+		const res = await submitForm(guess);
+		const msg = translateGuess(res);
+		updateGuessMsgSection(msg);
+		incrementScore(guess);
+		addWordToSet(guess);
+	}
 	this.guess.value = '';
 });
 
@@ -21,7 +28,7 @@ async function submitForm(word) {
 	return response;
 }
 
-function translateGuess(response, word) {
+function translateGuess(response) {
 	const msg = response.data.result;
 	let text;
 	if (msg === 'not-word') {
@@ -30,9 +37,12 @@ function translateGuess(response, word) {
 		text = 'This word is not on the board';
 	} else if (msg === 'ok') {
 		text = 'Successful Guess!';
-		incrementScore(word);
 	}
 	return text;
+}
+
+function addWordToSet(word) {
+	guessedWords.add(word);
 }
 
 function incrementScore(word) {
@@ -88,6 +98,6 @@ function startTimer(duration, display) {
 
 window.onload = function() {
 	const gameDuration = 60 * 1;
-	startTimer(10, timeLeft);
+	startTimer(gameDuration, timeLeft);
 	timeLeft.textContent = '01:00';
 };
