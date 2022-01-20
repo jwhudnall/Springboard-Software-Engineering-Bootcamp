@@ -17,7 +17,7 @@ class Game {
 
 	async submitForm(word) {
 		try {
-			const response = await axios.post('http://localhost:5002/handle-guess', { guess: word });
+			const response = await axios.get('http://localhost:5002/handle-guess', { params: { guess: word } });
 			return response;
 		} catch (e) {
 			console.log('Error!');
@@ -35,6 +35,7 @@ class Game {
 		} else if (msg === 'ok') {
 			text = 'Successful Guess!';
 			this.incrementScore(guess);
+			this.addWordToSet(guess);
 		}
 		return text;
 	}
@@ -86,7 +87,7 @@ class Game {
 				const res = await this.submitForm(guess);
 				const msg = this.translateGuess(res, guess);
 				this.updateGuessMsgSection(msg);
-				this.addWordToSet(guess);
+				// this.addWordToSet(guess);
 			}
 			guessInput.value = '';
 		});

@@ -8,8 +8,6 @@ import json
 
 class FlaskTests(TestCase):
 
-    # TODO -- write tests for every view function / feature!
-    @classmethod
     def setUp(self):
         app.config['TESTING'] = True
         app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
@@ -26,10 +24,17 @@ class FlaskTests(TestCase):
             self.assertIsNone(session.get('games-played'))
             self.assertIn('<p>High Score:', html)
 
-    # def test_handle_guess(self):
-    #     with app.test_client() as client:
-    #         data = {'guess': 'cat'}
-    #         res = client.post('/handle-guess', data=json.dumps(data), content_type='application/json')
-    #         html = res.get_data(as_text=True)
+    def test_handle_guess(self):
+        '''Check guess query to server'''
+        with app.test_client() as client:
+            with client.session_transaction() as session:
+                session['board'] = [["c", "a", "t", "T", "T"],
+                                 ["C", "A", "T", "T", "T"],
+                                 ["C", "A", "T", "T", "T"],
+                                 ["C", "A", "T", "T", "T"],
+                                 ["C", "A", "T", "T", "T"]]
+            res = client.get('/handle-guess?guess=cat')
 
-    #         self.assertEqual(res.status_code, 200)
+            self.assertEqual(res.status_code, 200)
+            self.assertEqual(res.json['result'], 'ok')
+
