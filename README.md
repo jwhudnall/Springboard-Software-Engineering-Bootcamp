@@ -9,6 +9,7 @@ This is a list of projects. Some projects have standalone repos for deployment p
 <img src="https://github.com/jwhudnall/CryptoCards/raw/main/images/crypto-cards-gameplay.gif" width="200" alt="Crypto Cards Game Screen">
 
 Improve your memory by playing this crypto-themed card game!<br>
+
 Link to game: [Crypto Cards Game Link](https://jwhudnall.github.io/CryptoCards)
 
 Link to Repo: [Repo Link](https://github.com/jwhudnall/CryptoCards)
@@ -66,7 +67,7 @@ _Private Repo_
 - Clicking **submit** prompts the user to post a new story. Upon submission, this is added to the home page.
 - Clicking **favorites** filters stories to only include those starred by the user.
 
-
+Link to Repo: (Repo Link)(https://github.com/jwhudnall/Hack-or-Snooze)
 ___
 ## Section 20 - **Forex Conversion Tool**
 _Private Repo_
