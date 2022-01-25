@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='20 99 740 530' xmlns:xlink='http://www.w3.org/1999/xlink' width='740.0px' font-size='12' font-family='Arial, LiberationSans' version='1.1' height='530.0px'>
+  <defs>
+<style type='text/css'><![CDATA[svg text {text-rendering: geometricPrecision;}]]></style>    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='f9e69f00-ae2c-4b6b-936c-f6ec321ede59' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(200, 200, 200)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='be8a0cc1-2b8c-450f-8d3e-2ce47df098cc' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(200, 200, 200)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='a27fd58b-0b25-403c-b641-05cb68a70708' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(200, 200, 200)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='0ff61b3b-a451-437d-a94a-cce119118071' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(200, 200, 200)'/>
+    </linearGradient>
+    <linearGradient y1='0.0%' x1='0.0%' y2='100.0%' x2='0.0%' id='c67621d0-5b38-4db2-8fc2-e08cd4017ca9' spreadMethod='pad'>
+      <stop stop-opacity='1' offset='0' stop-color='rgb(255, 255, 255)'/>
+      <stop stop-opacity='1' offset='100' stop-color='rgb(200, 200, 200)'/>
+    </linearGradient>
+  </defs>
+  <desc>RdsDiagram</desc>
+  <g transform='translate(51.0,207.0)' id='_-OhUwF-rEDqSVvBMEVRiTw'>
+    <rect x='0.0' width='167.0px' y='0.0' stroke-width='1.0' fill='url(#f9e69f00-ae2c-4b6b-936c-f6ec321ede59)' stroke='rgb(110, 110, 110)' look='allInOne' height='23.0px'/>
+    <polyline stroke-width='1.0' fill='rgb(255, 255, 255)' fill-opacity='1.0' stroke='rgb(110, 110, 110)' look='border' points='0.0,23.0 0.0,160.0 167.0,160.0 167.0,23.0'/>
+    <text font-weight='bold' text-anchor='middle' x='83.5' y='16.0' fill='rgb(51, 51, 51)'>doctors</text>
+    <image x='4.0' width='16.0' y='27.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFGSURBVDjLY/j//z8DJZhhcBtwa5ou062Zhp0PV7udvjVNO5lkA25M1Cx4czL//+/PJ/8/3xX+9myrqgfRBtycppf26mDs398fFv//cKXh/5vjdf/vLg74ui1PMZIoA+4utF7/893K/z+e1f3/8WLW/w8X6/5/e9Tw/+YM+w9EGXBrpknbl7ud/789yPr//VHx/2/34/9/uxX6/2y9xWe8BtycqmvycJXbqac7Au59uhn3/9ttv//f70b//3oDqLlB7/uiCAXcXrg1wyDm7jyrc98ezfz/9U7w/2833f6fmWD+5Xyz6YtLLWYvlscpBOMNxIerPc7/eLbw/6dLFv+/XXP/f3aK9deZ0cpJO4KleA/EyfISjMbH6zxO/nzZ9v/rTd//ZyZZfZ6bqBJLUkI62WvSenW+68vTvVYPlqarhg2DvEAMBgD1ZuZTUbWrEgAAAABJRU5ErkJggg==' height='16.0'/>
+    <text x='20.0' y='40.0'>id: INTEGER</text>
+    <image x='4.0' width='16.0' y='50.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='63.0'>first_name: VARCHAR(25)</text>
+    <image x='4.0' width='16.0' y='73.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='86.0'>last_name: VARCHAR(25)</text>
+    <image x='4.0' width='16.0' y='96.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='109.0'>specialty: VARCHAR(25)</text>
+  </g>
+  <g transform='translate(308.0,204.0)' id='_nutqYF-sEDqSVvBMEVRiTw'>
+    <rect x='0.0' width='167.0px' y='0.0' stroke-width='1.0' fill='url(#be8a0cc1-2b8c-450f-8d3e-2ce47df098cc)' stroke='rgb(110, 110, 110)' look='allInOne' height='23.0px'/>
+    <polyline stroke-width='1.0' fill='rgb(255, 255, 255)' fill-opacity='1.0' stroke='rgb(110, 110, 110)' look='border' points='0.0,23.0 0.0,166.0 167.0,166.0 167.0,23.0'/>
+    <text font-weight='bold' text-anchor='middle' x='83.5' y='16.0' fill='rgb(51, 51, 51)'>patients</text>
+    <image x='4.0' width='16.0' y='27.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFGSURBVDjLY/j//z8DJZhhcBtwa5ou062Zhp0PV7udvjVNO5lkA25M1Cx4czL//+/PJ/8/3xX+9myrqgfRBtycppf26mDs398fFv//cKXh/5vjdf/vLg74ui1PMZIoA+4utF7/893K/z+e1f3/8WLW/w8X6/5/e9Tw/+YM+w9EGXBrpknbl7ud/789yPr//VHx/2/34/9/uxX6/2y9xWe8BtycqmvycJXbqac7Au59uhn3/9ttv//f70b//3oDqLlB7/uiCAXcXrg1wyDm7jyrc98ezfz/9U7w/2833f6fmWD+5Xyz6YtLLWYvlscpBOMNxIerPc7/eLbw/6dLFv+/XXP/f3aK9deZ0cpJO4KleA/EyfISjMbH6zxO/nzZ9v/rTd//ZyZZfZ6bqBJLUkI62WvSenW+68vTvVYPlqarhg2DvEAMBgD1ZuZTUbWrEgAAAABJRU5ErkJggg==' height='16.0'/>
+    <text x='20.0' y='40.0'>id: INTEGER</text>
+    <image x='4.0' width='16.0' y='50.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='63.0'>first_name: VARCHAR(25)</text>
+    <image x='4.0' width='16.0' y='73.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='86.0'>last_name: VARCHAR(25)</text>
+    <image x='4.0' width='16.0' y='96.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='109.0'>date_admitted: DATE</text>
+    <image x='4.0' width='16.0' y='119.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='132.0'>age: INTEGER</text>
+  </g>
+  <g transform='translate(570.0,305.0)' id='_vWZNcF-sEDqSVvBMEVRiTw'>
+    <rect x='0.0' width='160.0px' y='0.0' stroke-width='1.0' fill='url(#a27fd58b-0b25-403c-b641-05cb68a70708)' stroke='rgb(110, 110, 110)' look='allInOne' height='23.0px'/>
+    <polyline stroke-width='1.0' fill='rgb(255, 255, 255)' fill-opacity='1.0' stroke='rgb(110, 110, 110)' look='border' points='0.0,23.0 0.0,160.0 160.0,160.0 160.0,23.0'/>
+    <text font-weight='bold' text-anchor='middle' x='80.0' y='16.0' fill='rgb(51, 51, 51)'>diseases</text>
+    <image x='4.0' width='16.0' y='27.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFGSURBVDjLY/j//z8DJZhhcBtwa5ou062Zhp0PV7udvjVNO5lkA25M1Cx4czL//+/PJ/8/3xX+9myrqgfRBtycppf26mDs398fFv//cKXh/5vjdf/vLg74ui1PMZIoA+4utF7/893K/z+e1f3/8WLW/w8X6/5/e9Tw/+YM+w9EGXBrpknbl7ud/789yPr//VHx/2/34/9/uxX6/2y9xWe8BtycqmvycJXbqac7Au59uhn3/9ttv//f70b//3oDqLlB7/uiCAXcXrg1wyDm7jyrc98ezfz/9U7w/2833f6fmWD+5Xyz6YtLLWYvlscpBOMNxIerPc7/eLbw/6dLFv+/XXP/f3aK9deZ0cpJO4KleA/EyfISjMbH6zxO/nzZ9v/rTd//ZyZZfZ6bqBJLUkI62WvSenW+68vTvVYPlqarhg2DvEAMBgD1ZuZTUbWrEgAAAABJRU5ErkJggg==' height='16.0'/>
+    <text x='20.0' y='40.0'>id: INTEGER</text>
+    <image x='4.0' width='16.0' y='50.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='63.0'>name: VARCHAR(30)</text>
+  </g>
+  <g transform='translate(50.0,425.0)' id='_Q4frIF-tEDqSVvBMEVRiTw'>
+    <rect x='0.0' width='160.0px' y='0.0' stroke-width='1.0' fill='url(#0ff61b3b-a451-437d-a94a-cce119118071)' stroke='rgb(110, 110, 110)' look='allInOne' height='23.0px'/>
+    <polyline stroke-width='1.0' fill='rgb(255, 255, 255)' fill-opacity='1.0' stroke='rgb(110, 110, 110)' look='border' points='0.0,23.0 0.0,160.0 160.0,160.0 160.0,23.0'/>
+    <text font-weight='bold' text-anchor='middle' x='80.0' y='16.0' fill='rgb(51, 51, 51)'>doctor_patient_rel</text>
+    <image x='4.0' width='16.0' y='27.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFGSURBVDjLY/j//z8DJZhhcBtwa5ou062Zhp0PV7udvjVNO5lkA25M1Cx4czL//+/PJ/8/3xX+9myrqgfRBtycppf26mDs398fFv//cKXh/5vjdf/vLg74ui1PMZIoA+4utF7/893K/z+e1f3/8WLW/w8X6/5/e9Tw/+YM+w9EGXBrpknbl7ud/789yPr//VHx/2/34/9/uxX6/2y9xWe8BtycqmvycJXbqac7Au59uhn3/9ttv//f70b//3oDqLlB7/uiCAXcXrg1wyDm7jyrc98ezfz/9U7w/2833f6fmWD+5Xyz6YtLLWYvlscpBOMNxIerPc7/eLbw/6dLFv+/XXP/f3aK9deZ0cpJO4KleA/EyfISjMbH6zxO/nzZ9v/rTd//ZyZZfZ6bqBJLUkI62WvSenW+68vTvVYPlqarhg2DvEAMBgD1ZuZTUbWrEgAAAABJRU5ErkJggg==' height='16.0'/>
+    <text x='20.0' y='40.0'>id: INTEGER</text>
+    <image x='4.0' width='16.0' y='50.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='63.0'>doctor_id: INTEGER</text>
+    <image x='4.0' width='16.0' y='73.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='86.0'>patient_id: INTEGER</text>
+  </g>
+  <g transform='translate(325.0,129.0)' id='_BP4FkF-vEDqSVvBMEVRiTw'>
+    <polygon stroke-width='0.5' fill='rgb(255, 255, 255)' stroke='rgb(107, 107, 107)' look='allInOne' points='0.0,0.0 0.0,40.0 100.0,40.0 100.0,15.0 85.0,0.0'/>
+    <polygon stroke-width='1.0' fill='rgb(107, 107, 107)' look='border' stroke='rgb(107, 107, 107)' points='85.0,1.0 85.0,15.0 99.0,15.0'/>
+    <clipPath id='clip_BP4FkF-vEDqSVvBMEVRiTw'>
+      <rect x='5.0' width='75.0px' y='5.0' height='30.0px'/>
+    </clipPath>
+    <g transform='translate(0.0,0.0)'>
+      <text clip-path='url(#clip_BP4FkF-vEDqSVvBMEVRiTw)' x='5.0' y='18.0' font-size='13' fill='rgb(45, 45, 45)'>Medical</text>
+      <text clip-path='url(#clip_BP4FkF-vEDqSVvBMEVRiTw)' x='5.0' y='31.0' font-size='13' fill='rgb(45, 45, 45)'>Center</text>
+    </g>
+  </g>
+  <g transform='translate(335.0,439.0)' id='_OqOx4F-vEDqSVvBMEVRiTw'>
+    <rect x='0.0' width='160.0px' y='0.0' stroke-width='1.0' fill='url(#c67621d0-5b38-4db2-8fc2-e08cd4017ca9)' stroke='rgb(110, 110, 110)' look='allInOne' height='23.0px'/>
+    <polyline stroke-width='1.0' fill='rgb(255, 255, 255)' fill-opacity='1.0' stroke='rgb(110, 110, 110)' look='border' points='0.0,23.0 0.0,160.0 160.0,160.0 160.0,23.0'/>
+    <text font-weight='bold' text-anchor='middle' x='80.0' y='16.0' fill='rgb(51, 51, 51)'>patient_disease_rel</text>
+    <image x='4.0' width='16.0' y='27.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFGSURBVDjLY/j//z8DJZhhcBtwa5ou062Zhp0PV7udvjVNO5lkA25M1Cx4czL//+/PJ/8/3xX+9myrqgfRBtycppf26mDs398fFv//cKXh/5vjdf/vLg74ui1PMZIoA+4utF7/893K/z+e1f3/8WLW/w8X6/5/e9Tw/+YM+w9EGXBrpknbl7ud/789yPr//VHx/2/34/9/uxX6/2y9xWe8BtycqmvycJXbqac7Au59uhn3/9ttv//f70b//3oDqLlB7/uiCAXcXrg1wyDm7jyrc98ezfz/9U7w/2833f6fmWD+5Xyz6YtLLWYvlscpBOMNxIerPc7/eLbw/6dLFv+/XXP/f3aK9deZ0cpJO4KleA/EyfISjMbH6zxO/nzZ9v/rTd//ZyZZfZ6bqBJLUkI62WvSenW+68vTvVYPlqarhg2DvEAMBgD1ZuZTUbWrEgAAAABJRU5ErkJggg==' height='16.0'/>
+    <text x='20.0' y='40.0'>id: INTEGER</text>
+    <image x='4.0' width='16.0' y='50.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='63.0'>patient_id: INTEGER</text>
+    <image x='4.0' width='16.0' y='73.0' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wIDDQEb3G+TKgAAATxJREFUOMvV079KA0EQBvBv727vzF5IQoKKoBbGzt5CsPEh9EFUkDyBrfgEdj6BpdjYWKgIAcGoCCbm1ITL/Ulus7u3FqKCiXilbjvf/BiGWeDfP/JTYe/4viIjXsgxZvheN7BpvrO1vph+z1njmjf3z8qOILvMddcs06TWZOm8HyfbAG4yAdXqXJna6YpDrQWDAGlKXbdAp7TWDUKI/hV49iVWZxlZms8jZxu4uAuNB29Adi5Hs2OBJB2CmgwlZsGhBixTQxKNOs8IRIJDqq9JpdLgQwHPH80a4wARSkil8EEoqaC5Rq6ZEYjiEEIIQL8TQipEQ47TdkYgjgWkTD8nEEJBJQLF14w78Lvt/tU1q3deesyZsOltK2g8PoVB7+Qg+yVu1I5mBsGAFSoVEichd4rTrcPasvp7n+kNv3CHpBFXDvYAAAAASUVORK5CYII=' height='16.0'/>
+    <text x='20.0' y='86.0'>disease_id: INTEGER</text>
+  </g>
+  <g id='_n98HQF-uEDqSVvBMEVRiTw'>
+    <polyline id='_n9_Kk1-uEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='218.0,242.0 268.0,242.0'/>
+    <g transform='translate(218.0,242.0) rotate(-90.0)'>
+      <circle r='4.0' cx='0.0' cy='14.0' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)'/>
+    </g>
+  </g>
+  <g id='_n98HQF-uEDqSVvBMEVRiTw'>
+    <polyline id='_n9_xoF-uEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='268.0,242.0 268.0,483.0'/>
+  </g>
+  <g id='_n98HQF-uEDqSVvBMEVRiTw'>
+    <polyline id='_n9_xoV-uEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='268.0,483.0 210.0,483.0'/>
+    <g transform='translate(210.0,483.0) rotate(-90.0)'>
+      <line y1='8.0' x1='6.0' y2='8.0' x2='-6.0' stroke-width='1.0' stroke='rgb(0, 0, 0)'/>
+    </g>
+  </g>
+  <g id='_uYg-AF-uEDqSVvBMEVRiTw'>
+    <polyline id='_uYlPcl-uEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='308.0,239.0 277.0,239.0'/>
+    <g transform='translate(308.0,239.0) rotate(90.0)'>
+      <circle r='4.0' cx='0.0' cy='14.0' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)'/>
+    </g>
+  </g>
+  <g id='_uYg-AF-uEDqSVvBMEVRiTw'>
+    <polyline id='_uYl2gF-uEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='277.0,239.0 277.0,506.0'/>
+  </g>
+  <g id='_uYg-AF-uEDqSVvBMEVRiTw'>
+    <polyline id='_uYmdkF-uEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='277.0,506.0 210.0,506.0'/>
+    <g transform='translate(210.0,506.0) rotate(-90.0)'>
+      <line y1='8.0' x1='6.0' y2='8.0' x2='-6.0' stroke-width='1.0' stroke='rgb(0, 0, 0)'/>
+    </g>
+  </g>
+  <g id='_05bQ0F-vEDqSVvBMEVRiTw'>
+    <polyline id='_05e7Ml-vEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='475.0,239.0 516.0,239.0'/>
+    <g transform='translate(475.0,239.0) rotate(-90.0)'>
+      <circle r='4.0' cx='0.0' cy='14.0' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)'/>
+    </g>
+  </g>
+  <g id='_05bQ0F-vEDqSVvBMEVRiTw'>
+    <polyline id='_05fiQF-vEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='516.0,239.0 516.0,474.0'/>
+  </g>
+  <g id='_05bQ0F-vEDqSVvBMEVRiTw'>
+    <polyline id='_05fiQV-vEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='516.0,474.0 495.0,474.0'/>
+    <g transform='translate(495.0,474.0) rotate(-90.0)'>
+      <line y1='8.0' x1='6.0' y2='8.0' x2='-6.0' stroke-width='1.0' stroke='rgb(0, 0, 0)'/>
+    </g>
+  </g>
+  <g id='_2xvdUF-vEDqSVvBMEVRiTw'>
+    <polyline id='_2xzuwl-vEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='570.0,340.0 532.0,340.0'/>
+    <g transform='translate(570.0,340.0) rotate(90.0)'>
+      <circle r='4.0' cx='0.0' cy='14.0' stroke-width='1.0' fill='rgb(255, 255, 255)' stroke='rgb(0, 0, 0)'/>
+    </g>
+  </g>
+  <g id='_2xvdUF-vEDqSVvBMEVRiTw'>
+    <polyline id='_2x0V0F-vEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='532.0,340.0 532.0,520.0'/>
+  </g>
+  <g id='_2xvdUF-vEDqSVvBMEVRiTw'>
+    <polyline id='_2x0V0V-vEDqSVvBMEVRiTw' stroke-width='1.0' fill='none' stroke='rgb(0, 0, 0)' points='532.0,520.0 495.0,520.0'/>
+    <g transform='translate(495.0,520.0) rotate(-90.0)'>
+      <line y1='8.0' x1='6.0' y2='8.0' x2='-6.0' stroke-width='1.0' stroke='rgb(0, 0, 0)'/>
+    </g>
+  </g>
+</svg>
