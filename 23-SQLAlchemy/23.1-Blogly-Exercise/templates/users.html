@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}User List{% endblock %}
+{% block content %}
+<div class="container mx-auto">
+
+  <h1 class='text-3xl'>Users</h1>
+  <ul class="list-disc list-inside">
+    {% for user in users %}
+    <li><a href="/users/{{user.id}}">{{user.get_full_name()}}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="/users/new">
+  <button class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Add user</button></a>
+
+</div>
+
+{% endblock %}

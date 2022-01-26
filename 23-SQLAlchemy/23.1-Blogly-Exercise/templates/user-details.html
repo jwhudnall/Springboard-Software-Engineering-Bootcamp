@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}User List{% endblock %}
+{% block content %}
+<div class="container mx-auto">
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <img class="w-full" src="{{user.image_url}}" alt="Image of user">
+    <div class="px-6 py-4 flex items-center">
+      <div class="font-bold text-xl mb-2 mx-auto">
+        <h1>{{user.get_full_name()}}</h1>
+      </div>
+    </div>
+    <div class="px-6 pt-4 pb-2">
+      <div class="flex items-center justify-between">
+        <form>
+            <button formaction="/users/{{user.id}}/edit" formmethod="get" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Edit</button>
+
+            <button formaction="/users/{{user.id}}/delete" formmethod="post" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Delete</button>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
