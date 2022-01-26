@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet List</title>
+</head>
+<body>
+  <h1>Pet List</h1>
+  <ul>
+    {% for pet in pets %}
+    <li><a href="/{{pet.id}}">{{pet.name}}</a></li>
+    {% endfor %}
+  </ul>
+  <h2>Add New Pet</h2>
+  <form action="/" method="POST">
+    <label>
+      <input type="text" name="name" placeholder="name">
+    </label>
+    <label>
+      <input type="text" name="species" placeholder="species">
+    </label>
+    <label>
+      <input type="number" name="hunger" placeholder="number">
+    </label>
+    <button>Submit Pet</button>
+  </form>
+
+</body>
+</html>
