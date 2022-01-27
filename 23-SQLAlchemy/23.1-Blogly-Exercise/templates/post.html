@@ -2,16 +2,18 @@
 
 {% block title %}{{post.title}}{% endblock %}
 {% block content %}
-<article>
-  <h1>{{post.title}}</h1>
-  <p>{{post.content}}</p>
-  <address>By <a rel="author">{{post.user.get_full_name()}}</a></address>
-</article>
-<form>
-  <!-- <button formaction="/posts/{{post.id}}" formmethod="get" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Cancel</button> -->
-  <button formaction="/posts/{{post.id}}/edit" formmethod="get" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Edit</button>
-  <button formaction="/posts/{{post.id}}/delete" formmethod="post" class="bg-red-400 hover:bg-red-700 text-white font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Delete</button>
-</form>
+<div class="md:w-3/4 max-w-4xl mx-auto my-5 px-5">
+  <article>
+    <h1 class="text-2xl">{{post.title}}</h1>
+    <p>{{post.content}}</p>
+    <address class="text-sm mt-2">By <a rel="author">{{post.user.get_full_name()}}</a></address>
+  </article>
+  <form class="mt-5">
+    <button formaction="/users/{{post.user.id}}" formmethod="get" class="bg-transparent hover:bg-slate-200 text-black font-semibold text-xs hover:text-black py-1 px-2 border border-black rounded">Back</button>
+    <button formaction="/posts/{{post.id}}/edit" formmethod="get" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold text-xs hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Edit</button>
+    <button formaction="/posts/{{post.id}}/delete" formmethod="post" class="bg-red-400 hover:bg-red-700 text-white font-semibold text-xs hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Delete</button>
+  </form>
+</div>
 
 
 {% endblock %}
