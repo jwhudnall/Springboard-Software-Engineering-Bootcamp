@@ -1,7 +1,7 @@
 """Blogly application."""
 
 from crypt import methods
-from flask import Flask, request, render_template, redirect, request
+from flask import Flask, request, render_template, redirect, request, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, Post
 import os
@@ -21,7 +21,8 @@ connect_db(app)
 @app.route('/')
 def show_homepage():
     '''Show homepage'''
-    return redirect('/users')
+    posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
+    return render_template('home.html', posts=posts)
 
 
 @app.route('/users')
@@ -48,8 +49,9 @@ def add_user():
 
     db.session.add(user)
     db.session.commit()
+    flash(f'User {user.get_full_name()} added.')
 
-    return redirect('/')
+    return redirect('/users')
 
 
 @app.route('/users/<int:user_id>')
@@ -108,6 +110,7 @@ def add_post(user_id):
     new_post = Post(title=title, content=post, user=user)
     db.session.add(new_post)
     db.session.commit()
+    flash(f'Post added.')
     return redirect(f'/users/{user_id}')
 
 

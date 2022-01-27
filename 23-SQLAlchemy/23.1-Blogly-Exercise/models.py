@@ -1,6 +1,6 @@
 """Models for Blogly."""
 from flask_sqlalchemy import SQLAlchemy
-import datetime
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -39,7 +39,7 @@ class Post(db.Model):
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.String(2000), nullable=False)
     created_at = db.Column(
-        db.DateTime, default=datetime.datetime.now, nullable=False)
+        db.DateTime, default=datetime.now, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(
         'users.id'), nullable=False)
 
@@ -47,3 +47,7 @@ class Post(db.Model):
         '''Display instance attributes'''
         p = self
         return f'title: {p.title} content: {p.content} created_at: {p.created_at} user_id: {p.user_id}'
+
+    def get_pretty_date(self):
+        '''Return string formatted date to display to users.'''
+        return self.created_at.strftime('%a %b %-d %Y, %I:%-M %p')
