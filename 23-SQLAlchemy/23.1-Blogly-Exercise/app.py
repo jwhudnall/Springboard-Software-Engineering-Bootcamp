@@ -3,7 +3,7 @@
 from crypt import methods
 from flask import Flask, request, render_template, redirect, request
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User
+from models import db, connect_db, User, Post
 import os
 
 app = Flask(__name__)
@@ -56,7 +56,8 @@ def add_user():
 def show_user(user_id):
     '''Show user details page'''
     user = User.query.get(user_id)
-    return render_template('user-details.html', user=user)
+    posts = Post.query.filter(Post.user_id == user_id).all()
+    return render_template('user-details.html', user=user, posts=posts)
 
 
 @app.route('/users/<int:user_id>/edit')
@@ -90,3 +91,30 @@ def delete_user(user_id):
     db.session.delete(user)
     db.session.commit()
     return redirect('/')
+
+
+@app.route('/users/<int:user_id>/posts/new')
+def render_post_form(user_id):
+    '''Render form to create new post.'''
+    user = User.query.get_or_404(user_id)
+    return render_template('create-post.html', user=user)
+
+
+@app.route('/users/<int:user_id>/posts/new', methods=['POST'])
+def add_post(user_id):
+    '''Add post attributed to user.'''
+    title = request.form['title']
+    post = request.form['post']
+    new_post = Post(title=title, content=post, user_id=user_id)
+    db.session.add(new_post)
+    db.session.commit()
+    return redirect(f'/users/{user_id}')
+
+# Post Routes
+
+
+@app.route('/posts/<int:post_id>')
+def display_post(post_id):
+    '''Show single post, along with buttons to cancel, edit or delete post.'''
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html', post=post)

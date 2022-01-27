@@ -1,7 +1,8 @@
 '''Seed file to make sample data for blogly db'''
 
-from models import User, db
+from models import User, Post, db
 from app import app
+
 
 db.drop_all()
 db.create_all()
@@ -17,4 +18,19 @@ jane = User(first_name='Jane', last_name='Smith',
 
 
 db.session.add_all([alan, joel, jane])
+db.session.commit()
+
+# Posts
+
+post1 = Post(title='My First Post',
+             content='Hey everyone, this is my first post!',
+             user_id=1)
+post2 = Post(title='My First Post',
+             content='Hey everyone, this is my first post!',
+             user_id=2)
+post3 = Post(title='My First Post',
+             content='Hey everyone, this is my first post!',
+             user_id=3)
+
+db.session.add_all([post1, post2, post3])
 db.session.commit()

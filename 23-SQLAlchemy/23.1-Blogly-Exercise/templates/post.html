@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{{post.title}}{% endblock %}
+{% block content %}
+<article>
+  <h1>{{post.title}}</h1>
+  <p>{{post.content}}</p>
+  <address>By <a rel="author">{{post.user.get_full_name()}}</a></address>
+</article>
+
+
+{% endblock %}
