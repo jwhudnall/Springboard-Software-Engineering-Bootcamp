@@ -21,16 +21,6 @@ db.session.add_all([alan, joel, jane])
 db.session.commit()
 
 # Posts
-
-# post1 = Post(title='My First Post',
-#              content='Hey everyone, this is my first post!',
-#              user_id=1)
-# post2 = Post(title='My First Post',
-#              content='Hey everyone, this is my first post!',
-#              user_id=2)
-# post3 = Post(title='My First Post',
-#              content='Hey everyone, this is my first post!',
-#              user_id=3)
 post1 = Post(title='My First Post',
              content='Hey everyone, this is my first post!',
              user=alan)
