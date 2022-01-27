@@ -104,7 +104,8 @@ def add_post(user_id):
     '''Add post attributed to user.'''
     title = request.form['title']
     post = request.form['post']
-    new_post = Post(title=title, content=post, user_id=user_id)
+    user = User.query.get_or_404(user_id)
+    new_post = Post(title=title, content=post, user=user)
     db.session.add(new_post)
     db.session.commit()
     return redirect(f'/users/{user_id}')

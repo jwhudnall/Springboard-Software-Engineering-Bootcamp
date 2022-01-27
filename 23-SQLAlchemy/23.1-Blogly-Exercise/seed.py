@@ -22,15 +22,24 @@ db.session.commit()
 
 # Posts
 
+# post1 = Post(title='My First Post',
+#              content='Hey everyone, this is my first post!',
+#              user_id=1)
+# post2 = Post(title='My First Post',
+#              content='Hey everyone, this is my first post!',
+#              user_id=2)
+# post3 = Post(title='My First Post',
+#              content='Hey everyone, this is my first post!',
+#              user_id=3)
 post1 = Post(title='My First Post',
              content='Hey everyone, this is my first post!',
-             user_id=1)
+             user=alan)
 post2 = Post(title='My First Post',
              content='Hey everyone, this is my first post!',
-             user_id=2)
+             user=joel)
 post3 = Post(title='My First Post',
              content='Hey everyone, this is my first post!',
-             user_id=3)
+             user=jane)
 
 db.session.add_all([post1, post2, post3])
 db.session.commit()

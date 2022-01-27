@@ -84,8 +84,32 @@ class UserViewsTestCase(TestCase):
             self.assertIn(self.user.last_name, html)
             self.assertIn(self.user.image_url, html)
 
-# TODO:
-# test_render_post_form
+    def test_render_post_form(self):
+        '''Test render_post_form'''
+        with app.test_client() as client:
+            res = client.get(f'/users/{self.id}/posts/new')
+            html = res.get_data(as_text=True)
+
+            self.assertEqual(res.status_code, 200)
+            self.assertIn(f'Add Post for {self.user.get_full_name()}', html)
+            self.assertIn('name="title"', html)
+            self.assertIn('name="post"', html)
+            self.assertIn('Cancel</button>', html)
+            self.assertIn('Add</button>', html)
+
+    # def test_add_post(self):
+    #     '''Test add_post'''
+    #     with app.test_client() as client:
+    #         data = {'title': 'Test Post',
+    #                 'post': 'This is content from a test post.'}
+    #         res = client.post(
+    #             f'/users/{self.id}/posts/new', data=data, follow_redirects=True)
+    #         html = res.get_data(as_text=True)
+
+            # self.assertEqual(res.status_code, 200)
+            # How to pass
+
+# Possible Tests:
 # test_add_post (POST)
 # test_display_post
 # test_edit_post
