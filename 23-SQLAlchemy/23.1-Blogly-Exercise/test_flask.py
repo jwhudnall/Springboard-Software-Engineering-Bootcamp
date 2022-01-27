@@ -83,3 +83,11 @@ class UserViewsTestCase(TestCase):
             self.assertIn(self.user.first_name, html)
             self.assertIn(self.user.last_name, html)
             self.assertIn(self.user.image_url, html)
+
+# TODO:
+# test_render_post_form
+# test_add_post (POST)
+# test_display_post
+# test_edit_post
+# test_update_post (POST)
+# test_delete_post (POST)

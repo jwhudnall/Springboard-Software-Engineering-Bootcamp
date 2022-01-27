@@ -87,7 +87,6 @@ def update_user(user_id):
 def delete_user(user_id):
     '''Delete user from site and database.'''
     user = User.query.get(user_id)
-    # print(f'User: {user}')
     db.session.delete(user)
     db.session.commit()
     return redirect('/')
@@ -110,11 +109,40 @@ def add_post(user_id):
     db.session.commit()
     return redirect(f'/users/{user_id}')
 
-# Post Routes
-
 
 @app.route('/posts/<int:post_id>')
 def display_post(post_id):
     '''Show single post, along with buttons to cancel, edit or delete post.'''
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', post=post)
+
+
+@app.route('/posts/<int:post_id>/edit')
+def edit_post(post_id):
+    '''Render form to edit post.'''
+    post = Post.query.get_or_404(post_id)
+    return render_template('edit-post.html', post=post)
+
+
+@app.route('/posts/<int:post_id>/edit', methods=['POST'])
+def update_post(post_id):
+    '''Update post information on site and in database'''
+    post = Post.query.get(post_id)
+    title = request.form['title']
+    content = request.form['post']
+    post.title = title
+    post.content = content
+
+    db.session.add(post)
+    db.session.commit()
+    return redirect(f'/posts/{post_id}')
+
+
+@app.route('/posts/<int:post_id>/delete', methods=['POST'])
+def delete_post(post_id):
+    '''Remove post from site and database.'''
+    post = Post.query.get_or_404(post_id)
+    user_id = post.user_id
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(f'/users/{user_id}',)

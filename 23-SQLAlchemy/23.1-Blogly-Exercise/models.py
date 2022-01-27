@@ -42,3 +42,8 @@ class Post(db.Model):
         db.DateTime, default=datetime.datetime.utcnow, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(
         'users.id'), nullable=False)
+
+    def __repr__(self):
+        '''Display instance attributes'''
+        p = self
+        return f'title: {p.title} content: {p.content} created_at: {p.created_at} user_id: {p.user_id}'

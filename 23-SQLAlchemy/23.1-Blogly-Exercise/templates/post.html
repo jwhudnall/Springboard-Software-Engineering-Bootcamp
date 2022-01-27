@@ -7,6 +7,11 @@
   <p>{{post.content}}</p>
   <address>By <a rel="author">{{post.user.get_full_name()}}</a></address>
 </article>
+<form>
+  <!-- <button formaction="/posts/{{post.id}}" formmethod="get" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Cancel</button> -->
+  <button formaction="/posts/{{post.id}}/edit" formmethod="get" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Edit</button>
+  <button formaction="/posts/{{post.id}}/delete" formmethod="post" class="bg-red-400 hover:bg-red-700 text-white font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Delete</button>
+</form>
 
 
 {% endblock %}
