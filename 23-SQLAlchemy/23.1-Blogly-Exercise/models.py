@@ -2,6 +2,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+from sqlalchemy import ForeignKey
+
 db = SQLAlchemy()
 
 
@@ -42,12 +44,38 @@ class Post(db.Model):
         db.DateTime, default=datetime.now, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(
         'users.id'), nullable=False)
+    post_tags = db.relationship('PostTag', backref='post')
+    tags = db.relationship('Tag', secondary='post_tags', backref='posts')
 
     def __repr__(self):
         '''Display instance attributes'''
         p = self
-        return f'title: {p.title} content: {p.content} created_at: {p.created_at} user_id: {p.user_id}'
+        return f'<title: {p.title} content: {p.content} created_at: {p.created_at} user_id: {p.user_id}>'
 
     def get_pretty_date(self):
         '''Return string formatted date to display to users.'''
         return self.created_at.strftime('%a %b %-d %Y, %I:%-M %p')
+
+
+class Tag(db.Model):
+    '''Define Tag Model.'''
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.Text, unique=True)
+    post_tags = db.relationship('PostTag', backref='tag')
+
+    def __repr__(self):
+        return f'<id: {self.id} name: {self.name} posts: {self.posts}>'
+
+
+class PostTag(db.Model):
+    '''Define PostTag Relationship Model.'''
+    __tablename__ = 'post_tags'
+
+    post_id = db.Column(db.Integer, db.ForeignKey(
+        'posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+
+    def __repr__(self):
+        return f'<post_id: {self.post_id} tag_id: {self.tag_id}>'
