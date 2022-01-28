@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Snack{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-sm mt-5 mx-auto">
+  <h1 class="text-3xl">New Snack</h1>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    {% for field in form
+      if field.widget.input_type != 'hidden' %}
+      <p>
+        {{field.label}}
+        {{field(class_="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline")}}
+      </p>
+
+    {% endfor %}
+      <button class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 mt-3 border border-black text-xs hover:border-transparent rounded">Submit</button>
+  </form>
+
+</div>
+
+{% endblock %}

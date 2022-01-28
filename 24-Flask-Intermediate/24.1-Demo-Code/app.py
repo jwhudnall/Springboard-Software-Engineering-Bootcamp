@@ -5,6 +5,7 @@ from flask import Flask, request, render_template, redirect, request, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, Post, Tag, PostTag
 import os
+from forms import AddSnackForm
 
 app = Flask(__name__)
 
@@ -215,3 +216,15 @@ def delete_tag(tag_id):
     db.session.delete(tag)
     db.session.commit()
     return redirect('/tags')
+
+
+@app.route('/snacks/new', methods=['GET', 'POST'])
+def add_snack():
+    form = AddSnackForm()
+    if form.validate_on_submit():  # Checks if POST, and valid CSRF
+        name = form.name.data
+        price = form.price.data
+        flash(f'Created new snack {name}')
+        return redirect('/')
+    else:
+        return render_template('add_snack_form.html', form=form)
