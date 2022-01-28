@@ -18,7 +18,7 @@
     <div class="border-solid border-2 border-slate-600 py-2 px-2 my-2">
       <h2>Posts</h2>
       {% for msg in get_flashed_messages() %}
-        <p class="text-lime-700">{{msg}}</p>
+        <p class="text-lime-700 text-xs">{{msg}}</p>
       {% endfor %}
       <ul class="list-disc list-inside">
         {% for post in posts %}

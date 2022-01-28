@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Tag{% endblock %}
+{% block content %}
+<div class="w-full max-w-sm mt-5 mx-auto">
+  <h1 class='text-3xl'>Create a Tag</h1>
+  <!-- Form -->
+  <form class="w-full max-w-sm" action="/tags/new" method="POST">
+    <div class="md:flex md:items-center mb-6">
+      <label>
+        Name
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="tag" placeholder="New tag name">
+      </label>
+    </div>
+
+    <div class="md:flex md:items-center">
+      <button class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black text-xs hover:border-transparent rounded">Add</button>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

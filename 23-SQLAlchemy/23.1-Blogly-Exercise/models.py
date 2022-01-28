@@ -44,8 +44,6 @@ class Post(db.Model):
         db.DateTime, default=datetime.now, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(
         'users.id'), nullable=False)
-    post_tags = db.relationship('PostTag', backref='post')
-    tags = db.relationship('Tag', secondary='post_tags', backref='posts')
 
     def __repr__(self):
         '''Display instance attributes'''
@@ -63,7 +61,7 @@ class Tag(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.Text, unique=True)
-    post_tags = db.relationship('PostTag', backref='tag')
+    posts = db.relationship('Post', secondary='post_tags', backref='tags')
 
     def __repr__(self):
         return f'<id: {self.id} name: {self.name} posts: {self.posts}>'
@@ -74,8 +72,13 @@ class PostTag(db.Model):
     __tablename__ = 'post_tags'
 
     post_id = db.Column(db.Integer, db.ForeignKey(
-        'posts.id'), primary_key=True)
-    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+        'posts.id', ondelete='CASCADE'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey(
+        'tags.id', ondelete='CASCADE'), primary_key=True)
 
     def __repr__(self):
         return f'<post_id: {self.post_id} tag_id: {self.tag_id}>'
+
+# Issues:
+# When a tag gets deleted, the related posts should not. Currently error.
+# AND, when a tag gets deleted, the related posts should not
