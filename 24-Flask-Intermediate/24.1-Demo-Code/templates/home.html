@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogly{% endblock %}
+{% block content %}
+<div class="md:w-3/4 max-w-4xl mx-auto my-5 px-5">
+
+  <h1 class="text-3xl">Blogly Recent Posts</h1>
+  <nav>
+    <a href="/users">Users</a>
+    <a href="/tags">Tags</a>
+  </nav>
+    {% for post in posts %}
+    <div class="border-solid border-2 border-slate-600 my-2">
+      <article class="my-2 mx-3">
+        <a href="/posts/{{post.id}}"><h2 class="text-2xl">{{post.title}}</h2></a>
+        <p>{{post.content}}</p>
+        <address class="mt-2">By <a rel="author">{{post.user.get_full_name()}}</a> on <time>{{post.get_pretty_date()}}</time></address>
+      </article>
+      <div class="my-2 mx-2">
+        <span>Tags: </span>
+        <!-- Tags go here -->
+        {% for tag in post.tags %}
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2"><a href="/tags/{{tag.id}}">#{{tag.name}}</a></span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
+

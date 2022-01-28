@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}New Post{% endblock %}
+{% block content %}
+<div class="w-full max-w-sm mt-5 mx-auto">
+  <h1 class='text-3xl'>Add Post for {{user.get_full_name()}}</h1>
+  <!-- Form -->
+  <form class="w-full max-w-sm" method="POST">
+    <div class="md:flex md:items-center mb-6">
+      <label>
+        Title
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="title">
+      </label>
+    </div>
+    <div class="md:flex md:items-center mb-6">
+      <label>
+        Post Content
+        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="post" rows="4" cols="50"></textarea>
+      </label>
+    </div>
+    <div>
+      <h2 class="text-sm">Tags</h2>
+    {% for tag in tags %}
+      <div>
+        <input type="checkbox" name="tag-list" id="{{tag.name}}" value="{{tag.name}}">
+          <label for="{{tag.name}}">{{tag.name}}</label>
+      </div>
+    {% endfor %}
+    </div>
+    <div class="md:flex md:items-center">
+      <button formaction="/users/{{user.id}}" formmethod="get" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Cancel</button>
+      <button formaction="/users/{{user.id}}/posts/new" formmethod="post" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black hover:border-transparent rounded">Add</button>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

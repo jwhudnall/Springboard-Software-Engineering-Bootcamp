@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{tag.name}} Posts{% endblock %}
+{% block content %}
+<div class="w-full max-w-sm mt-5 mx-auto">
+
+  <h1 class="text-3xl"><em>{{tag.name}}</em> Posts</h1>
+  {% for msg in get_flashed_messages() %}
+  <p class="text-lime-700">{{msg}}</p>
+  {% endfor %}
+
+  <ul class="list-disc list-inside mt-2">
+    {% for post in posts %}
+    <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="">
+  <form action="/tags/{{tag.id}}/delete" method="post">
+    <button formaction="/tags/{{tag.id}}/edit" formmethod="get" class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black text-xs hover:border-transparent rounded mt-5">Edit Tag</button>
+    <button class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black text-xs hover:border-transparent rounded mt-5">Delete Tag</button>
+  </form>
+
+</div>
+
+{% endblock %}
