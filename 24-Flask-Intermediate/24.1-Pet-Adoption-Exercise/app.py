@@ -1,6 +1,8 @@
 from flask import Flask, render_template, redirect, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
+from forms import AddPetForm
+from sqlalchemy import distinct
 import os
 
 app = Flask(__name__)
@@ -22,6 +24,22 @@ def home_page():
     return render_template("home.html", pets=pets)
 
 
-@app.route('/new')
+@app.route('/add', methods=['GET', 'POST'])
 def add_pet():
-    return render_template('add-pet.html')
+    form = AddPetForm()
+    # species = db.session.query(Pet.id, Pet.species)
+    # form.species.choices = [(p.species, p.species) for p in species]
+    if form.validate_on_submit():
+        name = form.name.data
+        species = form.species.data
+        photo_url = form.photo_url.data or None
+        age = form.age.data
+        notes = form.notes.data
+
+        new_pet = Pet(name=name, species=species,
+                      photo_url=photo_url, age=age, notes=notes)
+        db.session.add(new_pet)
+        db.session.commit()
+        return redirect('/')
+    else:
+        return render_template('add-pet.html', form=form)

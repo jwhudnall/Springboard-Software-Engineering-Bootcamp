@@ -5,17 +5,10 @@
 {% block content %}
 <h1 class="text-3xl">Pets</h1>
 
-
-
-<!-- <ul class="list-disc list-inside mt-2">
-  {% for pet in pets %}
-    <li>{{pet.name}}</li>
-  {% endfor %}
-</ul> -->
 <div class="flex flex-row flex-wrap items-center">
 
   {% for pet in pets %}
-  <div class="mx-5 my-3">
+  <div class="mx-5 my-3 bg-white">
     <div class="flex rounded overflow-hidden shadow-lg max-w-md">
       <div class="">
         <img class="w-48 h-56" src="{{pet.photo_url}}" alt="Image of {{pet.species}}">
