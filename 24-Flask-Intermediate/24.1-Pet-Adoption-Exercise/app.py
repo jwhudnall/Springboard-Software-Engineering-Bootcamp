@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
-from forms import AddPetForm
+from forms import AddPetForm, EditPetForm
 from sqlalchemy import distinct
 import os
 
@@ -43,3 +43,18 @@ def add_pet():
         return redirect('/')
     else:
         return render_template('add-pet.html', form=form)
+
+
+@app.route('/<int:pet_id>', methods=['GET', 'POST'])
+def pet_details(pet_id):
+    pet = Pet.query.get_or_404(pet_id)
+    form = EditPetForm(obj=pet)
+    if form.validate_on_submit():
+        pet.photo_url = form.photo_url.data
+        pet.notes = form.notes.data
+        pet.available = form.available.data
+        db.session.commit()
+        flash(f'{pet.name} edited.')
+        return redirect(f'/{pet_id}')
+    else:
+        return render_template('pet-details.html', pet=pet, form=form)

@@ -8,7 +8,8 @@
 <div class="flex flex-row flex-wrap items-center">
 
   {% for pet in pets %}
-  <div class="mx-5 my-3 bg-white">
+  <a href="/{{pet.id}}">
+  <div class="mx-5 my-3 bg-white w-104">
     <div class="flex rounded overflow-hidden shadow-lg max-w-md">
       <div class="">
         <img class="w-48 h-56" src="{{pet.photo_url}}" alt="Image of {{pet.species}}">
@@ -31,10 +32,13 @@
         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
       </div> -->
     </div>
+  </a>
+
 
 
   </div>
   {% endfor %}
+
 
 </div>
 

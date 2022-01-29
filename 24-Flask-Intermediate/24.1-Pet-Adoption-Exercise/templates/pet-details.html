@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}{{pet.name}}{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-sm mt-5 mx-auto">
+  <h1 class='text-5xl text-center'>{{pet.name}}</h1>
+  {% for msg in get_flashed_messages() %}
+    <p class="text-xs text-green-500">{{msg}}</p>
+  {% endfor %}
+  <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+    <img class="w-full" src="{{pet.photo_url}}" alt="Image of {{pet.species}}">
+    <div class="px-6 py-4">
+      <ul class="list-disc list-inside mt-2">
+        <li class="font-bold">Name: <span class="text-gray-700 text-base font-thin">{{pet.name}}</span></li>
+        <li class="font-bold">Species: <span class="text-gray-700 text-base font-thin">{{pet.species}}</span></li>
+        {% if pet.age %}
+        <li class="font-bold">Age: <span class="text-gray-700 text-base font-thin">{{pet.age}}</span></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  <!-- Edit Form -->
+  <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white mt-5">
+    <h2 class="text-center text-xl">Edit {{pet.name}}</h2>
+    <form method="post">
+      {{ form.hidden_tag() }}
+        <p>
+        {{ form.photo_url.label }}
+        {{ form.photo_url(class_="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+
+        {% for error in form.photo_url.errors %}
+          <spanc class="text-xs text-red-600">{{error}}</span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.notes.label }}
+        {{ form.notes(class_="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+
+        {% for error in form.notes.errors %}
+          <spanc class="text-xs text-red-600">{{error}}</span>
+        {% endfor %}
+        </p>
+        <p>
+          {{ form.available.label }}
+          {{ form.available }}
+
+          {% for error in form.available.errors %}
+          <spanc class="text-xs text-red-600">{{error}}</span>
+        {% endfor %}
+        </p>
+
+      <div class="mt-3">
+      <button class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-1 px-2 border border-black text-xs hover:bg-teal-500 rounded">Edit</button>
+      </div>
+    </form>
+  </div>
+
+
+</div>
+
+{% endblock %}
