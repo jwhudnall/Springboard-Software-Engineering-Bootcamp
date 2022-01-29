@@ -12,30 +12,39 @@
     <li>{{pet.name}}</li>
   {% endfor %}
 </ul> -->
+<div class="flex flex-row flex-wrap items-center">
 
-{% for pet in pets %}
-<div class="md:flex rounded overflow-hidden shadow-lg mb-3 max-w-lg">
-  <div class="md:flex-shrink-0">
-    <img class="rounded-lg md:w-56" src="{{pet.photo_url}}" alt="Image of {{pet.species}}">
-  </div>
-  <div class="mt-4 md:mt-0 md:ml-6">
-    <div class="text-xl mb-2">{{pet.name}}
-      {% if pet.available %}
-      <span class="font-bold text-sm">Available!</span>
-      {% endif %}
+  {% for pet in pets %}
+  <div class="mx-5 my-3">
+    <div class="flex rounded overflow-hidden shadow-lg max-w-md">
+      <div class="">
+        <img class="w-48 h-56" src="{{pet.photo_url}}" alt="Image of {{pet.species}}">
+      </div>
+      <div class="w-56 p-1 ">
+        <div class="text-xl mb-2 text-center">{{pet.name}}
+          {% if pet.available %}
+          <span class="font-bold text-sm">Available!</span>
+          {% endif %}
+        </div>
+        {% if pet.notes %}
+        <p class="text-gray-700 text-sm">
+          {{pet.notes}}
+        </p>
+        {% endif %}
+      </div>
+      <!-- <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+      </div> -->
     </div>
-    <p class="text-gray-700 text-base">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-    </p>
+
+
   </div>
-  <!-- <div class="px-6 pt-4 pb-2">
-    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-  </div> -->
+  {% endfor %}
+
 </div>
 
-  {% endfor %}
 
 
 {% endblock %}

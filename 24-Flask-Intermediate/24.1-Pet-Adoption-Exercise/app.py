@@ -20,3 +20,8 @@ def home_page():
     """Render home page"""
     pets = Pet.query.all()
     return render_template("home.html", pets=pets)
+
+
+@app.route('/new')
+def add_pet():
+    return render_template('add-pet.html')
