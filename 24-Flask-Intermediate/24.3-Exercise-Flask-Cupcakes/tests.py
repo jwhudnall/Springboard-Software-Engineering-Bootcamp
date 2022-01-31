@@ -140,3 +140,5 @@ class CupcakeViewsTestCase(TestCase):
 
             self.assertEqual(resp.status_code, 200)
             self.assertEqual(client.get(url).status_code, 404)
+            self.assertEqual(client.delete(
+                '/api/cupcakes/4r5').status_code, 404)
