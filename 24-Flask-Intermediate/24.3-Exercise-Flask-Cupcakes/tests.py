@@ -127,3 +127,12 @@ class CupcakeViewsTestCase(TestCase):
                     "image": "http://test.com/cupcake2.jpg"
                 }
             })
+
+    def test_delete_cupcake(self):
+        with app.test_client() as client:
+            url = f"/api/cupcakes/{self.cupcake.id}"
+            resp = client.delete(url)
+            data = resp.json
+
+            self.assertEqual(resp.status_code, 200)
+            self.assertEqual(client.get(url).status_code, 404)

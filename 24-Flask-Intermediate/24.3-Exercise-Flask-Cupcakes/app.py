@@ -53,3 +53,20 @@ def update_cupcake(cupcake_id):
     c.image = request.json.get('image', c.rating)
     db.session.commit()
     return jsonify(cupcake=c.serialize())
+
+
+@app.route('/api/cupcakes/<int:cupcake_id>', methods=['DELETE'])
+def delete_cupcake(cupcake_id):
+    '''Deletes a single cupcake. Returns confirmation message in JSON format.'''
+    c = Cupcake.query.get_or_404(cupcake_id)
+    db.session.delete(c)
+    db.session.commit()
+    return jsonify(message="Deleted")
+
+
+# {
+# 	"flavor": "Truffle",
+# 	"size": "large",
+# 	"rating": 8.5,
+# 	"image": "https://cdn.sallysbakingaddiction.com/wp-content/uploads/2017/06/moist-chocolate-cupcakes-5.jpg"
+# }
