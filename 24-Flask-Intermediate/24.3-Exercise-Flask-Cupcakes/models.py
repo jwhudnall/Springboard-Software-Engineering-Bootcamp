@@ -1,5 +1,6 @@
 """Models for Cupcake app."""
 from flask_sqlalchemy import SQLAlchemy
+from flask import jsonify
 
 db = SQLAlchemy()
 
@@ -29,3 +30,10 @@ class Cupcake(db.Model):
             'rating': self.rating,
             'image': self.image
         }
+
+
+def add_and_jsonify(cupcake):
+    '''Adds an instance of Cupcake to the db. Returns cupcake information in JSON.'''
+    db.session.add(cupcake)
+    db.session.commit()
+    return jsonify(cupcake=cupcake.serialize())

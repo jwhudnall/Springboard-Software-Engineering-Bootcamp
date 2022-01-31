@@ -1,7 +1,7 @@
 """Flask app for Cupcakes"""
 from flask import Flask, request, redirect, jsonify, render_template
 from itsdangerous import json
-from models import Cupcake, db, connect_db
+from models import Cupcake, db, connect_db, add_and_jsonify
 from configuration import FLASK_SECRET
 
 app = Flask(__name__)
@@ -39,7 +39,5 @@ def create_cupcake():
         return '{"error": "flavor, size, rating are required"}'
 
     new_cupcake = Cupcake(flavor=flavor, size=size, rating=rating, image=image)
-    db.session.add(new_cupcake)
-    db.session.commit()
-    response = jsonify(cupcake=new_cupcake.serialize())
+    response = add_and_jsonify(new_cupcake)
     return (response, 201)
