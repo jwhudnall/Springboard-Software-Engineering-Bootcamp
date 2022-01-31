@@ -5,8 +5,11 @@ from models import db, connect_db, User
 from forms import AddSnackForm
 from forms import UserForm
 
+import os
+
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "oh-so-secret"
+# app.config["SECRET_KEY"] = "oh-so-secret"
+app.config["SECRET_KEY"] = str(os.environ.get('FLASK_SECRET_KEY'))
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///flask_wtforms"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
