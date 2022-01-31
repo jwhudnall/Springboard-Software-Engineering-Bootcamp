@@ -12,7 +12,15 @@ app.config['SECRET_KEY'] = FLASK_SECRET
 
 connect_db(app)
 
+# Front-End Routes
 
+
+@app.route('/')
+def homepage():
+    return render_template('index.html')
+
+
+# API Routes
 @app.route('/api/cupcakes')
 def display_all_cupcakes():
     '''Return information about all cupcakes in JSON format.'''
@@ -36,7 +44,8 @@ def create_cupcake():
     image = request.json.get('image', None)
 
     if not all([flavor, size, rating]):
-        return '{"error": "flavor, size, rating are required"}'
+        response = jsonify(error='flavor, size, rating are required')
+        return (response, 406)
 
     new_cupcake = Cupcake(flavor=flavor, size=size, rating=rating, image=image)
     response = add_and_jsonify(new_cupcake)

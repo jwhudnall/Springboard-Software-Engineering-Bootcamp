@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cupcakes with Flask</title>
+  <style>
+    label {
+      display: block;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cupcakes</h1>
+  <ul id="cupcake-lst"></ul>
+
+  <form action="" id="cupcake-form">
+    <h2>Add a Cupcake</h2>
+    <label>
+      <span class="label">Flavor</span>
+      <input type="text" name="flavor" id="flavor" required>
+    </label>
+    <label>
+      <span class="label">Size</span>
+      <input type="text" name="size" id="size" required>
+    </label>
+    <label>
+      <span class="label">Rating</span>
+      <input type="number" name="rating" id="rating" min="1" max="10" required>
+    </label>
+    <label>
+      <span class="label">Image</span>
+      <input type="url" name="image" id="image">
+    </label>
+    <input type="submit" value="Add Cupcake">
+  </form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+    integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+  <script src="../static/app.js"></script>
+</body>
+</html>
