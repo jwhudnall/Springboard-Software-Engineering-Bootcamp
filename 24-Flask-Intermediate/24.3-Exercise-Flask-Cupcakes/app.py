@@ -24,7 +24,16 @@ def homepage():
 @app.route('/api/cupcakes')
 def display_all_cupcakes():
     '''Return information about all cupcakes in JSON format.'''
-    cupcakes = [c.serialize() for c in Cupcake.query.all()]
+
+    if bool(request.args):
+        print('TERM INCLUDED!')
+        term = request.args.get('term')
+        cupcakes = [c.serialize() for c in Cupcake.query.filter(
+            Cupcake.flavor.ilike(f"%{term}%")).all()]
+    else:
+        print('No Term')
+        cupcakes = [c.serialize() for c in Cupcake.query.all()]
+
     return jsonify(cupcakes=cupcakes)
 
 

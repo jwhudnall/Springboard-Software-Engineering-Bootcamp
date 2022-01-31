@@ -1,5 +1,6 @@
 const populateCupcakeList = async function() {
-	cupcakes = await getCupcakes();
+	// Refactor to accept a json response
+	const cupcakes = await getCupcakes();
 	for (let c of cupcakes) {
 		addCupcakeLi(c);
 	}
@@ -15,24 +16,43 @@ const getCupcakes = async function() {
 };
 
 const addCupcakeLi = function(c) {
-	$newLi = $(`<li>${c.flavor}</li>`);
+	const $newLi = $(`<li>${c.flavor}</li>`);
 	$newLi.attr('data-id', `${c.id}`);
 	$('#cupcake-lst').append($newLi);
 };
 
 const addCupcake = async function() {
-	url = '/api/cupcakes';
-	flavor = $('#flavor').val();
-	size = $('#size').val();
-	rating = $('#rating').val();
-	image = $('#image').val();
+	const url = '/api/cupcakes';
+	const flavor = $('#flavor').val();
+	const size = $('#size').val();
+	const rating = $('#rating').val();
+	const image = $('#image').val();
 	try {
-		res = await axios.post(url, { flavor, size, rating, image });
+		const res = await axios.post(url, { flavor, size, rating, image });
 		addCupcakeLi(res.cupcake);
 	} catch (e) {
 		alert('Something went wrong.');
 	}
 };
 
-populateCupcakeList();
-$('#cupcake-form').submit(addCupcake);
+const filterCupcakes = async function(e) {
+	e.preventDefault();
+	const term = $('#search-term').val();
+	const res = await axios.get('/api/cupcakes', {
+		params: {
+			term: term
+		}
+	});
+	console.dir(res);
+	$('#cupcake-lst').empty();
+
+	for (let c of res.data.cupcakes) {
+		addCupcakeLi(c);
+	}
+};
+
+$(document).ready(function() {
+	populateCupcakeList();
+	$('#cupcake-form').submit(addCupcake);
+	$('#search-form').on('submit', filterCupcakes);
+});

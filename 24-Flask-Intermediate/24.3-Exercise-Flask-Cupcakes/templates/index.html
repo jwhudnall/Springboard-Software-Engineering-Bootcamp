@@ -10,12 +10,24 @@
       display: block;
       margin: 5px;
     }
+
+    #cupcake-form {
+      border: 1px solid black;
+      max-width: 300px;
+      padding: 5px;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
   <h1>Cupcakes</h1>
   <ul id="cupcake-lst"></ul>
-
+  <!-- Search -->
+  <form id="search-form">
+    <input type="text" name="search-term" id="search-term" placeholder="Search Cupcakes">
+    <input type="submit">
+  </form>
+  <!-- Add Cupcake -->
   <form action="" id="cupcake-form">
     <h2>Add a Cupcake</h2>
     <label>
