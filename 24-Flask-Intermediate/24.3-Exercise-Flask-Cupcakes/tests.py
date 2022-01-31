@@ -83,6 +83,7 @@ class CupcakeViewsTestCase(TestCase):
                     "image": "http://test.com/cupcake.jpg"
                 }
             })
+            self.assertEqual(client.get('/api/cupcakes/4r5').status_code, 404)
 
     def test_create_cupcake(self):
         with app.test_client() as client:
@@ -105,8 +106,9 @@ class CupcakeViewsTestCase(TestCase):
                     "image": "http://test.com/cupcake2.jpg"
                 }
             })
-
             self.assertEqual(Cupcake.query.count(), 2)
+            self.assertEqual(client.post('/api/cupcakes/4r5',
+                             json=CUPCAKE_DATA_2).status_code, 404)
 
     def test_update_cupcake(self):
         with app.test_client() as client:
@@ -127,6 +129,8 @@ class CupcakeViewsTestCase(TestCase):
                     "image": "http://test.com/cupcake2.jpg"
                 }
             })
+            self.assertEqual(client.patch('/api/cupcakes/4r5',
+                             json=CUPCAKE_DATA_2).status_code, 404)
 
     def test_delete_cupcake(self):
         with app.test_client() as client:
