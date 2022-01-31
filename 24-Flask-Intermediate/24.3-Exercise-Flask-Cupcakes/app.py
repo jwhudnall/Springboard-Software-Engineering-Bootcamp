@@ -29,7 +29,7 @@ def display_single_cupcake(cupcake_id):
 
 @app.route('/api/cupcakes', methods=['POST'])
 def create_cupcake():
-    '''Create a new cupcake.'''
+    '''Create a new cupcake. Returns result in JSON format.'''
     flavor = request.json.get('flavor')
     size = request.json.get('size')
     rating = request.json.get('rating')
@@ -41,3 +41,15 @@ def create_cupcake():
     new_cupcake = Cupcake(flavor=flavor, size=size, rating=rating, image=image)
     response = add_and_jsonify(new_cupcake)
     return (response, 201)
+
+
+@app.route('/api/cupcakes/<int:cupcake_id>', methods=['PATCH'])
+def update_cupcake(cupcake_id):
+    '''Update a single cupcake. Returns result in JSON format'''
+    c = Cupcake.query.get_or_404(cupcake_id)
+    c.flavor = request.json.get('flavor', c.flavor)
+    c.size = request.json.get('size', c.size)
+    c.rating = request.json.get('rating', c.rating)
+    c.image = request.json.get('image', c.rating)
+    db.session.commit()
+    return jsonify(cupcake=c.serialize())
