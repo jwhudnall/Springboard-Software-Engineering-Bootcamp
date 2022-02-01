@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-primary justify-content-between ">
+    <div class="container">
+      <a href="/" class="navbar-brand text-light">Stupid Twitter</a>
+      <ul class="nav navbar-nav flex-row float-right">
+        <!-- <li class="nav-item">
+          <a class="nav-link pr-3 text-light" href="/logout">Logout</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link pr-3 text-light" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/register">Sign up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container" style="margin-top: 2em">
+    {% for category, msg in get_flashed_messages(with_categories=True) %}
+    <div class="alert alert-{{category}}">{{ msg }}</div>
+    {% endfor %}
+
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</body>
+
+</html>
