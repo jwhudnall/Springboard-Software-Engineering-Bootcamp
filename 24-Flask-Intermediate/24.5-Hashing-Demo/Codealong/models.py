@@ -12,6 +12,8 @@ def connect_db(app):
     db.app = app
     db.init_app(app)
 
+# Models Below:
+
 
 class User(db.Model):
 
@@ -31,3 +33,18 @@ class User(db.Model):
 
         # return instance of user w/username and hashed pwd
         return cls(username=username, password=hashed_utf8)
+
+    @classmethod
+    def authenticate(cls, username, pwd):
+        """Validate that user exists & password is correct.
+
+        Return user if valid; else return False.
+        """
+
+        u = User.query.filter_by(username=username).first()
+
+        if u and bcrypt.check_password_hash(u.password, pwd):
+            # return user instance
+            return u
+        else:
+            return False
