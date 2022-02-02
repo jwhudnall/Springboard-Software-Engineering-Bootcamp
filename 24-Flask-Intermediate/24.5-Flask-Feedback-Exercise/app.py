@@ -1,7 +1,8 @@
 from flask import Flask, render_template, redirect, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User
-from forms import RegisterUser, LoginUser
+from models import db, connect_db, User, Feedback
+from forms import RegisterUser, LoginUser, FeedbackForm
+from sqlalchemy.exc import IntegrityError
 from config import FLASK_KEY
 
 
@@ -19,7 +20,7 @@ toolbar = DebugToolbarExtension(app)
 
 @app.route('/')
 def home_page():
-    return redirect('/register')
+    return redirect('/login')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -34,8 +35,11 @@ def register_user():
             last_name=form.last_name.data
         )
         db.session.add(new_user)
-        # Add logic to prevent duplicate usernames
-        db.session.commit()
+        try:
+            db.session.commit()
+        except IntegrityError:
+            form.username.errors.append('Username already exists.')
+            return render_template('register.html', form=form)
         session['username'] = new_user.username
         flash('Account successfully registered.')
         return redirect('/secret')
@@ -54,7 +58,7 @@ def login_user():
             session['username'] = username
             return redirect(f'/users/{username}')
         else:
-            flash('Invalid credentials.')
+            flash('Account not found.')
             return redirect('/login')
 
     return render_template('login.html', form=form)
@@ -68,7 +72,8 @@ def user_details(username):
     user = User.query.get_or_404(username)
     cur_username = session.get('username')
     if user.username == cur_username:
-        return render_template('user-details.html', user=user)
+        feedback = user.feedback
+        return render_template('user-details.html', user=user, feedback=feedback)
     elif 'username' in session:
         return redirect(f'/users/{cur_username}')
 
@@ -76,9 +81,20 @@ def user_details(username):
     return redirect('/login')
 
 
-@app.route('/secret')
-def show_secret():
-    return render_template('secret.html')
+@app.route('/users/<username>/delete', methods=['POST'])
+def delete_user(username):
+    if 'username' not in session:
+        flash('You must be logged in.')
+        return redirect('/login')
+    user = User.query.get_or_404(username)
+    if user.username == session['username']:
+        db.session.delete(user)
+        db.session.commit()
+        session.pop('username')
+        flash('Account successfully deleted.')
+        return redirect('/')
+    flash('You don\'t have permission to do that')
+    return redirect('/')
 
 
 @app.route('/logout')
@@ -88,3 +104,72 @@ def logout_user():
         flash('Successfully logged out.')
         return redirect('/')
     return redirect('/')
+
+
+@app.route('/users/<username>/feedback/add', methods=['GET', 'POST'])
+def handle_feedback(username):
+    form = FeedbackForm()
+    if 'username' not in session:
+        flash('You must be logged in and authenticated to post feedback.')
+        return redirect('/')
+
+    elif session['username'] == username and form.validate_on_submit():
+        # Handle Post Request
+        title = form.title.data
+        content = form.content.data
+        new_fb = Feedback(title=title, content=content, username=username)
+        db.session.add(new_fb)
+        db.session.commit()
+        flash('Feedback added.')
+        return redirect(f'/users/{username}')
+
+    elif session['username'] == username:
+        # Handle GET request
+        return render_template('feedback-form.html', form=form)
+
+    else:
+        flash('You aren\'t authorized to do that.')
+        return redirect('/')
+
+
+@app.route('/feedback/<feedback_id>/update', methods=['GET', 'POST'])
+def update_feedback(feedback_id):
+    fb = Feedback.query.get_or_404(feedback_id)
+    form = FeedbackForm(obj=fb)
+
+    if 'username' not in session:
+        flash('You must be logged in and authenticated to post feedback.')
+        return redirect('/')
+
+    user = fb.user
+    if session['username'] == user.username and form.validate_on_submit():
+        # Handle POST request
+        fb.title = form.title.data
+        fb.content = form.content.data
+        db.session.commit()
+        return redirect(f'/users/{user.username}')
+
+    elif session['username'] == user.username:
+        # Handle GET request
+        return render_template('feedback-form.html', form=form)
+
+    else:
+        flash('You aren\'t authorized to do that.')
+        return redirect('/')
+
+
+@app.route('/feedback/<feedback_id>/delete', methods=['POST'])
+def delete_fb(feedback_id):
+    fb = Feedback.query.get_or_404(feedback_id)
+    username = fb.user.username
+    if 'username' not in session:
+        flash('You must be logged in and authenticated to do that.')
+        return redirect('/')
+    elif session['username'] == username:
+        db.session.delete(fb)
+        db.session.commit()
+        flash('Feedback Deleted.')
+        return redirect(f'/users/{username}')
+    else:
+        flash('You aren\'t authorized to do that.')
+        return redirect('/')

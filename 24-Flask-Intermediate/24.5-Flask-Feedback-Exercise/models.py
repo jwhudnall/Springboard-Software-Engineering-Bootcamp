@@ -30,7 +30,8 @@ class User(db.Model):
     @classmethod
     def authenticate(cls, username, password):
         '''Authenticate a User. Returns User instance, or False.'''
-        user = User.query.get_or_404(username)
+        # .first() used so app doesn't break if incorrect username
+        user = User.query.filter_by(username=username).first()
         if user and bcrypt.check_password_hash(user.password, password):
             return user
         else:
@@ -45,4 +46,4 @@ class Feedback(db.Model):
     content = db.Column(db.Text, nullable=False)
     username = db.Column(db.String(20), db.ForeignKey('users.username'))
 
-    user = db.relationship('User', backref='Feedback')
+    user = db.relationship('User', backref='feedback')
