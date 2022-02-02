@@ -36,6 +36,7 @@ def register_user():
         db.session.add(new_user)
         # Add logic to prevent duplicate usernames
         db.session.commit()
+        db.session['username'] = new_user.username
         flash('Account successfully registered.')
         return redirect('/secret')
     return render_template('register.html', form=form)
@@ -50,6 +51,7 @@ def login_user():
         user = User.authenticate(username, password)
         if user:
             flash('You have been logged in.')
+            session['username'] = username
             return redirect('/secret')
         else:
             flash('Invalid credentials.')
@@ -61,3 +63,12 @@ def login_user():
 @app.route('/secret')
 def show_secret():
     return render_template('secret.html')
+
+
+@app.route('/logout')
+def logout_user():
+    if session.get('username'):
+        session.pop('username')
+        flash('Successfully logged out.')
+        return redirect('/')
+    return redirect('/')
