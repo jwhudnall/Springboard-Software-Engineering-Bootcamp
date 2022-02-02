@@ -42,8 +42,12 @@ def register_user():
             return render_template('register.html', form=form)
         session['username'] = new_user.username
         flash('Account successfully registered.')
-        return redirect('/secret')
-    return render_template('register.html', form=form)
+        return redirect(f'/users/{new_user.username}')
+    elif 'username' in session:
+        username = session['username']
+        return redirect(f'/users/{username}')
+    else:
+        return render_template('register.html', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -60,8 +64,11 @@ def login_user():
         else:
             flash('Account not found.')
             return redirect('/login')
-
-    return render_template('login.html', form=form)
+    elif 'username' in session:
+        username = session['username']
+        return redirect(f'/users/{username}')
+    else:
+        return render_template('login.html', form=form)
 
 
 @app.route('/users/<username>')

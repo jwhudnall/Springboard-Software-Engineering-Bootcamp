@@ -19,7 +19,7 @@
     <button type="submit" formaction="/users/{{user.username}}/delete" formmethod="POST" class="float-right py-1 px-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-blue-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">Delete {{user.username}}</button>
   </form>
 </div>
-
+{% if feedback %}
 <div class="w-full max-w-sm mt-5 mx-auto p-2">
   <h2 class="text-xl text-center mt-3">{{user.username}}'s Feedback</h2>
   {% for f in feedback %}
@@ -36,5 +36,6 @@
   </article>
   {% endfor %}
 </div>
+{% endif %}
 
 {% endblock %}
