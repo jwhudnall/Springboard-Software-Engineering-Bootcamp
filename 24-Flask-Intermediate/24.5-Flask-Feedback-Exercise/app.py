@@ -10,7 +10,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///flask_feedback"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SECRET_KEY"] = FLASK_KEY
-app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
 
 
 connect_db(app)
@@ -36,7 +36,7 @@ def register_user():
         db.session.add(new_user)
         # Add logic to prevent duplicate usernames
         db.session.commit()
-        db.session['username'] = new_user.username
+        session['username'] = new_user.username
         flash('Account successfully registered.')
         return redirect('/secret')
     return render_template('register.html', form=form)
@@ -52,12 +52,28 @@ def login_user():
         if user:
             flash('You have been logged in.')
             session['username'] = username
-            return redirect('/secret')
+            return redirect(f'/users/{username}')
         else:
             flash('Invalid credentials.')
             return redirect('/login')
 
     return render_template('login.html', form=form)
+
+
+@app.route('/users/<username>')
+def user_details(username):
+    if 'username' not in session:
+        flash('Please Login')
+        return redirect('/login')
+    user = User.query.get_or_404(username)
+    cur_username = session.get('username')
+    if user.username == cur_username:
+        return render_template('user-details.html', user=user)
+    elif 'username' in session:
+        return redirect(f'/users/{cur_username}')
+
+    flash('You don\'t have permission to do that.')
+    return redirect('/login')
 
 
 @app.route('/secret')

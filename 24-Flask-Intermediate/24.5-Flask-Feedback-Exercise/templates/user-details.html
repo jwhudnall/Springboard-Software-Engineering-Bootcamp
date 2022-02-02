@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{user.username}} Details
+{% endblock %}
+
+
+{% block content %}
+<h1 class="text-3xl text-center mt-3">Welcome, {{user.username}}</h1>
+<div class="w-full max-w-sm mt-5 mx-auto border-solid border-2 border-black p-2">
+  <ul>
+    <li>Username: <span>{{user.username}}</span></li>
+    <li>Email <span>{{user.email}}</span></li>
+    <li>First Name <span>{{user.first_name}}</span></li>
+    <li>Last Name <span>{{user.last_name}}</span></li>
+  </ul>
+</div>
+
+{% endblock %}

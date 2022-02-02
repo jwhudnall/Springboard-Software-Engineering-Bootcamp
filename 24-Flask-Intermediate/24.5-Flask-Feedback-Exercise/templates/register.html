@@ -19,7 +19,7 @@ User Registration
       {{ field(class_="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
 
       {% for error in field.errors %}
-      <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">{{ error }}</div>
+      <div class="p-1 mb-4 text-sm text-red-500" role="alert">{{ error }}</div>
       {% endfor %}
     </p>
     {% endfor %}
