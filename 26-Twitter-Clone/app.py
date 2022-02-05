@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, flash, redirect, session, g
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import or_
+from werkzeug.exceptions import Unauthorized
 
 from forms import UserAddForm, LoginForm, MessageForm, EditProfileForm
 from models import db, connect_db, User, Message
@@ -346,12 +347,31 @@ def homepage():
         return render_template('home-anon.html')
 
 
+@app.route('/users/add_like/<int:msg_id>', methods=['POST'])
+def handle_like(msg_id):
+    """Logic to add or remove message from a the user's likes."""
+
+    if CURR_USER_KEY not in session or g.user.id != session[CURR_USER_KEY]:
+        raise Unauthorized()
+
+    msg = Message.query.get_or_404(msg_id)
+
+    if msg in g.user.likes:
+        g.user.likes.remove(msg)
+    else:
+        g.user.likes.append(msg)
+
+    db.session.add(g.user)
+    db.session.commit()
+    return redirect('/')
+
 ##############################################################################
 # Turn off all caching in Flask
 #   (useful for dev; in production, this kind of stuff is typically
 #   handled elsewhere)
 #
 # https://stackoverflow.com/questions/34066804/disabling-caching-in-flask
+
 
 @app.after_request
 def add_header(req):

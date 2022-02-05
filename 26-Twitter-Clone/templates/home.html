@@ -52,7 +52,7 @@
               <p>{{ msg.text }}</p>
             </div>
             <form method="POST" action="/users/add_like/{{ msg.id }}" id="messages-form">
-              <!-- If msg.user.id NOT g.user.id -->
+              <!-- Conditional icon display logic -->
               {% if msg.user.id != g.user.id  %}
                 <button class="
                   btn
