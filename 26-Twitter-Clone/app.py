@@ -160,6 +160,21 @@ def users_show(user_id):
     return render_template('users/show.html', user=user, messages=messages)
 
 
+@app.route('/users/<int:user_id>/likes')
+def show_likes(user_id):
+    """Show list of warblers this user likes."""
+
+    user = User.query.get_or_404(user_id)
+    liked_messages = [m.id for m in user.likes]
+    messages = (Message
+                .query
+                .filter(Message.id.in_(liked_messages))
+                .order_by(Message.timestamp.desc())
+                .all())
+
+    return render_template('users/likes.html', messages=messages, user=user)
+
+
 @app.route('/users/<int:user_id>/following')
 def show_following(user_id):
     """Show list of people this user is following."""
