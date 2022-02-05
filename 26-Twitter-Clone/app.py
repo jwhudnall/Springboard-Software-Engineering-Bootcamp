@@ -1,10 +1,11 @@
+from email import header
 import os
 
 from flask import Flask, render_template, request, flash, redirect, session, g
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
-from forms import UserAddForm, LoginForm, MessageForm
+from forms import UserAddForm, LoginForm, MessageForm, EditProfileForm
 from models import db, connect_db, User, Message
 
 CURR_USER_KEY = "curr_user"
@@ -215,6 +216,40 @@ def profile():
     """Update profile for current user."""
 
     # IMPLEMENT THIS
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/users")
+
+    user = User.query.get_or_404(g.user.id)
+    form = EditProfileForm(obj=user)
+
+    if form.validate_on_submit():
+        # handle POST request
+        username = form.username.data
+        email = form.email.data
+        image_url = form.image_url.data or None
+        header_image_url = form.header_image_url.data or None
+        bio = form.bio.data or None
+        password = form.password.data
+
+        if User.authenticate(user.username, password):
+            # reassign all fields EXCEPT pw
+            user.username = username
+            user.email = email
+            user.image_url = image_url
+            user.header_image_url = header_image_url
+            user.bio = bio
+
+            db.session.add(user)
+            db.session.commit()
+            flash('Profile Updated.', 'success')
+            return redirect(f'/users/{g.user.id}')
+
+        else:
+            flash('Incorrect password.', 'danger')
+            return redirect(f'/users/{g.user.id}')
+
+    return render_template('users/edit.html', form=form)
 
 
 @app.route('/users/delete', methods=["POST"])
