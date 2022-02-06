@@ -6,7 +6,6 @@
 
 
 from sqlalchemy.exc import IntegrityError, InvalidRequestError
-from app import app
 import os
 from unittest import TestCase
 
@@ -21,6 +20,7 @@ os.environ['DATABASE_URL'] = "postgresql:///warbler-test"
 
 
 # Now we can import app
+from app import app
 
 
 # Create our tables (we do this here, so we only create the tables
@@ -29,7 +29,7 @@ os.environ['DATABASE_URL'] = "postgresql:///warbler-test"
 
 
 class UserModelTestCase(TestCase):
-    """Test views for messages."""
+    """Test views for users."""
 
     def setUp(self):
         """Create test client, add sample data."""

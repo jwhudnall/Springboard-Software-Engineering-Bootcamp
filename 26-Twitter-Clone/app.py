@@ -80,7 +80,7 @@ def signup():
                 email=form.email.data,
                 image_url=form.image_url.data or User.image_url.default.arg,
             )
-            db.session.commit()
+            # db.session.commit()
 
         except IntegrityError:
             flash("Username already taken", 'danger')
@@ -147,6 +147,8 @@ def list_users():
 @app.route('/users/<int:user_id>')
 def users_show(user_id):
     """Show user profile."""
+    # if CURR_USER_KEY not in session or g.user.id != session[CURR_USER_KEY]:
+    #     raise Unauthorized()
 
     user = User.query.get_or_404(user_id)
 
