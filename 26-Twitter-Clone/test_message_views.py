@@ -26,7 +26,7 @@ from app import app, CURR_USER_KEY
 # once for all tests --- in each test, we'll delete the data
 # and create fresh new clean test data
 
-db.create_all()
+
 
 # Don't have WTForms use CSRF at all, since it's a pain to test
 
@@ -39,8 +39,8 @@ class MessageViewTestCase(TestCase):
     def setUp(self):
         """Create test client, add sample data."""
 
-        User.query.delete()
-        Message.query.delete()
+        db.drop_all()
+        db.create_all()
 
         self.client = app.test_client()
 
@@ -50,6 +50,10 @@ class MessageViewTestCase(TestCase):
                                     image_url=None)
 
         db.session.commit()
+
+    def tearDown(self) -> None:
+        db.session.rollback()
+        return super().tearDown()
 
     def test_add_message(self):
         """Can use add a message?"""

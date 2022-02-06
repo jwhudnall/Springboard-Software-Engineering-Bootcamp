@@ -49,7 +49,9 @@ class MessageModelTestCase(TestCase):
 
     def tearDown(self):
         """Clean up any fouled transaction."""
+
         db.session.rollback()
+        return super().tearDown()
 
     def test_message_model(self):
         """Does basic model work?"""
