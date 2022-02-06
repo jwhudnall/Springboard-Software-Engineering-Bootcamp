@@ -252,15 +252,20 @@ def profile():
         password = form.password.data
 
         if User.authenticate(user.username, password):
-            # reassign all fields EXCEPT pw
-            user.username = username
-            user.email = email
-            user.image_url = image_url
-            user.header_image_url = header_image_url
-            user.bio = bio
+            try:
+                user.username = username
+                user.email = email
+                user.image_url = image_url
+                user.header_image_url = header_image_url
+                user.bio = bio
 
-            db.session.add(user)
-            db.session.commit()
+                db.session.add(user)
+                db.session.commit()
+            except IntegrityError:
+                form.username.errors = ['already exists.']
+                db.session.rollback()
+                return render_template('users/edit.html', form=form, user=user)
+
             flash('Profile Updated.', 'success')
             return redirect(f'/users/{g.user.id}')
 
