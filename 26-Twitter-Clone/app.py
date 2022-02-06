@@ -24,7 +24,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
-toolbar = DebugToolbarExtension(app)
+
+# toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
@@ -267,7 +268,7 @@ def profile():
             flash('Incorrect password.', 'danger')
             return redirect(f'/users/{g.user.id}')
 
-    return render_template('users/edit.html', form=form)
+    return render_template('users/edit.html', form=form, user=user)
 
 
 @app.route('/users/delete', methods=["POST"])
