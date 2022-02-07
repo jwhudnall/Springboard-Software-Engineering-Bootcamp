@@ -112,3 +112,9 @@ Each route is tested, as are many of the functions. Some functions that largely 
 ###  Assignment Details
 - I used TailwindCSS for styling, which made the incorporation of a dark/light theme seamless. Switching themes is currently dedicated to OS settings.
 - I believe the incorporation of the initial API check to useful in avoiding user headaches, but does come at the cost of additional time loading the resource (and testing). The single-line call can be commented out to avoid this overhead.
+
+___
+## Section 26 - **Warbler - a Twitter Clone**
+![Warbler Home](https://github.com/jwhudnall/Springboard-Software-Engineering-Bootcamp/blob/main/26-Twitter-Clone/static/images/warbler-home.png)
+
+This is a Twitter-like platform where you can create an account, message and interact with other users. This codebase was largely provided as part of the project, wherein we were tasked with implementing additional features, testing, and fixing any bugs along the way.
