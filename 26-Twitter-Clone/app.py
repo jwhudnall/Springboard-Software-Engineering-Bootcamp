@@ -2,7 +2,7 @@ from email import header
 from operator import or_
 import os
 
-from flask import Flask, render_template, request, flash, redirect, session, g
+from flask import Flask, render_template, request, flash, redirect, session, g, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import or_
@@ -315,7 +315,7 @@ def messages_add():
         db.session.commit()
 
         return redirect(f"/users/{g.user.id}")
-
+    print('Hit GET route.')
     return render_template('messages/new.html', form=form)
 
 
