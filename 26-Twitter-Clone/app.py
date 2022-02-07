@@ -57,6 +57,10 @@ def do_logout():
     if CURR_USER_KEY in session:
         del session[CURR_USER_KEY]
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -315,7 +319,6 @@ def messages_add():
         db.session.commit()
 
         return redirect(f"/users/{g.user.id}")
-    print('Hit GET route.')
     return render_template('messages/new.html', form=form)
 
 
