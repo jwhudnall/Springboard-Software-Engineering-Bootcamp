@@ -1,0 +1,17 @@
+body {
+  background-color: green;
+}
+#cards {
+  position: relative;
+  margin: 10rem;
+  padding: 2rem;
+}
+
+.card {
+  position: absolute;
+}
+
+button {
+  margin: 1em auto;
+  display: block;
+}
