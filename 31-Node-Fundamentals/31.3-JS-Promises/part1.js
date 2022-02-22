@@ -24,3 +24,19 @@ const getNumFacts2 = async function () {
   }
 };
 getNumFacts2();
+
+const getNumFacts3 = async function () {
+  const factContainer = document.querySelector("#factContainer");
+  const baseURL = "http://numbersapi.com";
+  let favNum3 = 4;
+  const favNumberFacts = await Promise.all([
+    axios.get(`${baseURL}/${favNum3}?json`),
+    axios.get(`${baseURL}/${favNum3}?json`),
+    axios.get(`${baseURL}/${favNum3}?json`),
+    axios.get(`${baseURL}/${favNum3}?json`),
+  ]);
+  favNumberFacts.forEach((data) => {
+    addToPage(data.data.text, "li", factContainer);
+  });
+};
+getNumFacts3();
