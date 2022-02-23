@@ -15,41 +15,37 @@ class MarkovMachine {
    *  {"the": ["cat", "hat"], "cat": ["in"], "in": ["the"], "hat": [null]} */
 
   makeChains() {
-    // TODO
-    const unique = [...new Set(this.words)];
-    const chain = unique.reduce((acc, next) => {
-      if (!(next in acc)) {
-        acc[next] = [];
-      }
-      return acc;
-    }, {});
+    const chains = new Map();
+
     for (let i = 0; i < this.words.length; i++) {
       const word = this.words[i];
-      const next = this.words[i + 1];
-      if (next !== undefined) {
-        chain[word].push(next);
+      const next = this.words[i + 1] || null;
+      if (chains.has(word)) {
+        chains.get(word).push(next);
       } else {
-        chain[word].push(null);
+        chains.set(word, [next]);
       }
     }
-    return chain;
+    return chains;
   }
 
+  static choice(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
   /** return random text from chains */
 
   makeText(numWords = 100) {
-    // TODO
     let words = 0;
     let text = "";
-    // Pick a random start word
-    const randStart = this.words[Math.floor(Math.random() * this.words.length)];
+    const keys = Array.from(this.chains.keys());
+    const randStart = MarkovMachine.choice(keys);
     let curWord = randStart;
     text += `${curWord}`;
     words++;
 
     while (words <= numWords) {
-      const choices = this.chains[curWord];
-      const next = choices[Math.floor(Math.random() * choices.length)];
+      const choices = this.chains.get(curWord);
+      const next = MarkovMachine.choice(choices);
       if (next !== null) {
         text += ` ${next}`;
         words++;
