@@ -2,12 +2,13 @@ const express = require("express");
 const ExpressError = require("./expressError");
 const userRoutes = require("./userRoutes");
 const middleware = require("./middleware");
+const morgan = require("morgan");
 
 const app = express();
 
 app.use(express.json());
-
-app.use(middleware.logger);
+app.use(morgan("dev"));
+// app.use(middleware.logger);
 
 app.use("/users", userRoutes);
 app.get("/favicon.ico", (req, res) => res.sendStatus(204)); // no content code
