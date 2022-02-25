@@ -34,6 +34,25 @@ app.get("/mode", (req, res) => {
   return res.json(calcResponse("mode", result));
 });
 
+app.get("/all", (req, res) => {
+  const { nums } = req.query;
+  const numsOrErrorMsg = handleInput(nums);
+  if (typeof numsOrErrorMsg === "object" && !Array.isArray(numsOrErrorMsg)) {
+    return res.status(400).json(numsOrErrorMsg);
+  }
+  const calcMedian = median(numsOrErrorMsg);
+  const calcMode = mode(numsOrErrorMsg);
+  const calcMean = mean(numsOrErrorMsg);
+  return res.json({
+    response: {
+      operation: "all",
+      mean: calcMean,
+      median: calcMedian,
+      mode: calcMode,
+    },
+  });
+});
+
 app.listen(3000, () => {
   console.log("Port running on port 3000");
 });
