@@ -16,11 +16,7 @@ function mean(lst) {
 
 function mode(lst) {
   const counts = lst.reduce((acc, next) => {
-    if (acc[next] === undefined) {
-      acc[next] = 1;
-    } else {
-      acc[next] = acc[next] + 1;
-    }
+    acc[next] = (acc[next] || 0) + 1;
     return acc;
   }, {});
   const results = Object.entries(counts).sort((a, b) => b[1] - a[1]);
@@ -39,7 +35,6 @@ function calcResponse(operation, result) {
 function handleInput(input) {
   // Returns object with error message if error, else split numList.
   if (!input) {
-    console.log("Input is undefined!");
     return { error: "'nums' input is required." };
   }
   const numList = input
@@ -47,10 +42,8 @@ function handleInput(input) {
     .split(",")
     .map((n) => parseInt(n));
   if (numList.includes(NaN)) {
-    console.log("Input has invalid character!");
     return { error: "All 'nums' values must be numbers." };
   }
-  console.log(`Input is valid. Value: ${numList}`);
   return numList;
 }
 
