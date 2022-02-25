@@ -12,6 +12,16 @@ app.use(middleware.logger);
 app.use("/users", userRoutes);
 app.get("/favicon.ico", (req, res) => res.sendStatus(204)); // no content code
 
+app.get("/secret", middleware.checkForPassword, (req, res, next) => {
+  return res.send("Sending <3 Your Way!");
+});
+
+app.get("/private", middleware.checkForPassword, (req, res, next) => {
+  return res.send(
+    "Private Email: user@gmail.com. Message will now self-destruct..."
+  );
+});
+
 // 404 Handler
 app.use((req, res) => {
   return new ExpressError("Not Found!", 404);
