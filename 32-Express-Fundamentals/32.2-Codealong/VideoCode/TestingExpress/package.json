@@ -1,5 +1,5 @@
 {
-  "name": "32.2-codealong",
+  "name": "TestingExpress",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,10 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3",
-    "morgan": "^1.10.0"
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "supertest": "^6.2.2"
+    "supertest": "^4.0.2"
   }
 }
