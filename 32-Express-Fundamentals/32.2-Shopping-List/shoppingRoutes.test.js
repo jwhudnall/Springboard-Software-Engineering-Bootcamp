@@ -90,7 +90,6 @@ describe("/DELETE /items/:name", () => {
     expect(res.body).toHaveProperty("error");
   });
   test("Successfully deletes existing item", async () => {
-    // console.log(`Items: ${JSON.stringify(ITEMS)}`);
     const res = await request(app).delete("/items/ipad");
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty("message");
