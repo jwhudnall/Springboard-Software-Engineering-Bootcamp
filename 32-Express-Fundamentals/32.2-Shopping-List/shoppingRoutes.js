@@ -19,7 +19,19 @@ router.post("/", (req, res, next) => {
     }
     const newItem = { name: req.body.name, price: req.body.price };
     ITEMS.push(newItem);
-    return res.json({ added: newItem });
+    return res.status(201).json({ added: newItem });
+  } catch (e) {
+    return next(e);
+  }
+});
+
+router.get("/:name", (req, res, next) => {
+  try {
+    const item = ITEMS.find((i) => i.name === req.params.name);
+    if (!item) {
+      throw new ExpressError("Item not found", 400);
+    }
+    return res.json(item);
   } catch (e) {
     return next(e);
   }
