@@ -1,6 +1,3 @@
-global.items = [
-  { name: "ipad", price: 499 },
-  { name: "tv", price: 299 },
-];
+global.items = [];
 
 module.exports = items;
