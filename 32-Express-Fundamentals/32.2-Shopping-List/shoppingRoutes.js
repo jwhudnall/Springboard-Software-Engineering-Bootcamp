@@ -37,4 +37,20 @@ router.get("/:name", (req, res, next) => {
   }
 });
 
+router.patch("/:name", (req, res, next) => {
+  try {
+    const i = ITEMS.findIndex((i) => i.name === req.params.name);
+    console.log(`Index: ${i}`);
+    if (i === -1) {
+      throw new ExpressError("Item not found", 400);
+    }
+    const item = ITEMS[i];
+    item.name = req.body.name || item.name;
+    item.price = req.body.price || item.price;
+    return res.json({ updated: item });
+  } catch (e) {
+    return next(e);
+  }
+});
+
 module.exports = router;
