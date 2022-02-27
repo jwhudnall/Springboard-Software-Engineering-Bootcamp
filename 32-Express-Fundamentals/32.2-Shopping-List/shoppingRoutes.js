@@ -43,12 +43,6 @@ router.patch("/:name", (req, res, next) => {
     if (idx === -1) {
       throw new ExpressError("Item not found", 400);
     }
-    // if (!req.body.name && !req.body.price) {
-    //   throw new ExpressError(
-    //     "Request requires one or both of the following keys: name, price.",
-    //     400
-    //   );
-    // }
     const item = ITEMS[idx];
     item.name = req.body.name || item.name;
     item.price = req.body.price || item.price;
