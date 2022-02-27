@@ -39,15 +39,33 @@ router.get("/:name", (req, res, next) => {
 
 router.patch("/:name", (req, res, next) => {
   try {
-    const i = ITEMS.findIndex((i) => i.name === req.params.name);
-    console.log(`Index: ${i}`);
-    if (i === -1) {
+    const idx = ITEMS.findIndex((i) => i.name === req.params.name);
+    if (idx === -1) {
       throw new ExpressError("Item not found", 400);
     }
-    const item = ITEMS[i];
+    if (!req.body.name && !req.body.price) {
+      throw new ExpressError(
+        "Request requires one or both of the following keys: name, price.",
+        400
+      );
+    }
+    const item = ITEMS[idx];
     item.name = req.body.name || item.name;
     item.price = req.body.price || item.price;
     return res.json({ updated: item });
+  } catch (e) {
+    return next(e);
+  }
+});
+
+router.delete("/:name", (req, res, next) => {
+  try {
+    const idx = ITEMS.findIndex((i) => i.name === req.params.name);
+    if (idx === -1) {
+      throw new ExpressError("Item not found", 400);
+    }
+    ITEMS.splice(idx, 1);
+    return res.json({ message: "Deleted" });
   } catch (e) {
     return next(e);
   }
