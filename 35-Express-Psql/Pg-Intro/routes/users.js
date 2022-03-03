@@ -34,4 +34,18 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const { name, type } = req.body;
+    const { id } = req.params;
+    const results = await db.query(
+      "UPDATE users SET name=$1, type=$2 WHERE id=$3 RETURNING *",
+      [name, type, id]
+    );
+    return res.send(results.rows[0]);
+  } catch (e) {
+    return next(e);
+  }
+});
+
 module.exports = router;
