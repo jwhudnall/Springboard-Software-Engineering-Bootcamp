@@ -42,7 +42,7 @@ router.post("/", async (req, res, next) => {
       "INSERT INTO users (name, type) VALUES ($1, $2) RETURNING *",
       [name, type]
     );
-    return res.status(201).json(results.rows);
+    return res.status(201).json({ user: results.rows[0] });
   } catch (e) {
     return next(e);
   }
@@ -56,7 +56,10 @@ router.patch("/:id", async (req, res, next) => {
       "UPDATE users SET name=$1, type=$2 WHERE id=$3 RETURNING *",
       [name, type, id]
     );
-    return res.send(results.rows[0]);
+    if (results.rows.length === 0) {
+      throw new ExpressError(`Invalid user id: ${id}`, 404);
+    }
+    return res.send({ user: results.rows[0] });
   } catch (e) {
     return next(e);
   }
@@ -66,6 +69,9 @@ router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const results = await db.query("DELETE FROM users WHERE id = $1", [id]);
+    if (results.rowCount === 0) {
+      throw new ExpressError(`Invalid user id: ${id}`, 404);
+    }
     return res.json({ msg: `User with id ${id} Deleted.` });
   } catch (e) {
     return next(e);
