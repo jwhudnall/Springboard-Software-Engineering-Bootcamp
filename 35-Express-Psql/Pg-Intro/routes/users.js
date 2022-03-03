@@ -6,7 +6,17 @@ const ExpressError = require("../expressError");
 router.get("/", async (req, res, next) => {
   try {
     const results = await db.query(`SELECT * FROM users`);
-    return res.json(results.rows);
+    return res.json({ users: results.rows });
+  } catch (e) {
+    return next(e);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const results = await db.query("SELECT * FROM users WHERE id = $1", [id]);
+    return res.send({ user: results.rows[0] });
   } catch (e) {
     return next(e);
   }
