@@ -16,6 +16,9 @@ router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const results = await db.query("SELECT * FROM users WHERE id = $1", [id]);
+    if (results.rows.length === 0) {
+      throw new ExpressError(`Invalid user id: ${id}`, 404);
+    }
     return res.send({ user: results.rows[0] });
   } catch (e) {
     return next(e);
