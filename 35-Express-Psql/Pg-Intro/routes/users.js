@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
+const ExpressError = require("../expressError");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -43,6 +44,16 @@ router.patch("/:id", async (req, res, next) => {
       [name, type, id]
     );
     return res.send(results.rows[0]);
+  } catch (e) {
+    return next(e);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const results = await db.query("DELETE FROM users WHERE id = $1", [id]);
+    return res.json({ msg: `User with id ${id} Deleted.` });
   } catch (e) {
     return next(e);
   }
