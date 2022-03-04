@@ -33,7 +33,7 @@ router.post("/", async (req, res, next) => {
     const { code, name, description } = req.body;
     if ([code, name, description].some((el) => Boolean(el) === false)) {
       throw new ExpressError(
-        "Request body requires 'code', 'name' and 'description' arguments",
+        "Request body requires 'code', 'name' and 'description' arguments.",
         400
       );
     }
@@ -47,13 +47,14 @@ router.post("/", async (req, res, next) => {
     return next(e);
   }
 });
+
 router.put("/:code", async (req, res, next) => {
   try {
     const { code } = req.params;
     const { name, description } = req.body;
     if (!name || !description) {
       throw new ExpressError(
-        "Request body requires 'name' and 'description' arguments",
+        "Request body requires 'name' and 'description' arguments.",
         400
       );
     }
@@ -62,9 +63,24 @@ router.put("/:code", async (req, res, next) => {
       [name, description, code]
     );
     if (results.rowCount === 0) {
-      throw new ExpressError(`Company with code '${code}' not found`, 404);
+      throw new ExpressError(`Company with code '${code}' not found.`, 404);
     }
     return res.json({ company: results.rows[0] });
+  } catch (e) {
+    return next(e);
+  }
+});
+
+router.delete("/:code", async (req, res, next) => {
+  try {
+    const { code } = req.params;
+    const results = await db.query("DELETE FROM companies WHERE code=$1", [
+      code,
+    ]);
+    if (results.rowCount === 0) {
+      throw new ExpressError(`Invalid company code: ${code}.`, 404);
+    }
+    return res.json({ msg: `Company with code '${code}' deleted.` });
   } catch (e) {
     return next(e);
   }
