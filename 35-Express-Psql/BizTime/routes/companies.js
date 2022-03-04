@@ -28,4 +28,24 @@ router.get("/:code", async (req, res, next) => {
   }
 });
 
+router.post("/", async (req, res, next) => {
+  try {
+    const { code, name, description } = req.body;
+    if ([code, name, description].some((el) => Boolean(el) === false)) {
+      throw new ExpressError(
+        "Request body requires 'code', 'name' and 'description' arguments",
+        400
+      );
+    }
+    const results = await db.query(
+      "INSERT INTO companies (code, name, description) VALUES ($1, $2, $3)",
+      [code, name, description]
+    );
+    debugger;
+    return res.status(201).json({ company: results.rows[0] });
+  } catch (e) {
+    return next(e);
+  }
+});
+
 module.exports = router;
