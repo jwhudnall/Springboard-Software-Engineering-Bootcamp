@@ -38,11 +38,33 @@ router.post("/", async (req, res, next) => {
       );
     }
     const results = await db.query(
-      "INSERT INTO companies (code, name, description) VALUES ($1, $2, $3)",
+      "INSERT INTO companies (code, name, description) VALUES ($1, $2, $3) RETURNING code, name, description",
       [code, name, description]
     );
     debugger;
     return res.status(201).json({ company: results.rows[0] });
+  } catch (e) {
+    return next(e);
+  }
+});
+router.put("/:code", async (req, res, next) => {
+  try {
+    const { code } = req.params;
+    const { name, description } = req.body;
+    if (!name || !description) {
+      throw new ExpressError(
+        "Request body requires 'name' and 'description' arguments",
+        400
+      );
+    }
+    const results = await db.query(
+      `UPDATE companies SET name=$1, description=$2 WHERE code=$3 RETURNING code, name, description`,
+      [name, description, code]
+    );
+    if (results.rowCount === 0) {
+      throw new ExpressError(`Company with code '${code}' not found`, 404);
+    }
+    return res.json({ company: results.rows[0] });
   } catch (e) {
     return next(e);
   }
