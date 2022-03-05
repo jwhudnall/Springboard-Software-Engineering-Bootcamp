@@ -34,4 +34,27 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.post("/", async (req, res, next) => {
+  try {
+    const { comp_code, amt } = req.body;
+    const company = await db.query("SELECT code FROM companies WHERE code=$1", [comp_code]);
+    if (company.rowCount === 0) {
+      throw new ExpressError(`Company code '${comp_code}' does not exist.`, 400);
+    }
+    if (!comp_code || !amt) {
+      throw new ExpressError("Request body requires 'comp_code' and 'amt' arguments.", 400);
+    }
+    if (isNaN(parseInt(amt))) {
+      throw new ExpressError("amt should have a numerical value", 400);
+    }
+    const results = await db.query(
+      "INSERT INTO invoices (comp_code, amt) VALUES ($1, $2) RETURNING id, comp_code, amt, paid, add_date, paid_date",
+      [comp_code, amt]
+    );
+    return res.status(201).json({ invoice: results.rows[0] });
+  } catch (e) {
+    return next(e);
+  }
+});
+
 module.exports = router;

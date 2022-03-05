@@ -15,10 +15,9 @@ router.get("/", async (req, res, next) => {
 router.get("/:code", async (req, res, next) => {
   try {
     const { code } = req.params;
-    const results = await db.query(
-      "SELECT code, name, description FROM companies WHERE code=$1",
-      [code]
-    );
+    const results = await db.query("SELECT code, name, description FROM companies WHERE code=$1", [
+      code
+    ]);
     if (results.rowCount === 0) {
       throw new ExpressError(`Invalid company code: ${code}`, 404);
     }
@@ -41,7 +40,6 @@ router.post("/", async (req, res, next) => {
       "INSERT INTO companies (code, name, description) VALUES ($1, $2, $3) RETURNING code, name, description",
       [code, name, description]
     );
-    debugger;
     return res.status(201).json({ company: results.rows[0] });
   } catch (e) {
     return next(e);
@@ -53,10 +51,7 @@ router.put("/:code", async (req, res, next) => {
     const { code } = req.params;
     const { name, description } = req.body;
     if (!name || !description) {
-      throw new ExpressError(
-        "Request body requires 'name' and 'description' arguments.",
-        400
-      );
+      throw new ExpressError("Request body requires 'name' and 'description' arguments.", 400);
     }
     const results = await db.query(
       `UPDATE companies SET name=$1, description=$2 WHERE code=$3 RETURNING code, name, description`,
@@ -74,9 +69,7 @@ router.put("/:code", async (req, res, next) => {
 router.delete("/:code", async (req, res, next) => {
   try {
     const { code } = req.params;
-    const results = await db.query("DELETE FROM companies WHERE code=$1", [
-      code,
-    ]);
+    const results = await db.query("DELETE FROM companies WHERE code=$1", [code]);
     if (results.rowCount === 0) {
       throw new ExpressError(`Invalid company code: ${code}.`, 404);
     }
