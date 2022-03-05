@@ -15,13 +15,16 @@ router.get("/", async (req, res, next) => {
 router.get("/:code", async (req, res, next) => {
   try {
     const { code } = req.params;
-    const results = await db.query("SELECT code, name, description FROM companies WHERE code=$1", [
-      code
-    ]);
-    if (results.rowCount === 0) {
+    const companies = await db.query(
+      "SELECT code, name, description FROM companies WHERE code=$1",
+      [code]
+    );
+    const invoices = await db.query("SELECT * FROM invoices WHERE comp_code=$1", [code]);
+    if (companies.rowCount === 0) {
       throw new ExpressError(`Invalid company code: ${code}`, 404);
     }
-    return res.json({ company: results.rows[0] });
+    const { name, description } = companies.rows[0];
+    return res.json({ company: { code, name, description, invoices: invoices.rows } });
   } catch (e) {
     return next(e);
   }
