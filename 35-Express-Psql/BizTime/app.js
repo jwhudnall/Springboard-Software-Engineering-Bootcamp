@@ -5,10 +5,12 @@ const app = express();
 const ExpressError = require("./expressError");
 const companyRoutes = require("./routes/companies");
 const invoiceRoutes = require("./routes/invoices");
+const industriesRoutes = require("./routes/industries");
 
 app.use(express.json());
 app.use("/companies", companyRoutes);
 app.use("/invoices", invoiceRoutes);
+app.use("/industries", industriesRoutes);
 
 /** 404 handler */
 
@@ -24,7 +26,7 @@ app.use((err, req, res, next) => {
 
   return res.status(status).json({
     error: err.message,
-    status: status,
+    status: status
   });
 });
 
