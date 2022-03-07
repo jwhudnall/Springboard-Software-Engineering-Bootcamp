@@ -97,8 +97,10 @@ describe("POST /invoices", () => {
 
 // PUT /invoices/:id
 describe("PUT /invoices/:id", () => {
-  test("Update an existing invoice", async () => {
-    const res = await request(app).put(`/invoices/${testInvoice.id}`).send({ amt: 300 });
+  test("Update an existing invoice (paid status unchanged)", async () => {
+    const res = await request(app)
+      .put(`/invoices/${testInvoice.id}`)
+      .send({ amt: 300, paid: false });
     expect(res.statusCode).toBe(200);
     expect(res.body).toEqual({
       invoice: {
@@ -108,6 +110,22 @@ describe("PUT /invoices/:id", () => {
         paid: false,
         add_date: expect.any(String),
         paid_date: null
+      }
+    });
+  });
+  test("Update an existing invoice (paid status changed)", async () => {
+    const res = await request(app)
+      .put(`/invoices/${testInvoice.id}`)
+      .send({ amt: 300, paid: true });
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({
+      invoice: {
+        id: expect.any(Number),
+        comp_code: "tesla",
+        amt: 300,
+        paid: true,
+        add_date: expect.any(String),
+        paid_date: expect.any(String)
       }
     });
   });

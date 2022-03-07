@@ -60,11 +60,35 @@ router.post("/", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const id = parseInt(req.params.id);
-    const amt = parseInt(req.body.amt);
-    if (!amt) throw new ExpressError("Request body requires 'amt' argument", 400);
+    let amt = parseInt(req.body.amt);
+    let { paid } = req.body;
+    let paid_date;
+    if (!amt || paid === "undefined") {
+      throw new ExpressError("Request body requires 'amt' and 'paid' arguments", 400);
+    }
     if (isNaN(parseInt(amt))) throw new ExpressError("amt should have a numerical value", 400);
-    const results = await db.query("UPDATE invoices SET amt=$1 WHERE id=$2 RETURNING *", [amt, id]);
-    if (results.rowCount === 0) throw new ExpressError(`Invoice with id ${id} not found`, 404);
+    const invoiceBefore = await db.query("SELECT * FROM invoices WHERE id=$1", [id]);
+    if (invoiceBefore.rowCount === 0) {
+      throw new ExpressError(`Invoice with id ${id} not found`, 404);
+    }
+    const invoicePaidDate = invoiceBefore.rows[0].paid_date;
+
+    if (!invoicePaidDate && paid) {
+      paid_date = new Date();
+    } else if (!paid) {
+      paid_date = null;
+    } else {
+      paid_date = invoicePaidDate;
+    }
+
+    const results = await db.query(
+      `UPDATE invoices
+        SET amt=$1, paid=$2, paid_date=$3
+        WHERE id=$4
+        RETURNING id, comp_code, amt, paid, add_date, paid_date`,
+      [amt, paid, paid_date, id]
+    );
+
     return res.json({ invoice: results.rows[0] });
   } catch (e) {
     return next(e);
