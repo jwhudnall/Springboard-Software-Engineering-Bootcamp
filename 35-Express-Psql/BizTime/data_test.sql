@@ -5,6 +5,7 @@ CREATE DATABASE biztime_test;
 
 DROP TABLE IF EXISTS invoices;
 DROP TABLE IF EXISTS companies;
+DROP TABLE IF EXISTS companies_industries;
 
 CREATE TABLE companies (
     code text PRIMARY KEY,
@@ -31,3 +32,20 @@ INSERT INTO invoices (comp_Code, amt, paid, paid_date)
          ('apple', 200, false, null),
          ('apple', 300, true, '2018-01-01'),
          ('ibm', 400, false, null);
+
+CREATE TABLE industries (
+  code text PRIMARY KEY,
+  industry text UNIQUE NOT NULL
+);
+
+CREATE TABLE companies_industries (
+  company_code text NOT NULL REFERENCES companies,
+  industry_code text NOT NULL REFERENCES industries,
+  PRIMARY KEY(company_code, industry_code)
+);
+
+INSERT INTO industries
+  VALUES ('tech', 'Technology'), ('staples', 'Consumer Staples');
+
+INSERT INTO companies_industries
+VALUES ('apple', 'tech'), ('ibm', 'tech'), ('ibm', 'staples');
