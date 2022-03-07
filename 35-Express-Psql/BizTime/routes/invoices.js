@@ -62,6 +62,7 @@ router.put("/:id", async (req, res, next) => {
     const id = parseInt(req.params.id);
     const amt = parseInt(req.body.amt);
     if (!amt) throw new ExpressError("Request body requires 'amt' argument", 400);
+    if (isNaN(parseInt(amt))) throw new ExpressError("amt should have a numerical value", 400);
     const results = await db.query("UPDATE invoices SET amt=$1 WHERE id=$2 RETURNING *", [amt, id]);
     if (results.rowCount === 0) throw new ExpressError(`Invoice with id ${id} not found`, 404);
     return res.json({ invoice: results.rows[0] });

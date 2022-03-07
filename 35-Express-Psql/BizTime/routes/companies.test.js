@@ -93,11 +93,17 @@ describe("PUT /companies/:code", () => {
       company: { code: "tesla", name: "teslaMotors", description: "Electric Cars." }
     });
   });
-  test("Invalid company code throw 404 error", async () => {
+  test("Invalid company code throws 404 error", async () => {
     const res = await request(app)
       .put("/companies/a1jr1")
       .send({ name: "teslaMotors", description: "Electric Cars." });
     expect(res.statusCode).toBe(404);
+    expect(res.body).toHaveProperty("error");
+    expect(res.body).toHaveProperty("status");
+  });
+  test("Missing request arguments throws 400 error", async () => {
+    const res = await request(app).put("/companies/tesla").send({ description: "Electric Cars." });
+    expect(res.statusCode).toBe(400);
     expect(res.body).toHaveProperty("error");
     expect(res.body).toHaveProperty("status");
   });
