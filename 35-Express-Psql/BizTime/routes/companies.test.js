@@ -57,7 +57,7 @@ describe("POST /companies", () => {
   test("Add a new company", async () => {
     const res = await request(app)
       .post("/companies")
-      .send({ code: "apple", name: "Apple", description: "Apple Computers." });
+      .send({ name: "Apple", description: "Apple Computers." });
     const companies = await db.query("SELECT * FROM companies");
     expect(res.statusCode).toBe(201);
     expect(companies.rowCount).toBe(2);
@@ -66,19 +66,11 @@ describe("POST /companies", () => {
     });
   });
   test("Request bodies missing 'name' result in status 400 error", async () => {
-    const res = await request(app)
-      .post("/companies")
-      .send({ code: "apple", description: "Apple Computers." });
-    expect(res.statusCode).toBe(400);
-  });
-  test("Request bodies missing 'code' result in status 400 error", async () => {
-    const res = await request(app)
-      .post("/companies")
-      .send({ name: "Apple", description: "Apple Computers." });
+    const res = await request(app).post("/companies").send({ description: "Apple Computers." });
     expect(res.statusCode).toBe(400);
   });
   test("Request bodies missing 'description' result in status 400 error", async () => {
-    const res = await request(app).post("/companies").send({ code: "apple", name: "Apple" });
+    const res = await request(app).post("/companies").send({ name: "Apple" });
     expect(res.statusCode).toBe(400);
   });
 });
