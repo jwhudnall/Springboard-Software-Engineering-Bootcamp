@@ -15,6 +15,44 @@ class Reservation {
     this.notes = notes;
   }
 
+  set startAt(date) {
+    if (date instanceof Date && !isNaN(date)) {
+      this._startAt = date;
+    } else {
+      throw new Error("Not a valid date.");
+    }
+  }
+
+  get startAt() {
+    return this._startAt;
+  }
+
+  set notes(val) {
+    this._notes = val || "";
+  }
+
+  get notes() {
+    return this._notes;
+  }
+
+  set numGuests(n) {
+    if (n < 1) throw new Error("Must have at least 1 guest.");
+    this._numGuests = n;
+  }
+
+  get numGuests() {
+    return this._numGuests;
+  }
+
+  set customerId(val) {
+    if (this._customerId && this._customerId !== val) throw new Error("Cannot change customer ID");
+    this._customerId = val;
+  }
+
+  get customerId() {
+    return this._customerId;
+  }
+
   /** formatter for startAt */
 
   getformattedStartAt() {

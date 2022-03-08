@@ -15,7 +15,15 @@ class Customer {
     this.reservationCount = reservationCount;
   }
 
-  fullName() {
+  set notes(val) {
+    this._notes = val || "";
+  }
+
+  get notes() {
+    return this._notes;
+  }
+
+  get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
 
@@ -33,6 +41,8 @@ class Customer {
     );
     return results.rows.map((c) => new Customer(c));
   }
+
+  static _notes(val) {}
 
   /** Lookup top n customers ranked by existing reservation count */
 

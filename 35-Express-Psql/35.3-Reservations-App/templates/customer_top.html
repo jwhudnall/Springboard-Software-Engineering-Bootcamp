@@ -19,7 +19,7 @@
   <li>{{noResultMsg}}<a href="/"> Back</a></li>
   {% else %}
   {% for customer in customers %}
-  <li><a href="/{{ customer.id }}/">{{ customer.fullName() }} - {{ customer.reservationCount }} Reservations</a></li>
+  <li><a href="/{{ customer.id }}/">{{ customer.fullName }} - {{ customer.reservationCount }} Reservations</a></li>
   {% endfor %}
   {% endif %}
 </ul>
