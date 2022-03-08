@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}{{ customer.firstName }} {{ customer.lastName }}{% endblock %}
+{% block title %}{{ customer.fullName() }}{% endblock %}
 
 {% block content %}
 
 
-<h1>{{ customer.firstName }} {{ customer.lastName }}</h1>
+<h1>{{ customer.fullName() }}</h1>
 
 <div class="row">
 
@@ -33,25 +33,15 @@
     <form action="/{{ customer.id }}/add-reservation/" method="POST">
       <div class="form-group">
         <label for="start">Start</label>
-        <input id="start"
-               class="form-control"
-               name="startAt"
-               placeholder="yyyy-mm-dd hh:mm am/pm"
-        >
+        <input id="start" class="form-control" name="startAt" placeholder="yyyy-mm-dd hh:mm am/pm">
       </div>
       <div class="form-group">
         <label for="num-guests"># of Guests:</label>
-        <input class="form-control"
-               value="2"
-               name="numGuests"
-               type="number"
-               id="num-guests">
+        <input class="form-control" value="2" name="numGuests" type="number" id="num-guests">
       </div>
       <div class="form-group">
         <label for="notes">Notes:</label>
-        <textarea class="form-control"
-                  name="notes"
-                  id="notes"></textarea>
+        <textarea class="form-control" name="notes" id="notes"></textarea>
       </div>
       <button class="btn btn-primary">Add</button>
     </form>
