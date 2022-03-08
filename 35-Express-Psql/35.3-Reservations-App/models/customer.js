@@ -32,6 +32,17 @@ class Customer {
     );
     return results.rows.map((c) => new Customer(c));
   }
+  /** Lookup customer via search bar  */
+  static async filterUsers(search) {
+    const results = await db.query(
+      `SELECT id, first_name AS "firstName", last_name AS "lastName", phone, notes
+        FROM customers
+        WHERE concat(first_name, ' ',last_name) ILIKE $1`,
+      ["%" + search + "%"]
+    );
+
+    return results.rows.map((c) => new Customer(c));
+  }
 
   /** get a customer by ID. */
 
