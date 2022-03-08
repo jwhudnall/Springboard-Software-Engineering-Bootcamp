@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Customers{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row" style="float: right">
+
+    <form class="form-inline" action="/filter" method="GET">
+      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <a class="btn btn-primary" href="/add/">Add a Customer</a></p>
+  </div>
+</div>
+
+<h1>Top Customers</h1>
+<ul style="column-count: 1">
+  {% if noResultMsg %}
+  <li>{{noResultMsg}}<a href="/"> Back</a></li>
+  {% else %}
+  {% for customer in customers %}
+  <li><a href="/{{ customer.id }}/">{{ customer.fullName() }} - {{ customer.reservationCount }} Reservations</a></li>
+  {% endfor %}
+  {% endif %}
+</ul>
+
+{% endblock %}

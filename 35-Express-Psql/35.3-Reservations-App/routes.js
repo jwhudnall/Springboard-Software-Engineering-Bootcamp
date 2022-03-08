@@ -18,6 +18,22 @@ router.get("/", async function (req, res, next) {
   }
 });
 
+/** Return top customers (by reservation count) */
+router.get("/top", async function (req, res, next) {
+  try {
+    const customers = await Customer.highestReservationCount(10);
+    if (customers.length === 0) {
+      const noResultMsg = `No records found.`;
+      return res.render("customer_top.html", { noResultMsg });
+    }
+    return res.render("customer_top.html", { customers });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+/** Filter customer list by search query */
+
 router.get("/filter", async function (req, res, next) {
   try {
     const { search } = req.query;
