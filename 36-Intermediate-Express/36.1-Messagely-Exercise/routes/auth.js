@@ -17,7 +17,6 @@ router.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const isAuthenticated = await User.authenticate(username, password);
-    debugger;
     if (await User.authenticate(username, password)) {
       const token = jwt.sign({ username }, SECRET_KEY);
       User.updateLoginTimestamp(username);

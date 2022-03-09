@@ -19,12 +19,3 @@ CREATE TABLE messages (
     sent_at timestamp with time zone NOT NULL,
     read_at timestamp with time zone
 );
--- INSERT INTO users (username, password, first_name, last_name, phone)
--- VALUES
--- ('firstmound', 'hashedpassword123123!!!', 'James', 'Hudnall','867-5309'),
--- ('jjcoco', 'hashedpassword123123!!!', 'Jay', 'Abrams','867-5310');
-
--- INSERT INTO messages (from_username, to_username, body)
--- VALUES
--- ('firstmound', 'jjcoco', 'This is the message body'),
--- ('jjcoco', 'firstmound', 'This is the message body!')

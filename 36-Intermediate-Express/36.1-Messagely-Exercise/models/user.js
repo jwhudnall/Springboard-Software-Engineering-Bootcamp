@@ -33,10 +33,7 @@ class User {
     );
     let user = result.rows[0];
 
-    if (user) {
-      return await bcrypt.compare(password, user.password);
-    }
-    throw new ExpressError(`Username not found: ${username}`, 404);
+    return user && (await bcrypt.compare(password, user.password));
   }
 
   /** Update last_login_at for user */
@@ -146,7 +143,7 @@ class User {
       [username]
     );
     if (!messages.rowCount) {
-      throw new ExpressError(`No messages from user '${username}' found`, 404);
+      throw new ExpressError(`No messages to user '${username}' found`, 404);
     }
     return messages.rows.map((m) => ({
       id: m.id,
