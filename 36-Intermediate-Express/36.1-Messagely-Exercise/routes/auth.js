@@ -16,24 +16,15 @@ const User = require("../models/user");
 router.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    if (!username || !password) {
+    const isAuthenticated = await User.authenticate(username, password);
+    debugger;
+    if (await User.authenticate(username, password)) {
+      const token = jwt.sign({ username }, SECRET_KEY);
+      User.updateLoginTimestamp(username);
+      return res.json({ token });
+    } else {
       throw new ExpressError("Username and password required", 400);
     }
-    const result = await db.query(
-      `SELECT username, password
-      FROM users
-      WHERE username=$1`,
-      [username]
-    );
-    const user = result.rows[0];
-    if (user) {
-      if (await bcrypt.compare(password, user.password)) {
-        User.updateLoginTimestamp(username);
-        const token = jwt.sign({ username }, SECRET_KEY);
-        return res.json({ token });
-      }
-    }
-    throw new ExpressError("Invalid username/password", 400);
   } catch (e) {
     return next(e);
   }
@@ -47,22 +38,24 @@ router.post("/login", async (req, res, next) => {
  */
 router.post("/register", async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    if (!username || !password) {
-      throw new ExpressError("Username and Password required", 400);
-    }
-    const hashedPassword = bcrypt.hash(password, BCRYPT_WORK_FACTOR);
-    const results = await db.query(
-      `INSERT INTO users (username, password)
-      VALUES ($1, $2)
-      RETURNING username`,
-      [username, hashedPassword]
-    );
-    return res.status(201).json(results.rows[0]);
+    const { username, password, first_name, last_name, phone } = await User.register(req.body);
+    const token = jwt.sign({ username }, SECRET_KEY);
+    await User.updateLoginTimestamp(username);
+    return res.status(201).json({ token });
   } catch (e) {
-    if (e.code === "23505") {
+    if (e.code === "23502") {
+      return next(
+        new ExpressError(
+          "Missing one or more request arguments: username, password, first_name, last_name, phone.",
+          400
+        )
+      );
+    } else if (e.code === "23505") {
       return next(new ExpressError("Username already exists.", 400));
+    } else {
+      return next(e);
     }
-    return next(e);
   }
 });
+
+module.exports = router;
