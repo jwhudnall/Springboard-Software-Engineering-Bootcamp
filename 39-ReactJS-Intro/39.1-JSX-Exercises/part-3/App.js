@@ -1,4 +1,4 @@
-const App = (props) => {
+const App = () => {
   return (
     <div>
       <Person name='James' age={35} hobbies={["Coding", "Working Out", "Learning"]} />
