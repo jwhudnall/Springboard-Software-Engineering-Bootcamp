@@ -1,7 +1,7 @@
 const Tweet = (props) => {
   return (
     <div>
-      <h2>⭐️ Tweet Card⭐️</h2>
+      <h2>⭐️ Tweet Card ⭐️</h2>
       <ul>
         <li>Username: {props.username}</li>
         <li>Name: {props.name}</li>
