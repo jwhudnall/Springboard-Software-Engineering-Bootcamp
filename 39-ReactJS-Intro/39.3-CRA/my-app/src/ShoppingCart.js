@@ -1,4 +1,5 @@
 import CartItem from "./CartItem";
+import "./ShoppingCart.css";
 
 // import React from "react";
 const ShoppingCart = ({ items, username }) => {
@@ -6,8 +7,8 @@ const ShoppingCart = ({ items, username }) => {
     return acc + next.price * next.quantity;
   }, 0);
   return (
-    <div>
-      <h1>{username}'s Shopping Cart</h1>
+    <div className='ShoppingCart'>
+      <h1 className='ShoppingCart-header'>{username}'s Shopping Cart</h1>
       <div>
         {items.map((i) => (
           <CartItem name={i.name} img={i.img} price={i.price} quantity={i.quantity} />
