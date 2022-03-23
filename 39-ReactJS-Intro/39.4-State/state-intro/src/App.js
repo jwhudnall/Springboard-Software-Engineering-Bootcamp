@@ -2,6 +2,7 @@ import "./App.css";
 import Clicker from "./Clicker";
 import ButtonGroup from "./ButtonGroup";
 import Counter from "./Counter";
+import NumberGame from "./NumberGame";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <Clicker />
       <Clicker /> */}
       {/* <ButtonGroup /> */}
-      <Counter />
+      {/* <Counter /> */}
+      <NumberGame />
     </div>
   );
 }
