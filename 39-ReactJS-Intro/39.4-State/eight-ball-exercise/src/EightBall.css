@@ -5,10 +5,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 2em auto 0.5em auto;
 }
 
 .EightBall-header {
   color: white;
   text-align: center;
   font-size: 1em;
+}
+
+.EightBall-reset-btn {
+  margin: auto;
+  display: block;
 }

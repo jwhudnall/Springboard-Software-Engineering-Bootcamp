@@ -9,16 +9,25 @@ const EightBall = ({ answers = answerBank }) => {
     setBgColor(choice.color);
     setMsg(choice.msg);
   };
+  const resetBall = () => {
+    setBgColor("black");
+    setMsg("Think of a Question.");
+  };
 
   const [bgColor, setBgColor] = useState("black");
   const [msg, setMsg] = useState("Think of a Question.");
+  const shook = bgColor !== "black" && msg !== "Think of a Question.";
 
   return (
     <>
       <div onClick={() => shakeBall()} className='EightBall' style={{ backgroundColor: bgColor }}>
         <h1 className='EightBall-header'>{msg}</h1>
       </div>
-      <button>Reset</button>
+      {shook && (
+        <button onClick={() => resetBall()} className='EightBall-reset-btn'>
+          Reset
+        </button>
+      )}
     </>
   );
 };
