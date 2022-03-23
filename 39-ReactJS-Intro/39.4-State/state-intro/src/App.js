@@ -1,6 +1,7 @@
 import "./App.css";
 import Clicker from "./Clicker";
 import ButtonGroup from "./ButtonGroup";
+import Counter from "./Counter";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       {/* <Clicker />
       <Clicker />
       <Clicker /> */}
-      <ButtonGroup />
+      {/* <ButtonGroup /> */}
+      <Counter />
     </div>
   );
 }
