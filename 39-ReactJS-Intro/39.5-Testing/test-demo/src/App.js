@@ -1,6 +1,7 @@
 import "./App.css";
 import Counter from "./Counter";
 import BrokenComponent from "./BrokenComponent";
+import FixedComponent from "./FixedComponent";
 
 function App() {
   return (
