@@ -29,3 +29,14 @@ it("matches snapshot", () => {
   // screen.debug();
   expect(asFragment()).toMatchSnapshot();
 });
+
+it("scrolls left and right", () => {
+  render(<Carousel />);
+  const leftArrow = screen.getByTestId("left-arrow");
+  const rightArrow = screen.getByTestId("right-arrow");
+  const smallText = screen.getByText("Image 1 of 3.");
+  fireEvent.click(rightArrow);
+  expect(smallText).toHaveTextContent("2 of 3");
+  fireEvent.click(leftArrow);
+  expect(smallText).toHaveTextContent("1 of 3");
+});
