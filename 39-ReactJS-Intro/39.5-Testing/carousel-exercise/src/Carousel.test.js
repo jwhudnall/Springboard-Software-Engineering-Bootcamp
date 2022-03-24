@@ -32,11 +32,25 @@ it("matches snapshot", () => {
 
 it("scrolls left and right", () => {
   render(<Carousel />);
-  const leftArrow = screen.getByTestId("left-arrow");
   const rightArrow = screen.getByTestId("right-arrow");
   const smallText = screen.getByText("Image 1 of 3.");
   fireEvent.click(rightArrow);
+  const leftArrow = screen.getByTestId("left-arrow");
   expect(smallText).toHaveTextContent("2 of 3");
   fireEvent.click(leftArrow);
   expect(smallText).toHaveTextContent("1 of 3");
+});
+
+it("hides left arrow at 0 idx", () => {
+  render(<Carousel />);
+  const leftArrow = screen.queryByTestId("left-arrow");
+  expect(leftArrow).toBeNull();
+});
+
+it("hides right arrow at last idx", () => {
+  render(<Carousel />);
+  const rightArrow = screen.queryByTestId("right-arrow");
+  fireEvent.click(rightArrow); // 2/3
+  fireEvent.click(rightArrow); // 3/3 (should now be hidden)
+  expect(screen.queryByTestId("right-arrow")).toBeNull();
 });
