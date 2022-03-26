@@ -27,22 +27,32 @@ import "./Board.css";
  *
  **/
 
-function Board({ nrows, ncols, chanceLightStartsOn }) {
+function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.1 }) {
   const [board, setBoard] = useState(createBoard());
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
   function createBoard() {
     let initialBoard = [];
-    // TODO: create array-of-arrays of true/false values
+    for (let i = 0; i < nrows; i++) {
+      const row = [];
+      for (let j = 0; j < ncols; j++) {
+        const probabilityResult = Math.random() * 1;
+        const light = probabilityResult <= chanceLightStartsOn ? "0" : ".";
+        // console.log(`Probability: ${probabilityResult}. Light: ${light} added to row.`);
+        row.push(light);
+      }
+      initialBoard.push(row);
+    }
     return initialBoard;
   }
 
   function hasWon() {
     // TODO: check the board in state to determine whether the player has won.
+    return board.every((row) => row.every((light) => light === "."));
   }
 
   function flipCellsAround(coord) {
-    setBoard(oldBoard => {
+    setBoard((oldBoard) => {
       const [y, x] = coord.split("-").map(Number);
 
       const flipCell = (y, x, boardCopy) => {
@@ -54,18 +64,38 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       };
 
       // TODO: Make a (deep) copy of the oldBoard
+      const copy = [...oldBoard];
 
       // TODO: in the copy, flip this cell and the cells around it
-
+      flipCell(y, x, copy); // Flip current cell
+      flipCell(y, x - 1, copy); // Flip left
+      flipCell(y, x + 1, copy); // flip right
+      flipCell(y - 1, x, copy); // flip above
+      flipCell(y + 1, x, copy); // flip below
       // TODO: return the copy
+      return copy;
     });
   }
 
   // if the game is won, just show a winning msg & render nothing else
+  return <>
+    {hasWon ?
+    <span>You Win!</span> :
 
+    }
+    </>;
   // TODO
 
   // make table board
+  <table>
+    for (let i = 0; i < nrows; i++) {
+      const row = [];
+      for (let j = 0; j < ncols; j++) {
+        const probabilityResult = Math.random() * 1;
+        const light = probabilityResult <= chanceLightStartsOn ? "0" : ".";
+        // console.log(`Probability: ${probabilityResult}. Light: ${light} added to row.`);
+        row.push(light);
+  </table>
 
   // TODO
 }
