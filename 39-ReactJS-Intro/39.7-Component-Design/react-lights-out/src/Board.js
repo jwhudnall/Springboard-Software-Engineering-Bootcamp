@@ -27,7 +27,7 @@ import "./Board.css";
  *
  **/
 
-function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.1 }) {
+function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.5 }) {
   const [board, setBoard] = useState(createBoard());
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
@@ -37,7 +37,7 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.1 }) {
       const row = [];
       for (let j = 0; j < ncols; j++) {
         const probabilityResult = Math.random() * 1;
-        const light = probabilityResult <= chanceLightStartsOn ? "0" : ".";
+        const light = probabilityResult <= chanceLightStartsOn ? true : false;
         // console.log(`Probability: ${probabilityResult}. Light: ${light} added to row.`);
         row.push(light);
       }
@@ -48,7 +48,7 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.1 }) {
 
   function hasWon() {
     // TODO: check the board in state to determine whether the player has won.
-    return board.every((row) => row.every((light) => light === "."));
+    return board.every((row) => row.every((light) => light === false));
   }
 
   function flipCellsAround(coord) {
@@ -76,26 +76,36 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.1 }) {
       return copy;
     });
   }
+  console.log(board);
 
   // if the game is won, just show a winning msg & render nothing else
-  return <>
-    {hasWon ?
-    <span>You Win!</span> :
-
-    }
-    </>;
+  return (
+    <>
+      {!hasWon ? (
+        <span>You Win!</span>
+      ) : (
+        <table>
+          <tbody>
+            {board.map((row, y) => (
+              <tr>
+                {row.map((light, x) => (
+                  <Cell
+                    isLit={light}
+                    flipCellsAroundMe={flipCellsAround}
+                    dataId={`${y}-${x}`}
+                    key={`${y}-${x}`}
+                  />
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </>
+  );
   // TODO
 
   // make table board
-  <table>
-    for (let i = 0; i < nrows; i++) {
-      const row = [];
-      for (let j = 0; j < ncols; j++) {
-        const probabilityResult = Math.random() * 1;
-        const light = probabilityResult <= chanceLightStartsOn ? "0" : ".";
-        // console.log(`Probability: ${probabilityResult}. Light: ${light} added to row.`);
-        row.push(light);
-  </table>
 
   // TODO
 }
