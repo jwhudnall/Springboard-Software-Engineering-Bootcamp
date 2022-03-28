@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `<DocumentFragment />`;
+
+exports[`switches color after switching 1`] = `<DocumentFragment />`;

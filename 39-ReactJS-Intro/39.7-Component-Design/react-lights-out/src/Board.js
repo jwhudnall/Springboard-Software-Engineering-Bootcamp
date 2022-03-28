@@ -27,7 +27,7 @@ import "./Board.css";
  *
  **/
 
-function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.5 }) {
+function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.2 }) {
   const [board, setBoard] = useState(createBoard());
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
@@ -36,9 +36,8 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.5 }) {
     for (let i = 0; i < nrows; i++) {
       const row = [];
       for (let j = 0; j < ncols; j++) {
-        const probabilityResult = Math.random() * 1;
-        const light = probabilityResult <= chanceLightStartsOn ? true : false;
-        // console.log(`Probability: ${probabilityResult}. Light: ${light} added to row.`);
+        // const probabilityResult = Math.random() * 1;
+        const light = Math.random() <= chanceLightStartsOn;
         row.push(light);
       }
       initialBoard.push(row);
@@ -76,13 +75,13 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.5 }) {
       return copy;
     });
   }
-  console.log(board);
+  // console.log(board);
 
   // if the game is won, just show a winning msg & render nothing else
   return (
     <>
-      {!hasWon ? (
-        <span>You Win!</span>
+      {hasWon() ? (
+        <h1>You Win!</h1>
       ) : (
         <table>
           <tbody>
@@ -91,8 +90,8 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.5 }) {
                 {row.map((light, x) => (
                   <Cell
                     isLit={light}
-                    flipCellsAroundMe={flipCellsAround}
-                    dataId={`${y}-${x}`}
+                    flipCellsAroundMe={() => flipCellsAround(`${y}-${x}`)}
+                    testID={`${y}-${x}`}
                     key={`${y}-${x}`}
                   />
                 ))}
