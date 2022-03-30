@@ -7,7 +7,8 @@ function App() {
   return (
     <div className='App'>
       {/* <Timer /> */}
-      <ProfileViewer user='jwhudnall' />
+      <ProfileViewer user='jwhudnall' color='green' />
+      {/* <ProfileViewer user='colt' color='purple' /> */}
     </div>
   );
 }
