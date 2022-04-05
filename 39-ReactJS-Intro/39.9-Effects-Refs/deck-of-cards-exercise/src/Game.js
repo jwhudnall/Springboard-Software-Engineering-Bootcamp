@@ -2,24 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Card from "./Card";
 import "./Deck.css";
-import CardWrapper from "./CardWrapper";
-// 1. When the page loads, go to the Deck of Cards API to create a new deck, and show a button on the page that will let you draw a card.
-// 2. Every time you click the button, display a new card, until there are no cards left in the deck. If you try to draw when there are no cards remaining, an alert message should appear on the screen with the text “Error: no cards remaining!”.
+
+const BASE_URL = "http://deckofcardsapi.com/api/deck";
 
 const Game = () => {
-  // const [deckIsDisplayed, setDeckIsDisplayed] = useState(false);
-  const [deckId, setDeckId] = useState(null);
-  const [url, setUrl] = useState("http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
-  const [deck, setDeck] = useState([]);
-  const cardBtn = useRef();
+  const [deck, setDeck] = useState(null);
+  const [drawn, setDrawn] = useState([]);
+  const [autoDraw, setAutoDraw] = useState(false);
+  const timerId = useRef(null);
 
-  // Better served in CardWrapper:
-  const [drawCards, setDrawCards] = useState(false);
-
-  const toggleCardDraw = () => {
-    console.log("Toggled!");
-    setDrawCards(!drawCards);
-    console.log(`After: ${drawCards}`);
+  const toggleAutoDraw = () => {
+    setAutoDraw((draw) => !draw);
   };
 
   const randRotation = () => {
@@ -32,70 +25,55 @@ const Game = () => {
   useEffect(() => {
     async function getDeck() {
       try {
-        const res = await axios.get(url);
-        setDeckId(res.data.deck_id);
+        const res = await axios.get(`${BASE_URL}/new/shuffle`);
+        setDeck(res.data);
       } catch (e) {
         alert("Something went wrong communicating with the deckofcardsapi.");
       }
     }
     getDeck();
-  }, []);
+  }, [setDeck]);
 
   useEffect(() => {
-    if (drawCards) {
-      const id = setInterval(async () => {
-        try {
-          if (deck.length < 52) {
-            const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw`;
-            const res = await axios.get(url);
-            const card = res.data.cards[0];
-            setDeck((deck) => {
-              return [...deck, { code: card.code, image: card.image, rotation: randRotation() }];
-            });
-            console.log(deck);
-          } else {
-            alert("Error: no cards remaining!");
-            cardBtn.current.disabled = true;
-          }
-        } catch (e) {
-          alert("Something went wrong communicating with the deckofcardsapi.");
+    async function drawCard() {
+      let { deck_id } = deck;
+
+      try {
+        const res = await axios.get(`${BASE_URL}/${deck_id}/draw`);
+
+        if (res.data.remaining === 0) {
+          setAutoDraw(false);
+          throw new Error("no cards remaining!");
         }
-        return () => {
-          console.log("CLEANUP FUNCTION!");
-          clearInterval(id);
-        };
+
+        const card = res.data.cards[0];
+        setDrawn((deck) => {
+          return [...deck, { code: card.code, image: card.image, rotation: randRotation() }];
+        });
+      } catch (e) {
+        alert("Something went wrong communicating with the deckofcardsapi.");
+      }
+    }
+
+    if (autoDraw && !timerId.current) {
+      timerId.current = setInterval(async () => {
+        await drawCard();
       }, 1000);
     }
-  }, [drawCards]);
 
-  // const handleClick = async () => {
-  // try {
-  //   if (deck.length < 52) {
-  //     const url = `http://deckofcardsapi.com/api/deck/${deckId}/draw`;
-  //     const res = await axios.get(url);
-  //     const card = res.data.cards[0];
-  //     setDeck((deck) => {
-  //       return [...deck, { code: card.code, image: card.image, rotation: randRotation() }];
-  //     });
-  //     console.log(deck);
-  //   } else {
-  //     alert("Error: no cards remaining!");
-  //     cardBtn.current.disabled = true;
-  //   }
-  // } catch (e) {
-  //   alert("Something went wrong communicating with the deckofcardsapi.");
-  // }
-  // };
+    return () => {
+      clearInterval(timerId.current);
+      timerId.current = null;
+    };
+  }, [autoDraw, setAutoDraw, deck]);
 
   return (
     <div>
-      <button onClick={toggleCardDraw} ref={cardBtn}>
-        GIMME A CARD!
-      </button>
+      <button onClick={toggleAutoDraw}>{autoDraw ? "STOP" : "START"} DRAWING!</button>
       {/* <CardWrapper /> */}
       <div className='Deck'>
-        {deck &&
-          deck.map((c, idx) => {
+        {drawn &&
+          drawn.map((c, idx) => {
             return <Card key={idx} img={c.image} rotation={c.rotation} />;
           })}
       </div>
