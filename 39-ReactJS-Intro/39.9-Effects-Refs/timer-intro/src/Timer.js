@@ -4,9 +4,13 @@ const Timer = () => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    setInterval(() => {
+    const id = setInterval(() => {
       setSeconds((seconds) => seconds + 1);
     }, 1000);
+    return () => {
+      console.log("CLEANUP FUNCTION");
+      clearInterval(id);
+    };
   }, []);
 
   return <h1>{seconds}</h1>;

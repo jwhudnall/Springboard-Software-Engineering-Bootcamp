@@ -1,13 +1,15 @@
 // import logo from './logo.svg';
 import "./App.css";
-import Timer from "./Timer";
+import TimerWrapper from "./TimerWrapper";
 import ProfileViewer from "./ProfileViewer";
+import Video from "./Video";
 
 function App() {
   return (
     <div className='App'>
-      {/* <Timer /> */}
-      <ProfileViewer user='jwhudnall' color='green' />
+      <Video />
+      {/* <TimerWrapper /> */}
+      {/* <ProfileViewer user='jwhudnall' color='green' /> */}
       {/* <ProfileViewer user='colt' color='purple' /> */}
     </div>
   );
