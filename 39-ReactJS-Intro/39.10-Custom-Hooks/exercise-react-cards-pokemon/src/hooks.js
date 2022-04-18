@@ -10,9 +10,10 @@ const useFlip = () => {
   return [flipState, toggleState];
 };
 
-const useAxios = (url) => {
+const useAxios = (baseURL) => {
   const [data, setData] = useState([]);
-  const addData = async () => {
+  const addData = async (endpoint = false) => {
+    const url = endpoint ? `${baseURL}/${endpoint}` : baseURL;
     const response = await axios.get(url);
     setData((data) => [...data, { ...response.data, id: uuid() }]);
   };
