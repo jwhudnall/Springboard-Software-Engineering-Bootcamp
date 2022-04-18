@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+import uuid from "uuid";
 
 const useFlip = () => {
   const [flipState, setFlipState] = useState(true);
@@ -8,4 +10,15 @@ const useFlip = () => {
   return [flipState, toggleState];
 };
 
-export default useFlip;
+const useAxios = (url) => {
+  const [data, setData] = useState([]);
+  const addData = async () => {
+    const response = await axios.get(url);
+    setData((data) => [...data, { ...response.data, id: uuid() }]);
+  };
+
+  return [data, addData];
+};
+
+// export default useFlip;
+export { useFlip, useAxios };
