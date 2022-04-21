@@ -1,0 +1,16 @@
+.VendingMachine {
+  width: 50%;
+  background-color: bisque;
+  margin: 0 auto;
+  border-radius: 25px;
+}
+
+.VendingMachine h1 {
+  /* font-size: 1rem; */
+}
+
+.VendingMachine ul {
+  list-style: none;
+  padding: 1rem;
+  margin-top: 0;
+}
