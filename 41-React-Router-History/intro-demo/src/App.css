@@ -7,6 +7,16 @@
   pointer-events: none;
 }
 
+.App nav a {
+  margin: 20px;
+}
+
+.App nav a.active {
+  margin: 20px;
+  font-weight: bold;
+  color: black;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
