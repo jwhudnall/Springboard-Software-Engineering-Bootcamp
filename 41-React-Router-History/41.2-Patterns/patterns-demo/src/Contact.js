@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  console.log(navigate);
 
   const handleChange = (e) => {
     setEmail(e.target.value);
@@ -9,6 +12,7 @@ const Contact = () => {
 
   const storeEmail = () => {
     alert("jk, no email storage");
+    navigate("/food/burrito");
   };
 
   const handleSubmit = (e) => {
