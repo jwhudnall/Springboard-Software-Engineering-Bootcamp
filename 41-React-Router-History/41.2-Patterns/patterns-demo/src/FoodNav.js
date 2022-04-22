@@ -9,6 +9,7 @@ const FoodNav = ({ foods = defaultFoods }) => {
           <Link to={`/food/${food}`}>Show me the {food}!</Link>
         </li>
       ))}
+      <Link to={"/contact"}>Contact</Link>
     </ul>
   );
 };
