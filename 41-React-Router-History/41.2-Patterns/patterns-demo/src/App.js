@@ -8,15 +8,13 @@ import "./App.css";
 function App() {
   return (
     <div className='App'>
-      <BrowserRouter>
-        <FoodNav />
-        <Routes>
-          <Route path='/food/:name' element={<Food />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/*' element={<NotFound />} />
-          <Route path='/secret' element={<Navigate to='/food/sushi' replace />} />
-        </Routes>
-      </BrowserRouter>
+      <FoodNav />
+      <Routes>
+        <Route path='/food/:name' element={<Food />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/*' element={<NotFound />} />
+        <Route path='/secret' element={<Navigate to='/food/sushi' replace />} />
+      </Routes>
     </div>
   );
 }
