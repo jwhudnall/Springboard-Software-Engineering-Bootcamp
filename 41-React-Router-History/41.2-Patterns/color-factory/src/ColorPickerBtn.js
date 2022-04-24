@@ -1,5 +1,11 @@
+import { Link } from "react-router-dom";
+
 const ColorPickerBtn = () => {
-  return <button>Add a color</button>;
+  return (
+    <button>
+      <Link to='/colors/new'>Add a color</Link>
+    </button>
+  );
 };
 
 export default ColorPickerBtn;
