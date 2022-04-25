@@ -1,0 +1,15 @@
+.ColorForm {
+  width: 30%;
+  border: 1px solid black;
+  margin: 2em auto;
+  padding: 1em;
+}
+
+.ColorForm-group {
+  display: block;
+  padding: 0.5em;
+}
+
+.ColorForm button {
+  margin-top: 1em;
+}

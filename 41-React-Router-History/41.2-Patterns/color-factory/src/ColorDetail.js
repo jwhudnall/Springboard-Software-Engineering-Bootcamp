@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ColorDetail = ({ color }) => {
   return (
-    <div>
+    <div style={{ backgroundColor: `${color.colorValue}` }}>
       <h1>This is {color.colorName}</h1>
       <p>Isn't it beautiful?</p>
       <button>

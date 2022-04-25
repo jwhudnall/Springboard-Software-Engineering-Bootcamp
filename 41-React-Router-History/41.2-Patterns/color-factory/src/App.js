@@ -41,15 +41,15 @@ App.defaultProps = {
   colors: [
     {
       colorName: "red",
-      colorValue: "red"
+      colorValue: "#fd0d0d"
     },
     {
       colorName: "green",
-      colorValue: "green"
+      colorValue: "#26e870"
     },
     {
       colorName: "blue",
-      colorValue: "blue"
+      colorValue: "#2566e9"
     }
   ]
 };

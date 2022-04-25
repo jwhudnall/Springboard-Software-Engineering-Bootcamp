@@ -1,17 +1,17 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import ColorDetail from "./ColorDetail";
+import ColorFactory from "./ColorFactory";
 
-function FilterColorDetails({ colors }) {
+function FilterColorDetails({ colors, setColors }) {
   const { color } = useParams();
+  const currentColor = colors.find((c) => c.colorName.toLowerCase() === color.toLowerCase());
 
-  if (color) {
-    const currentColor = colors.find((c) => c.colorName.toLowerCase() === color.toLowerCase());
-    console.log(currentColor);
+  if (currentColor) {
     return <ColorDetail color={currentColor} />;
   }
 
-  return null;
+  return <Navigate to='/colors' replace />;
 }
 
 export default FilterColorDetails;
