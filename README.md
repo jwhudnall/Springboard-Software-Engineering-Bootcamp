@@ -1,10 +1,10 @@
 # Springboard Software Engineering
 <img src="https://tinyurl.com/3pjpsrcv" alt="Springboard Logo">
 
-This repo is a collection of coding exercises, snippets and projects from Springboard's Software Engineering Program. I started this program on December 27, 2021.
+This is a collection of coding exercises, snippets and projects from Springboard's Software Engineering Program. I started this program on December 27, 2021.
 
 # Projects
-This is a list of projects. Some projects have standalone repos for deployment purposes; others may be listed _private_ due to the program's Academic Policy.
+Projects were prompts given at different points in the curriculum. Some projects have standalone repos for deployment purposes; others may be listed _private_ due to the program's Academic Policy.
 
 ## Section 04 - **Crypto Cards Memory Game**
 <img src="https://github.com/jwhudnall/CryptoCards/raw/main/images/crypto-cards-gameplay.gif" width="200" alt="Crypto Cards Game Screen">
