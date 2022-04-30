@@ -3,6 +3,23 @@
 
 This is a collection of exercises, code snippets and projects from Springboard's 9-month Software Engineering Bootcamp. I started this program on December 27, 2021.
 
+## The Springboard Curriculum
+### Front End
+Springboard's software engineering curriculum starts with a focus on front-end. In this section, we'll demystify what web development is and introduce you to industry-standard languages and technologies like JavaScript. Your training in this section will culminate in a front-end sprint project where you'll get to build your first large portfolio piece.
+- Web Development Fundamentals
+- Intermediate JavaScript, DOM Manipulation, and Event Driven Programming
+- Developer Fundamentals (Git/Terminal/Github)
+- Modern JavaScript and Testing
+- How the Web Works, AJAX, and jQuery
+
+### Back End with Python, Flask and SQL
+Now that you're comfortable writing front-end code, in this section, you'll learn about back-end fundamentals like Python, FLASK, and SQL. You'll then work on your first full-stack capstone where you'll build an application using Python on the back-end and JavaScript on the front end.
+- Python Fundamentals
+- Flask Fundamentals
+- SQL and PostgresQL
+- Intermediate Flask
+- Full Stack Capstone Project 1
+
 # Projects
 The projects below were interspersed throughout the curriculum. Some projects have standalone repos for deployment purposes; others may be listed _private_ due to the program's Academic Policy.
 
