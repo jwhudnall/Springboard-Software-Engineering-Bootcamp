@@ -20,6 +20,20 @@ Now that you're comfortable writing front-end code, in this section, you'll lear
 - Intermediate Flask
 - Full Stack Capstone Project 1
 
+### Node and Express
+After learning how to use JavaScript for front-end deployment, we'll teach you how to utilize it in the back-end to build high performing applications with Node and Express. Trainings in this section will be tested in your second sprint project where you'll get to build a REST API using Node, Express, and SQL.
+- Node and Express Fundamentals
+- Building Full Stack Applications with Node and Express
+- Back End Sprint Project
+
+### ReactJS and Redux
+This final section aims to set you up for success in your future software engineering career path. Here we'll be teaching you technologies that companies like Facebook use to create products that scale. You'll also learn about data structures and algorithms to not only learn how to succeed in interviews but also understand the theoretical basis behind architecting applications. Finally, you'll be equipped with all the knowledge to create a full-stack application in your final capstone project.
+- ReactJS Fundamentals
+- Intermediate ReactJS
+- Redux
+- Full Stack Capstone Project 2
+- Data Structures and Algorithms
+
 # Projects
 The projects below were interspersed throughout the curriculum. Some projects have standalone repos for deployment purposes; others may be listed _private_ due to the program's Academic Policy.
 
