@@ -1,7 +1,7 @@
 # Springboard Software Engineering
 <img src="https://tinyurl.com/3pjpsrcv" alt="Springboard Logo">
 
-This is a collection of exercises, code snippets and projects from Springboard's 9-month Software Engineering Bootcamp. I started this program on December 27, 2021.
+This is a collection of exercises, code excerpts and projects from Springboard's 9-month Software Engineering Bootcamp. I started this program on December 27, 2021. I decided to enroll in the pay-by-month rate, which added additional incentive to maintain my pace.
 
 ## The Springboard Curriculum
 ### Front End
@@ -35,7 +35,7 @@ This final section aims to set you up for success in your future software engine
 - Data Structures and Algorithms
 
 # Projects
-The projects below were interspersed throughout the curriculum. Some projects have standalone repos for deployment purposes; others may be listed _private_ due to the program's Academic Policy.
+The projects below were interspersed throughout the curriculum. Some projects have standalone repos for deployment purposes; others may be listed _private_ due to the program's Academic Policy. **Note to Recruiters:** I'm happy to share the private project source code upon request.
 
 ## Section 04 - **Crypto Cards Memory Game**
 <img src="https://github.com/jwhudnall/CryptoCards/raw/main/images/crypto-cards-gameplay.gif" width="200" alt="Crypto Cards Game Screen">
