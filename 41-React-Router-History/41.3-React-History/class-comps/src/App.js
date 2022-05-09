@@ -6,6 +6,7 @@ function App() {
   return (
     <div className='App'>
       <Counter color='purple' initialVal={10} />
+      <Counter initialVal={10} />
     </div>
   );
 }
