@@ -1,7 +1,7 @@
 # Springboard Software Engineering
 <img src="https://tinyurl.com/3pjpsrcv" alt="Springboard Logo">
 
-This is a collection of exercises, code excerpts and projects from Springboard's 9-month Software Engineering Bootcamp. I started this program on December 27, 2021. I decided to enroll in the pay-by-month rate, which added additional incentive to maintain my pace.
+This is a collection of exercises, code excerpts and projects from Springboard's 9-month Software Engineering Bootcamp. I started this program on December 27, 2021. I decided to enroll in the pay-by-month rate, which added additional incentive to maintain my pace. Below is a layout of the curriculum, exercises and major projects.
 
 ## The Springboard Curriculum
 ### Front End
