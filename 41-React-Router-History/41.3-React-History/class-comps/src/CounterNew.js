@@ -5,8 +5,8 @@ const CounterNew = () => {
   return (
     <div>
       <h3>Count is: {count}</h3>
-      <button onClick={add}>+1</button>
       <button onClick={subtract}>-1</button>
+      <button onClick={add}>+1</button>
     </div>
   );
 };
