@@ -35,7 +35,7 @@ This final section aims to set you up for success in your future software engine
 - Data Structures and Algorithms
 
 # Projects
-The projects below were interspersed throughout the curriculum. Some projects have standalone repos for deployment purposes; others may be listed _private_ due to the program's Academic Policy. **Note to Recruiters:** I'm happy to share the private project source code upon request.
+The projects below were interspersed throughout the curriculum. Some projects have standalone repos for deployment purposes; others may be listed _private_ due to the program's Academic Policy.
 
 ## Section 04 - **Crypto Cards Memory Game**
 <img src="https://github.com/jwhudnall/CryptoCards/raw/main/images/crypto-cards-gameplay.gif" width="200" alt="Crypto Cards Game Screen">
