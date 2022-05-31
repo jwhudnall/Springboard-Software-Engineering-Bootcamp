@@ -149,3 +149,7 @@ ___
 ![Warbler Home](https://github.com/jwhudnall/Springboard-Software-Engineering-Bootcamp/blob/main/26-Twitter-Clone/static/images/warbler-home.png)
 
 This is a Twitter-like platform where you can create an account, message and interact with other users. This codebase was largely provided as part of the project, wherein we were tasked with implementing additional features, testing, and fixing any bugs along the way.
+
+___
+## Section 42 - Hack or Booze Website Overhaul
+Silicon Valley startups are no strangers to pivoting their products to appeal to the right customer demographic. In this assessment, you'll be taking the role of a developer who must update an existing site as part of a rebrand for a coding cafe turned bar and restaurant. You'll receive detailed instructions about what to include in the site and how to do it in the most professional looking way!
